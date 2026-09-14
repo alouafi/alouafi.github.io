@@ -37,7 +37,7 @@ export async function GET({ site }: { site: URL }) {
     <rss version="2.0">
       <channel>
         <title>Aïmen Louafi — Writing</title>
-        <description>Technical notes, cinema reviews, and loose thoughts.</description>
+        <description>Posts about AI engineering, films, and other things.</description>
         <link>${site.toString()}</link>
         ${items}
       </channel>
