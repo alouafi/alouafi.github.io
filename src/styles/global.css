@@ -370,8 +370,7 @@ button {
   min-width: 0;
 }
 
-.frame-meta,
-.frame-footer {
+.frame-meta {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -386,17 +385,6 @@ button {
   margin-bottom: clamp(3rem, 8vh, 6rem);
   padding-bottom: 0.55rem;
   border-bottom: 1px solid var(--line);
-}
-
-.frame-footer {
-  margin-top: auto;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--line);
-}
-
-.timecode {
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
 }
 
 .post-date,
@@ -503,7 +491,7 @@ button {
 }
 
 .post-list {
-  counter-reset: film-frame 7;
+  counter-reset: film-frame 0;
   display: grid;
   gap: 0.8rem;
   margin: 0;
@@ -814,8 +802,7 @@ button {
     padding: 2rem 1.5rem;
   }
 
-  .frame-meta span:last-child,
-  .frame-footer span:first-child {
+  .frame-meta span:last-child {
     display: none;
   }
 }

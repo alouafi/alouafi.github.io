@@ -20,10 +20,10 @@
     <rect x="1085" y="548" width="55" height="20" rx="3"/>
   </g>
   <rect x="68" y="108" width="1064" height="414" fill="#e8e2d4" stroke="#49473f" stroke-width="2"/>
-  <text x="96" y="148" fill="#66675f" font-family="monospace" font-size="15" letter-spacing="3">16 MM / FRAME 008 / PARIS</text>
+  <text x="96" y="148" fill="#66675f" font-family="monospace" font-size="15" letter-spacing="3">16 MM / AI ENGINEER / PARIS</text>
   <text x="90" y="338" fill="#1c1d1a" font-family="Georgia,serif" font-size="132" letter-spacing="-7">AÏMEN LOUAFI</text>
   <text x="96" y="410" fill="#1c1d1a" font-family="Helvetica,Arial,sans-serif" font-size="29">AI engineer · cinema · languages</text>
   <circle cx="1067" cy="456" r="17" fill="none" stroke="#c9442f" stroke-width="3"/>
   <path d="M1038 456h58M1067 427v58" stroke="#c9442f" stroke-width="2"/>
-  <text x="96" y="494" fill="#66675f" font-family="monospace" font-size="14" letter-spacing="2">00:00:08:16</text>
+  <text x="96" y="494" fill="#66675f" font-family="monospace" font-size="14" letter-spacing="2">ALOUAFI.GITHUB.IO</text>
 </svg>
