@@ -308,19 +308,6 @@ button {
   filter: grayscale(0.35) contrast(1.02) sepia(0.05);
 }
 
-.frame-code {
-  position: absolute;
-  z-index: 2;
-  top: 1.2rem;
-  left: -0.25rem;
-  padding: 0.25rem 0.5rem;
-  color: #dca92f;
-  background: var(--film);
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-}
-
 .registration-mark {
   position: absolute;
   top: 1rem;
