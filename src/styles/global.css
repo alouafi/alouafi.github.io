@@ -187,15 +187,52 @@ button {
 
 .home {
   min-height: calc(100svh - 5rem);
+  padding-block: clamp(1.5rem, 4vw, 3.5rem);
 }
 
 .intro {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(13rem, 18rem) minmax(0, 1fr);
-  gap: clamp(3rem, 10vw, 9rem);
-  align-items: center;
-  min-height: calc(100svh - 5rem);
-  padding-block: clamp(3rem, 8vw, 7rem);
+  grid-template-columns: minmax(15rem, 0.62fr) minmax(0, 1.38fr);
+  gap: 0.55rem;
+  align-items: stretch;
+  min-height: clamp(35rem, 72svh, 43rem);
+  padding: 4.25rem 2rem;
+  overflow: hidden;
+  color: var(--ink);
+  background: #141410;
+  box-shadow: 0 1.25rem 3rem rgba(28, 29, 26, 0.16);
+}
+
+.film-frame {
+  position: relative;
+  background: #e8e2d4;
+  border: 1px solid #3e3d37;
+}
+
+.perforations {
+  position: absolute;
+  right: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.perforations-top {
+  top: 1rem;
+}
+
+.perforations-bottom {
+  bottom: 1rem;
+}
+
+.perforations i {
+  width: clamp(0.8rem, 2.2vw, 1.65rem);
+  height: 0.95rem;
+  background: var(--paper);
+  border-radius: 0.16rem;
+  box-shadow: inset 0 0 0 1px rgba(28, 29, 26, 0.18);
 }
 
 .eyebrow {
@@ -215,12 +252,17 @@ button {
   letter-spacing: -0.065em;
 }
 
+.intro h1 {
+  max-width: 7ch;
+  font-size: clamp(4.4rem, 8vw, 7rem);
+}
+
 .accent-mark {
   color: var(--accent);
 }
 
 .intro-body {
-  max-width: 39rem;
+  max-width: 34rem;
   margin-top: clamp(2rem, 5vw, 3rem);
   color: var(--muted);
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
@@ -249,25 +291,119 @@ button {
 }
 
 .portrait {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   margin: 0;
+  padding: 0.7rem;
+}
+
+.portrait-window {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .portrait img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 100%;
   object-fit: cover;
-  border: 1px solid var(--line);
-  filter: grayscale(1);
+  filter: grayscale(1) contrast(1.06) sepia(0.12);
+  transition: filter 350ms ease;
+}
+
+.portrait:hover img {
+  filter: grayscale(0.35) contrast(1.02) sepia(0.05);
 }
 
 .portrait figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
   margin-top: 0.6rem;
   color: var(--muted);
   font-family: var(--mono);
   font-size: 0.6rem;
   letter-spacing: 0.05em;
-  text-align: right;
   text-transform: uppercase;
+}
+
+.frame-code {
+  position: absolute;
+  z-index: 2;
+  top: -3.15rem;
+  left: 0;
+  color: #dca92f;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.registration-mark {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+}
+
+.registration-mark::before,
+.registration-mark::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--accent);
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.registration-mark::before {
+  width: 1.55rem;
+  height: 1px;
+}
+
+.registration-mark::after {
+  width: 1px;
+  height: 1.55rem;
+}
+
+.intro-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.frame-meta,
+.frame-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.frame-meta {
+  margin-bottom: clamp(3rem, 8vh, 6rem);
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.frame-footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.timecode {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
 }
 
 .post-date,
@@ -562,10 +698,21 @@ button {
     grid-template-columns: 1fr;
     align-items: start;
     min-height: auto;
+    padding: 4rem 1rem;
   }
 
   .portrait {
-    width: min(68%, 17rem);
+    width: min(100%, 24rem);
+    min-height: 27rem;
+    justify-self: center;
+  }
+
+  .intro-copy {
+    min-height: 31rem;
+  }
+
+  .frame-meta {
+    margin-bottom: 3rem;
   }
 
   .writing-hero,
@@ -597,6 +744,24 @@ button {
 @media (max-width: 560px) {
   .intro h1 {
     font-size: clamp(4rem, 20vw, 6rem);
+  }
+
+  .intro {
+    padding-inline: 0.65rem;
+  }
+
+  .perforations {
+    right: 0.7rem;
+    left: 0.7rem;
+  }
+
+  .intro-copy {
+    padding: 2rem 1.5rem;
+  }
+
+  .frame-meta span:last-child,
+  .frame-footer span:first-child {
+    display: none;
   }
 }
 

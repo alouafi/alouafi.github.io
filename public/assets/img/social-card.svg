@@ -1,12 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
   <title id="title">Aïmen Louafi — AI Engineer</title>
   <desc id="description">Aïmen Louafi, AI engineer in Paris.</desc>
-  <rect width="1200" height="630" fill="#eeece3"/>
-  <path d="M64 72h1072M64 558h1072" stroke="#171814" stroke-opacity=".4"/>
-  <circle cx="1118" cy="90" r="9" fill="#f04a2b"/>
-  <text x="64" y="55" fill="#171814" font-family="monospace" font-size="18" letter-spacing="4">AI ENGINEER / PARIS</text>
-  <text x="58" y="310" fill="#171814" font-family="Helvetica,Arial,sans-serif" font-size="150" font-weight="700" letter-spacing="-10">AÏMEN</text>
-  <text x="58" y="455" fill="#171814" font-family="Helvetica,Arial,sans-serif" font-size="150" font-weight="700" letter-spacing="-10">LOUAFI</text>
-  <rect x="997" y="336" width="110" height="110" rx="55" fill="#f04a2b"/>
-  <text x="1136" y="590" fill="#171814" font-family="monospace" font-size="18" letter-spacing="2" text-anchor="end">ALOUAFI.GITHUB.IO</text>
+  <rect width="1200" height="630" fill="#f2f0e8"/>
+  <rect x="40" y="42" width="1120" height="546" fill="#141410"/>
+  <g fill="#f2f0e8">
+    <rect x="65" y="62" width="55" height="20" rx="3"/><rect x="150" y="62" width="55" height="20" rx="3"/>
+    <rect x="235" y="62" width="55" height="20" rx="3"/><rect x="320" y="62" width="55" height="20" rx="3"/>
+    <rect x="405" y="62" width="55" height="20" rx="3"/><rect x="490" y="62" width="55" height="20" rx="3"/>
+    <rect x="575" y="62" width="55" height="20" rx="3"/><rect x="660" y="62" width="55" height="20" rx="3"/>
+    <rect x="745" y="62" width="55" height="20" rx="3"/><rect x="830" y="62" width="55" height="20" rx="3"/>
+    <rect x="915" y="62" width="55" height="20" rx="3"/><rect x="1000" y="62" width="55" height="20" rx="3"/>
+    <rect x="1085" y="62" width="55" height="20" rx="3"/>
+    <rect x="65" y="548" width="55" height="20" rx="3"/><rect x="150" y="548" width="55" height="20" rx="3"/>
+    <rect x="235" y="548" width="55" height="20" rx="3"/><rect x="320" y="548" width="55" height="20" rx="3"/>
+    <rect x="405" y="548" width="55" height="20" rx="3"/><rect x="490" y="548" width="55" height="20" rx="3"/>
+    <rect x="575" y="548" width="55" height="20" rx="3"/><rect x="660" y="548" width="55" height="20" rx="3"/>
+    <rect x="745" y="548" width="55" height="20" rx="3"/><rect x="830" y="548" width="55" height="20" rx="3"/>
+    <rect x="915" y="548" width="55" height="20" rx="3"/><rect x="1000" y="548" width="55" height="20" rx="3"/>
+    <rect x="1085" y="548" width="55" height="20" rx="3"/>
+  </g>
+  <rect x="68" y="108" width="1064" height="414" fill="#e8e2d4" stroke="#49473f" stroke-width="2"/>
+  <text x="96" y="148" fill="#66675f" font-family="monospace" font-size="15" letter-spacing="3">16 MM / FRAME 008 / PARIS</text>
+  <text x="90" y="338" fill="#1c1d1a" font-family="Georgia,serif" font-size="132" letter-spacing="-7">AÏMEN LOUAFI</text>
+  <text x="96" y="410" fill="#1c1d1a" font-family="Helvetica,Arial,sans-serif" font-size="29">AI engineer · cinema · languages</text>
+  <circle cx="1067" cy="456" r="17" fill="none" stroke="#c9442f" stroke-width="3"/>
+  <path d="M1038 456h58M1067 427v58" stroke="#c9442f" stroke-width="2"/>
+  <text x="96" y="494" fill="#66675f" font-family="monospace" font-size="14" letter-spacing="2">00:00:08:16</text>
 </svg>

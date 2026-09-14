@@ -5,19 +5,38 @@ import { profile } from "../data/profile";
 
 <BaseLayout current="home">
   <main class="home" id="main">
-    <section class="intro" aria-labelledby="intro-title">
-      <figure class="portrait">
-        <img
-          src={profile.portrait}
-          alt="Portrait placeholder marked AL"
-          width="640"
-          height="800"
-        />
-        <figcaption>Portrait to come</figcaption>
+    <section class="intro film-strip" aria-labelledby="intro-title">
+      <div class="perforations perforations-top" aria-hidden="true">
+        {Array.from({ length: 12 }, () => (
+          <i></i>
+        ))}
+      </div>
+
+      <figure class="portrait film-frame">
+        <div class="frame-code" aria-hidden="true">
+          04
+        </div>
+        <div class="portrait-window">
+          <img
+            src={profile.portrait}
+            alt="Portrait placeholder marked AL"
+            width="640"
+            height="800"
+          />
+          <span class="registration-mark" aria-hidden="true"></span>
+        </div>
+        <figcaption>
+          <span>Frame 004</span>
+          <span>Portrait to come</span>
+        </figcaption>
       </figure>
 
-      <div class="intro-copy">
-        <p class="eyebrow">Paris, France</p>
+      <div class="intro-copy film-frame">
+        <div class="frame-meta" aria-hidden="true">
+          <span>16 MM / FRAME 008</span>
+          <span>48.8566° N · 2.3522° E</span>
+        </div>
+        <p class="eyebrow">Paris, France · 2026</p>
         <h1 id="intro-title">
           Aïmen Louafi<span class="accent-mark">.</span>
         </h1>
@@ -41,6 +60,16 @@ import { profile } from "../data/profile";
             GitHub ↗
           </a>
         </nav>
+        <div class="frame-footer" aria-hidden="true">
+          <span>AI / CINEMA / LANGUAGES</span>
+          <span class="timecode">00:00:08:16</span>
+        </div>
+      </div>
+
+      <div class="perforations perforations-bottom" aria-hidden="true">
+        {Array.from({ length: 12 }, () => (
+          <i></i>
+        ))}
       </div>
     </section>
   </main>
