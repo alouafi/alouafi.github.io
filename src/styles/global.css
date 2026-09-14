@@ -292,7 +292,7 @@ button {
 
 .portrait-window {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   overflow: hidden;
 }
 
@@ -306,18 +306,6 @@ button {
 
 .portrait:hover img {
   filter: grayscale(0.35) contrast(1.02) sepia(0.05);
-}
-
-.portrait figcaption {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 0.6rem;
-  color: rgba(242, 240, 232, 0.7);
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 .frame-code {
