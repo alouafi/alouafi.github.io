@@ -4,6 +4,8 @@
   --muted: #66675f;
   --line: #c8c6bc;
   --accent: #c9442f;
+  --film: #141410;
+  --film-rail: clamp(1.4rem, 3.8vw, 3.2rem);
   --max-width: 1120px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -24,7 +26,7 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--paper);
+  background: var(--film);
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.55;
@@ -34,6 +36,29 @@ body {
 
 body.menu-open {
   overflow: hidden;
+}
+
+.film-shell {
+  display: grid;
+  grid-template-columns: var(--film-rail) minmax(0, 1280px) var(--film-rail);
+  width: min(100%, calc(1280px + var(--film-rail) + var(--film-rail)));
+  min-height: 100svh;
+  margin-inline: auto;
+}
+
+.page-stock {
+  min-width: 0;
+  min-height: 100svh;
+  background: var(--paper);
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.24);
+}
+
+.film-rail {
+  background-color: var(--film);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='66' viewBox='0 0 48 66'%3E%3Crect x='11' y='15' width='26' height='36' rx='4' fill='%23f2f0e8'/%3E%3C/svg%3E");
+  background-position: center top;
+  background-repeat: repeat-y;
+  background-size: 100% 4rem;
 }
 
 img {
@@ -187,52 +212,16 @@ button {
 
 .home {
   min-height: calc(100svh - 5rem);
-  padding-block: clamp(1.5rem, 4vw, 3.5rem);
 }
 
 .intro {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(15rem, 0.62fr) minmax(0, 1.38fr);
-  gap: 0.55rem;
-  align-items: stretch;
-  min-height: clamp(35rem, 72svh, 43rem);
-  padding: 4.25rem 2rem;
-  overflow: hidden;
-  color: var(--ink);
-  background: #141410;
-  box-shadow: 0 1.25rem 3rem rgba(28, 29, 26, 0.16);
-}
-
-.film-frame {
-  position: relative;
-  background: #e8e2d4;
-  border: 1px solid #3e3d37;
-}
-
-.perforations {
-  position: absolute;
-  right: 1.25rem;
-  left: 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-}
-
-.perforations-top {
-  top: 1rem;
-}
-
-.perforations-bottom {
-  bottom: 1rem;
-}
-
-.perforations i {
-  width: clamp(0.8rem, 2.2vw, 1.65rem);
-  height: 0.95rem;
-  background: var(--paper);
-  border-radius: 0.16rem;
-  box-shadow: inset 0 0 0 1px rgba(28, 29, 26, 0.18);
+  grid-template-columns: minmax(15rem, 0.58fr) minmax(0, 1.42fr);
+  gap: clamp(3rem, 8vw, 7rem);
+  align-items: center;
+  min-height: calc(100svh - 5rem);
+  padding-block: clamp(4rem, 9vw, 8rem);
 }
 
 .eyebrow {
@@ -295,13 +284,15 @@ button {
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 0.7rem;
+  padding: 0.65rem;
+  color: var(--paper);
+  background: var(--film);
+  box-shadow: 0.8rem 0.8rem 0 var(--accent);
 }
 
 .portrait-window {
   position: relative;
-  flex: 1;
-  min-height: 0;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
 }
 
@@ -322,7 +313,7 @@ button {
   justify-content: space-between;
   gap: 1rem;
   margin-top: 0.6rem;
-  color: var(--muted);
+  color: rgba(242, 240, 232, 0.7);
   font-family: var(--mono);
   font-size: 0.6rem;
   letter-spacing: 0.05em;
@@ -332,9 +323,11 @@ button {
 .frame-code {
   position: absolute;
   z-index: 2;
-  top: -3.15rem;
-  left: 0;
+  top: 1.2rem;
+  left: -0.25rem;
+  padding: 0.25rem 0.5rem;
   color: #dca92f;
+  background: var(--film);
   font-family: var(--mono);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
@@ -374,7 +367,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(2rem, 5vw, 4.5rem);
+  min-width: 0;
 }
 
 .frame-meta,
@@ -447,12 +440,25 @@ button {
 }
 
 .writing-hero {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 0.65fr;
   gap: 3rem;
   align-items: end;
   padding-bottom: clamp(3rem, 7vw, 5rem);
   border-bottom: 1px solid var(--ink);
+}
+
+.writing-hero::after,
+.article-header::after {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  content: "";
 }
 
 .writing-hero .eyebrow {
@@ -497,18 +503,61 @@ button {
 }
 
 .post-list {
+  counter-reset: film-frame 7;
+  display: grid;
+  gap: 0.8rem;
   margin: 0;
-  padding: 0;
+  padding: 1rem 0 0;
   list-style: none;
 }
 
 .post-row {
+  position: relative;
+  counter-increment: film-frame;
   display: grid;
-  grid-template-columns: 9rem minmax(0, 1fr) 12rem auto;
+  grid-template-columns: 8rem minmax(0, 1fr) 11rem auto;
   gap: 2rem;
   align-items: center;
-  min-height: 9rem;
-  border-bottom: 1px solid var(--line);
+  min-height: 10rem;
+  padding: 2.35rem 1.5rem 1.5rem;
+  background: #e8e2d4;
+  border: 1px solid var(--ink);
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.post-row::before {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.75rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  content: "FRAME " counter(film-frame, decimal-leading-zero);
+}
+
+.post-row::after {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  background: var(--accent);
+  border-radius: 50%;
+  content: "";
+}
+
+.post-row:hover {
+  color: var(--paper);
+  background: var(--film);
+}
+
+.post-row:hover .post-date,
+.post-row:hover .post-tags,
+.post-row:hover::before {
+  color: rgba(242, 240, 232, 0.68);
 }
 
 .post-row[hidden] {
@@ -551,12 +600,15 @@ button {
 
 /* Article */
 .article-header {
+  position: relative;
   display: grid;
   grid-template-columns: 9rem minmax(0, 1fr) 17rem;
   gap: 2rem;
   align-items: start;
-  padding-bottom: clamp(3rem, 7vw, 5rem);
-  border-bottom: 1px solid var(--ink);
+  padding: clamp(2rem, 5vw, 4rem);
+  background: #e8e2d4;
+  border: 1px solid var(--ink);
+  box-shadow: 0.65rem 0.65rem 0 var(--accent);
 }
 
 .article-header .eyebrow {
@@ -630,6 +682,14 @@ button {
   min-height: calc(100vh - 10rem);
   padding: var(--gutter);
   text-align: center;
+}
+
+.not-found::before {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  content: "ROLL 00 / FINAL FRAME";
 }
 
 .not-found h1 {
@@ -728,7 +788,7 @@ button {
   .post-row {
     grid-template-columns: 1fr auto;
     gap: 0.55rem 1rem;
-    padding-block: 1.5rem;
+    padding: 2.25rem 1rem 1.25rem;
   }
 
   .post-row h2 {
@@ -748,11 +808,6 @@ button {
 
   .intro {
     padding-inline: 0.65rem;
-  }
-
-  .perforations {
-    right: 0.7rem;
-    left: 0.7rem;
   }
 
   .intro-copy {

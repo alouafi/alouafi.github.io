@@ -5,14 +5,8 @@ import { profile } from "../data/profile";
 
 <BaseLayout current="home">
   <main class="home" id="main">
-    <section class="intro film-strip" aria-labelledby="intro-title">
-      <div class="perforations perforations-top" aria-hidden="true">
-        {Array.from({ length: 12 }, () => (
-          <i></i>
-        ))}
-      </div>
-
-      <figure class="portrait film-frame">
+    <section class="intro" aria-labelledby="intro-title">
+      <figure class="portrait">
         <div class="frame-code" aria-hidden="true">
           04
         </div>
@@ -31,7 +25,7 @@ import { profile } from "../data/profile";
         </figcaption>
       </figure>
 
-      <div class="intro-copy film-frame">
+      <div class="intro-copy">
         <div class="frame-meta" aria-hidden="true">
           <span>16 MM / FRAME 008</span>
           <span>48.8566° N · 2.3522° E</span>
@@ -64,12 +58,6 @@ import { profile } from "../data/profile";
           <span>AI / CINEMA / LANGUAGES</span>
           <span class="timecode">00:00:08:16</span>
         </div>
-      </div>
-
-      <div class="perforations perforations-bottom" aria-hidden="true">
-        {Array.from({ length: 12 }, () => (
-          <i></i>
-        ))}
       </div>
     </section>
   </main>

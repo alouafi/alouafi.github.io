@@ -51,7 +51,7 @@ const personSchema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#eeece3" />
+    <meta name="theme-color" content="#141410" />
     <meta name="description" content={description} />
     <meta property="og:type" content={article ? "article" : "website"} />
     <meta property="og:title" content={title} />
@@ -78,9 +78,15 @@ const personSchema = {
     <a class="skip-link" href="#main">
       Skip to content
     </a>
-    <Header current={current} />
-    <slot />
-    <Footer />
+    <div class="film-shell">
+      <div class="film-rail film-rail-left" aria-hidden="true"></div>
+      <div class="page-stock">
+        <Header current={current} />
+        <slot />
+        <Footer />
+      </div>
+      <div class="film-rail film-rail-right" aria-hidden="true"></div>
+    </div>
     <script>
       import "../scripts/site";
     </script>
