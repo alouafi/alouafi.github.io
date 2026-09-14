@@ -1,0 +1,42 @@
+---
+interface Props {
+  current?: "home" | "writing" | undefined;
+}
+
+const { current } = Astro.props;
+---
+
+<header class="site-header" data-header>
+  <a
+    class="wordmark"
+    href="/"
+    aria-label="Aïmen Louafi, home"
+    aria-current={current === "home" ? "page" : undefined}
+  >
+    <span>AL</span>
+    <span class="wordmark-dot" aria-hidden="true"></span>
+  </a>
+  <button
+    class="menu-button"
+    type="button"
+    aria-expanded="false"
+    aria-controls="site-nav"
+    data-menu-button
+  >
+    <span>Menu</span>
+    <span class="menu-glyph" aria-hidden="true"></span>
+  </button>
+  <nav class="site-nav" id="site-nav" aria-label="Primary" data-menu>
+    <a href="/#work">Work</a>
+    <a
+      href="/writing/"
+      aria-current={current === "writing" ? "page" : undefined}
+    >
+      Writing
+    </a>
+    <a href="https://www.linkedin.com/in/aimen-louafi" rel="me noreferrer">
+      LinkedIn ↗
+    </a>
+  </nav>
+  <p class="header-status">AI engineer · Paris</p>
+</header>

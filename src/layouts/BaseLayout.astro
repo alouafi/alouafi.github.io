@@ -1,0 +1,88 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { profile } from "../data/profile";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  current?: "home" | "writing";
+  image?: string;
+  article?: boolean;
+  lang?: "en" | "fr";
+}
+
+const {
+  title = `${profile.name} — ${profile.role}`,
+  description = `${profile.name} is an AI engineer in Paris building reliable AI systems, evaluation infrastructure, and production machine-learning products.`,
+  current,
+  image = "/assets/img/social-card.png",
+  article = false,
+  lang = "en",
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  url: Astro.site,
+  jobTitle: profile.role,
+  worksFor: { "@type": "Organization", name: profile.employer },
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "Mines Paris – PSL" },
+    { "@type": "CollegeOrUniversity", name: "The University of Tokyo" },
+  ],
+  sameAs: [profile.links.github, profile.links.linkedin],
+  knowsAbout: [
+    "Artificial intelligence",
+    "Machine learning",
+    "Evaluation",
+    "Information retrieval",
+    "Natural language processing",
+  ],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#eeece3" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Aïmen Louafi — Writing"
+      href="/rss.xml"
+    />
+    <title>{title}</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+      is:inline
+    ></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <Header current={current} />
+    <slot />
+    <Footer />
+    <script>
+      import "../scripts/site";
+    </script>
+  </body>
+</html>

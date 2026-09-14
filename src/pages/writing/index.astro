@@ -1,0 +1,152 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+const languageLabels = { en: "English", fr: "Français" } as const;
+const topicLabels = {
+  tech: "Technology",
+  cinema: "Cinema",
+  notes: "Notes",
+} as const;
+---
+
+<BaseLayout
+  title="Writing — Aïmen Louafi"
+  description="Technical notes, cinema reviews, and loose thoughts by Aïmen Louafi, in English or French."
+  current="writing"
+>
+  <main class="writing-main" id="main">
+    <header class="writing-hero reveal">
+      <p class="eyebrow">The notebook / Since 2026</p>
+      <h1>
+        Writing<span class="accent-mark">.</span>
+      </h1>
+      <p class="writing-hero-copy">
+        Technical deep dives, film frames, and thoughts that need more room. In
+        English or French; published here or elsewhere.
+      </p>
+    </header>
+
+    <div class="filter-bar" aria-label="Filter writing">
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="all"
+        aria-pressed="true"
+      >
+        All
+      </button>
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="en"
+        aria-pressed="false"
+      >
+        English
+      </button>
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="fr"
+        aria-pressed="false"
+      >
+        Français
+      </button>
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="tech"
+        aria-pressed="false"
+      >
+        Technology
+      </button>
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="cinema"
+        aria-pressed="false"
+      >
+        Cinema
+      </button>
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="notes"
+        aria-pressed="false"
+      >
+        Notes
+      </button>
+    </div>
+
+    <ol class="post-list" data-post-list>
+      {posts.map((post) => {
+        const external = Boolean(post.data.externalUrl);
+        const href = post.data.externalUrl ?? `/writing/${post.id}/`;
+        return (
+          <li
+            class="post-row reveal"
+            data-post
+            data-language={post.data.language}
+            data-topic={post.data.topic}
+          >
+            <time
+              class="post-date"
+              datetime={post.data.publishedAt.toISOString()}
+            >
+              {post.data.publishedAt.toLocaleDateString(
+                post.data.language === "fr" ? "fr-FR" : "en-GB",
+                { day: "2-digit", month: "short", year: "numeric" },
+              )}
+            </time>
+            <h2>
+              <a href={href} rel={external ? "noreferrer" : undefined}>
+                {post.data.title}
+                {external && <span class="visually-hidden"> (external)</span>}
+              </a>
+            </h2>
+            <span class="post-tags">
+              {languageLabels[post.data.language]} ·{" "}
+              {topicLabels[post.data.topic]}
+            </span>
+            <span class="post-kind">
+              {external ? "External ↗" : "Internal →"}
+            </span>
+          </li>
+        );
+      })}
+    </ol>
+    <p class="post-count" aria-live="polite" data-post-count>
+      {posts.length} {posts.length === 1 ? "entry" : "entries"}
+    </p>
+  </main>
+
+  <script>
+    const buttons =
+      document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+    const entries = document.querySelectorAll<HTMLElement>("[data-post]");
+    const count = document.querySelector<HTMLElement>("[data-post-count]");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter ?? "all";
+        let visible = 0;
+        buttons.forEach((candidate) =>
+          candidate.setAttribute("aria-pressed", String(candidate === button)),
+        );
+        entries.forEach((entry) => {
+          const matches =
+            filter === "all" ||
+            entry.dataset.language === filter ||
+            entry.dataset.topic === filter;
+          entry.hidden = !matches;
+          if (matches) visible += 1;
+        });
+        if (count)
+          count.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
+      });
+    });
+  </script>
+</BaseLayout>

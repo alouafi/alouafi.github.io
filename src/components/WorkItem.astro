@@ -1,0 +1,26 @@
+---
+import type { selectedWork } from "../data/profile";
+
+type WorkItemData = (typeof selectedWork)[number];
+
+interface Props {
+  item: WorkItemData;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="work-item">
+  <div class="work-main">
+    <p class="work-meta">{item.context}</p>
+    <h3>
+      {item.title[0]} {item.title[1]}
+    </h3>
+    <p>{item.description}</p>
+  </div>
+  <ul class="work-facts" aria-label="Highlights">
+    {item.highlights.map((highlight) => (
+      <li>{highlight}</li>
+    ))}
+  </ul>
+</article>

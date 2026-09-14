@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-labelledby="title description">
+  <title id="title">Portrait placeholder</title>
+  <desc id="description">A geometric placeholder with the initials AL.</desc>
+  <rect width="640" height="800" fill="#d9d7ce"/>
+  <path d="M0 0h640v800H0z" fill="none" stroke="#171814" stroke-width="2"/>
+  <path d="M0 160h640M0 320h640M0 480h640M0 640h640M128 0v800M256 0v800M384 0v800M512 0v800" stroke="#171814" stroke-opacity=".16"/>
+  <circle cx="320" cy="370" r="168" fill="#eeece3" stroke="#171814" stroke-width="2"/>
+  <path d="M208 498 320 242l112 256" fill="none" stroke="#171814" stroke-width="22" stroke-linecap="square"/>
+  <path d="M252 404h137M411 242v256" fill="none" stroke="#f04a2b" stroke-width="22"/>
+  <text x="32" y="52" fill="#171814" font-family="monospace" font-size="18" letter-spacing="3">PORTRAIT / PENDING</text>
+  <text x="608" y="760" fill="#171814" font-family="monospace" font-size="15" text-anchor="end">AL—01</text>
+</svg>

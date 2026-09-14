@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Aïmen Louafi — AI Engineer</title>
+  <desc id="description">AI systems, from idea to evidence.</desc>
+  <rect width="1200" height="630" fill="#eeece3"/>
+  <path d="M64 72h1072M64 558h1072" stroke="#171814" stroke-opacity=".4"/>
+  <circle cx="1118" cy="90" r="9" fill="#f04a2b"/>
+  <text x="64" y="55" fill="#171814" font-family="monospace" font-size="18" letter-spacing="4">AI ENGINEER / PARIS</text>
+  <text x="58" y="310" fill="#171814" font-family="Helvetica,Arial,sans-serif" font-size="150" font-weight="700" letter-spacing="-10">AÏMEN</text>
+  <text x="58" y="455" fill="#171814" font-family="Helvetica,Arial,sans-serif" font-size="150" font-weight="700" letter-spacing="-10">LOUAFI</text>
+  <rect x="997" y="336" width="110" height="110" rx="55" fill="#f04a2b"/>
+  <text x="1136" y="590" fill="#171814" font-family="Georgia,serif" font-size="25" font-style="italic" text-anchor="end">idea → evidence</text>
+</svg>
