@@ -19,6 +19,11 @@ const topicLabels = {
   cinema: "Cinema",
   notes: "Notes",
 } as const;
+const topicHashes = {
+  tech: "work",
+  cinema: "cinema",
+  notes: "other",
+} as const;
 ---
 
 <BaseLayout
@@ -42,14 +47,14 @@ const topicLabels = {
           })}
         </time>
         <span>{languageLabel}</span>
-        <span>{format === "paper" ? "Paper" : "Internal"}</span>
+        <span>{format === "paper" ? "Paper" : "Essay"}</span>
       </div>
     </header>
     <article class="article-body">
       <slot />
     </article>
     <footer class="article-footer">
-      <a class="text-link" href="/writing/">
+      <a class="text-link" href={`/writing/#${topicHashes[topic]}`}>
         <span aria-hidden="true">←</span> All writing
       </a>
       <a class="text-link" href="#main">
