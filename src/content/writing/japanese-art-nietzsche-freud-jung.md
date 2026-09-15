@@ -17,7 +17,7 @@ Years later, I came across these concepts in books and felt a weird “anamnesis
 
 I believe my story is one of many. For many people, Nietzsche first appeared through a God they had to fight at the end of an RPG. Freud arrived as a monstrous doppelgänger or a buried memory. Jung hid behind a mask, a Shadow, or a persona.
 
-That is what fascinates me: these “complex” philosophical and psychoanalytic ideas keep returning in Japanese video games, manga, and anime. Why the same motifs—the tortured teenager, the artificial god, the social mask, the falsified memory, the end of the world?
+That is what fascinates me: these “complex” philosophical and psychoanalytic ideas keep returning in Japanese video games, manga, and anime. Why the same motifs: the tortured teenager, the artificial god, the social mask, the falsified memory, the end of the world?
 
 Western influence is part of the answer. Japan’s own history and traumas offer another part.
 
