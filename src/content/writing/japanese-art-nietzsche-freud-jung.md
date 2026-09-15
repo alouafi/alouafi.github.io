@@ -17,7 +17,7 @@ Years later, I came across these concepts in books and felt a weird “anamnesis
 
 I believe my story is one of many. For many people, Nietzsche first appeared through a God they had to fight at the end of an RPG. Freud arrived as a monstrous doppelgänger or a buried memory. Jung hid behind a mask, a Shadow, or a persona.
 
-These “complex” philosophical and psychoanalytic ideas keep returning in Japanese video games, manga, and anime. So do the same motifs: tortured teenagers facing artificial gods, social masks, falsified memories, and the end of the world. Western influence explains part of it. Japan’s history and traumas shape what those borrowed ideas become.
+These “complex” philosophical and psychoanalytic ideas keep returning in Japanese video games, 漫画 (manga), and アニメ (anime). So do the same motifs: tortured teenagers facing artificial gods, social masks, falsified memories, and the end of the world. Western influence explains part of it. Japan’s history and traumas shape what those borrowed ideas become.
 
 <figure class="article-figure">
   <img src="/assets/img/writing/japanese-art/xenogears.webp" alt="A dialogue scene from Xenogears asks whether God should be destroyed" width="1440" height="810" loading="lazy" decoding="async">
@@ -26,9 +26,9 @@ These “complex” philosophical and psychoanalytic ideas keep returning in Jap
 
 ## A philosophy learned through images
 
-Western thought has been studied in Japan since the Meiji era. Nietzsche, Freud, and Jung have been translated and discussed in universities and intellectual circles. Thinkers such as Nishida Kitarō and the Kyoto School brought European philosophy into dialogue with Buddhism and Japanese traditions.
+Western thought has been studied in Japan since the 明治 (Meiji) era. Nietzsche, Freud, and Jung have been translated and discussed in universities and intellectual circles. Thinkers such as 西田幾多郎 (Nishida Kitarō) and the 京都学派 (Kyōto-gakuha, Kyoto School) brought European philosophy into dialogue with Buddhism and Japanese traditions.
 
-In high school, the subject called 倫理 (ethics) can introduce the main thinkers and their doctrines. It has a smaller role than philosophy in the French lycée. Students mostly learn concepts and authors. The French exercise of building a personal dissertation around an abstract question is less central.
+In high school, the subject called 倫理 (rinri), usually translated as “ethics”, can introduce the main thinkers and their doctrines. It has a smaller role than philosophy in the French lycée. Students mostly learn concepts and authors. The French exercise of building a personal dissertation around an abstract question is less central.
 
 Students may memorize “God is dead” while keeping the phrase at a safe distance from their own lives. Jung’s Shadow can remain another item on the syllabus, untouched by whatever they refuse to see in themselves.
 
@@ -66,13 +66,13 @@ _Xenogears_ turns religions, institutions, and historical narratives into system
 
 ## From inherited traumas to the crisis of the 1990s
 
-_Evangelion_, _Persona_, and _Xenogears_ emerged decades after the war, mostly in the Japan of the 1990s. The economic bubble had collapsed, beginning the “Lost Decade”. Growth, job stability, and integration into the company no longer looked certain. The 1995 Kobe earthquake and the sarin gas attack by Aum Shinrikyō deepened the feeling of insecurity.
+_Evangelion_, _Persona_, and _Xenogears_ emerged decades after the war, mostly in the Japan of the 1990s. The economic bubble had collapsed, beginning the “Lost Decade”. Growth, job stability, and integration into the company no longer looked certain. The 1995 Kobe earthquake and the sarin gas attack by オウム真理教 (Ōmu Shinrikyō) deepened the feeling of insecurity.
 
 The postwar generation had replaced the old order with a promise of prosperity. The next generation inherited the cracks in that promise, and its heroes were teenagers asked to save a world that adults had already made uninhabitable. Shinji has to get into the Eva. Fei has to confront a history he never chose. The protagonists of _Persona_ repair the corrupted desires of a society that still claims to teach them how to become adults. Their psychological crises give a personal form to the exhaustion of a collective model.
 
 ## The mask as a compromise
 
-The notions of _honne_ and _tatemae_ often appear in discussions of the tension between the individual and society. _Honne_ refers to intimate feelings and desires; _tatemae_ to behavior adapted to social expectations.
+The notions of 本音 (honne) and 建前 (tatemae) often appear in discussions of the tension between the individual and society. The first refers to intimate feelings and desires; the second to behavior adapted to social expectations.
 
 Every society separates what people feel from what they show. In Japan, as elsewhere, the social mask can protect privacy, limit conflict, and make collective life possible. Jung called this public face the persona. A person may start mistaking it for the whole self. Behind it remains the Shadow, made of the desires, fears, and possibilities we refuse to recognize as ours.
 
@@ -110,7 +110,7 @@ In _Shin Megami Tensei_, ideas become choices. Law, Chaos, and the paths between
 
 _NieR: Automata_ places repetition inside a world whose creators, causes, and purposes have disappeared. The player still has to act. Replaying events from another perspective slowly destroys the certainty that we understood our actions. Enemies become subjects, and the missions lose their legitimacy. Meanwhile, machines imitate humans because they are desperately looking for a reason to exist.
 
-Pascal, Simone de Beauvoir, and Kierkegaard appear as names, sometimes with deliberate irony. Their doctrines arrive as fragments in a world that has forgotten how to use them. _NieR_ reshapes those fragments around repetition, memory, and the need for transcendence. Elsewhere, Nietzsche, Freud, and Jung become mythological material alongside Kabbalah, Christianity, Buddhism, Shinto, and Gnosticism. Japanese fiction absorbs them and makes something else from them.
+Pascal, Simone de Beauvoir, and Kierkegaard appear as names, sometimes with deliberate irony. Their doctrines arrive as fragments in a world that has forgotten how to use them. _NieR_ reshapes those fragments around repetition, memory, and the need for transcendence. Elsewhere, Nietzsche, Freud, and Jung become mythological material alongside Kabbalah, Christianity, Buddhism, 神道 (shintō), and Gnosticism. Japanese fiction absorbs them and makes something else from them.
 
 ## A collective couch, beyond Japan
 
