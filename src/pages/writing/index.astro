@@ -11,7 +11,7 @@ const topicLabels = {
   cinema: "Review",
   notes: "Other",
 } as const;
-const initialTopic = "cinema";
+const initialTopic = "tech";
 const initialCount = posts.filter(
   (post) => post.data.topic === initialTopic,
 ).length;
@@ -42,9 +42,8 @@ const initialCount = posts.filter(
         id="tab-work"
         role="tab"
         data-filter="tech"
-        aria-selected="false"
+        aria-selected="true"
         aria-controls="writing-panel"
-        tabindex="-1"
       >
         Work
       </button>
@@ -54,8 +53,9 @@ const initialCount = posts.filter(
         id="tab-cinema"
         role="tab"
         data-filter="cinema"
-        aria-selected="true"
+        aria-selected="false"
         aria-controls="writing-panel"
+        tabindex="-1"
       >
         Cinema
       </button>
@@ -77,7 +77,7 @@ const initialCount = posts.filter(
       class="writing-panel"
       id="writing-panel"
       role="tabpanel"
-      aria-labelledby="tab-cinema"
+      aria-labelledby="tab-work"
       tabindex="0"
       data-writing-panel
     >
@@ -159,7 +159,7 @@ const initialCount = posts.filter(
     const panel = document.querySelector<HTMLElement>("[data-writing-panel]");
 
     const activateTab = (button: HTMLButtonElement, updateHash = true) => {
-      const filter = button.dataset.filter ?? "cinema";
+      const filter = button.dataset.filter ?? "tech";
       let visible = 0;
 
       buttons.forEach((candidate) => {
