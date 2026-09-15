@@ -7,9 +7,11 @@ interface Props {
   publishedAt: Date;
   language: "en" | "fr";
   topic: "tech" | "cinema" | "notes";
+  format: "post" | "paper";
 }
 
-const { title, description, publishedAt, language, topic } = Astro.props;
+const { title, description, publishedAt, language, topic, format } =
+  Astro.props;
 const locale = language === "fr" ? "fr-FR" : "en-GB";
 const languageLabel = language === "fr" ? "Français" : "English";
 const topicLabels = {
@@ -40,7 +42,7 @@ const topicLabels = {
           })}
         </time>
         <span>{languageLabel}</span>
-        <span>Internal</span>
+        <span>{format === "paper" ? "Paper" : "Internal"}</span>
       </div>
     </header>
     <article class="article-body">

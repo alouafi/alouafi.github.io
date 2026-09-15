@@ -527,7 +527,7 @@ button {
 
 .post-row:hover .post-date,
 .post-row:hover .post-tags,
-.post-row:hover .post-director,
+.post-row:hover .post-byline,
 .post-row:hover::before {
   color: rgba(242, 240, 232, 0.68);
 }
@@ -555,7 +555,7 @@ button {
   min-width: 0;
 }
 
-.post-director {
+.post-byline {
   margin: 0.65rem 0 0;
   color: var(--muted);
   font-family: var(--mono);

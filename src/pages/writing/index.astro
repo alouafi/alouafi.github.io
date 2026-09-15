@@ -112,7 +112,12 @@ const initialCount = posts.filter(
                   </a>
                 </h2>
                 {post.data.director && (
-                  <p class="post-director">Directed by {post.data.director}</p>
+                  <p class="post-byline">Directed by {post.data.director}</p>
+                )}
+                {post.data.authors && (
+                  <p class="post-byline">
+                    With {post.data.authors.slice(1).join(", ")}
+                  </p>
                 )}
               </div>
               <span class="post-tags">
@@ -120,9 +125,11 @@ const initialCount = posts.filter(
                 {topicLabels[post.data.topic]}
               </span>
               <span class="post-kind">
-                {external
-                  ? `${post.data.publisher ?? "External"} ↗`
-                  : "Internal →"}
+                {post.data.publisher
+                  ? `${post.data.publisher}${external ? " ↗" : ""}`
+                  : external
+                    ? "External ↗"
+                    : "Internal →"}
               </span>
             </li>
           );
