@@ -27,7 +27,7 @@ It is tempting to link this obsession to the place of philosophy in Japanese sch
 
 Western thought has been studied in Japan since the Meiji era. Nietzsche, Freud, and Jung have been translated and discussed in universities and intellectual circles. Thinkers such as Nishida Kitarō and the Kyoto School brought European philosophy into dialogue with Buddhism and Japanese traditions.
 
-In high school, the subject called _rinri_, usually translated as “ethics”, can introduce the main thinkers and their doctrines. It has a smaller role than philosophy in the French lycée. Students mostly learn concepts and authors. The French exercise of building a personal dissertation around an abstract question is less central.
+In high school, the subject called 倫理 (ethics) can introduce the main thinkers and their doctrines. It has a smaller role than philosophy in the French lycée. Students mostly learn concepts and authors. The French exercise of building a personal dissertation around an abstract question is less central.
 
 This leaves a distance between definition and experience. A student can memorize the phrase “God is dead” without feeling what the collapse of every value structuring their life would mean. They can learn that Jung conceptualized the Shadow without searching for what they themselves refuse to recognize.
 
