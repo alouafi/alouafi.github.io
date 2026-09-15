@@ -9,7 +9,7 @@ interface Props {
 export async function getStaticPaths() {
   const posts = await getCollection(
     "writing",
-    ({ data }) => !data.draft && !data.externalUrl,
+    ({ data }) => !data.draft && !data.link,
   );
 
   return posts.map((post) => ({

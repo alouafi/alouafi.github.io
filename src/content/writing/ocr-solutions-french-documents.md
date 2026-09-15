@@ -5,6 +5,6 @@ publishedAt: 2024-04-24
 language: en
 topic: tech
 publisher: Inside Doctrine on Medium
-externalUrl: https://medium.com/doctrine/comprehensive-analysis-of-ocr-solutions-for-high-volume-french-documents-processing-performance-2c2d8ab90c98
+link: https://medium.com/doctrine/comprehensive-analysis-of-ocr-solutions-for-high-volume-french-documents-processing-performance-2c2d8ab90c98
 draft: false
 ---

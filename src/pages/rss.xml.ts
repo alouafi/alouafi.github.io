@@ -19,9 +19,9 @@ export async function GET({ site }: { site: URL }) {
 
   const items = posts
     .map((post) => {
-      const url =
-        post.data.externalUrl ??
-        new URL(`/writing/${post.id}/`, site).toString();
+      const url = post.data.link
+        ? new URL(post.data.link, site).toString()
+        : new URL(`/writing/${post.id}/`, site).toString();
       return `<item>
         <title>${escapeXml(post.data.title)}</title>
         <description>${escapeXml(post.data.description)}</description>

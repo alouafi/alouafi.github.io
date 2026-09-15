@@ -6,6 +6,6 @@ language: fr
 topic: cinema
 director: Bi Gan
 publisher: Le Blog du Cinéma
-externalUrl: https://www.leblogducinema.com/critique-film/resurrection-2025-65529086/
+link: https://www.leblogducinema.com/critique-film/resurrection-2025-65529086/
 draft: false
 ---

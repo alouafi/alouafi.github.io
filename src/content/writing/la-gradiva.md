@@ -6,6 +6,6 @@ language: fr
 topic: cinema
 director: Marine Atlan
 publisher: Le Blog du Cinéma
-externalUrl: https://www.leblogducinema.com/critique-film/la-gradiva-65539467/
+link: https://www.leblogducinema.com/critique-film/la-gradiva-65539467/
 draft: false
 ---

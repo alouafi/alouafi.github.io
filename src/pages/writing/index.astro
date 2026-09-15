@@ -83,8 +83,9 @@ const initialCount = posts.filter(
     >
       <ol class="post-list" data-post-list>
         {posts.map((post) => {
-          const external = Boolean(post.data.externalUrl);
-          const href = post.data.externalUrl ?? `/writing/${post.id}/`;
+          const href = post.data.link ?? `/writing/${post.id}/`;
+          const external = href.startsWith("http");
+          const isPdf = post.data.format === "paper" && href.endsWith(".pdf");
           return (
             <li
               class="post-row reveal"
@@ -106,8 +107,12 @@ const initialCount = posts.filter(
                 <h2>
                   <a href={href} rel={external ? "noreferrer" : undefined}>
                     {post.data.title}
-                    {external && (
-                      <span class="visually-hidden"> (external)</span>
+                    {isPdf ? (
+                      <span class="visually-hidden"> (PDF)</span>
+                    ) : (
+                      external && (
+                        <span class="visually-hidden"> (external)</span>
+                      )
                     )}
                   </a>
                 </h2>
@@ -126,7 +131,7 @@ const initialCount = posts.filter(
               </span>
               <span class="post-kind">
                 {post.data.publisher
-                  ? `${post.data.publisher}${external ? " ↗" : ""}`
+                  ? `${post.data.publisher}${isPdf ? " · PDF →" : external ? " ↗" : ""}`
                   : external
                     ? "External ↗"
                     : "Internal →"}

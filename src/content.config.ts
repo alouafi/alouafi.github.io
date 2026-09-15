@@ -14,7 +14,10 @@ const writing = defineCollection({
     authors: z.array(z.string()).optional(),
     director: z.string().optional(),
     publisher: z.string().optional(),
-    externalUrl: z.url().optional(),
+    link: z
+      .string()
+      .regex(/^(?:https?:\/\/|\/(?!\/))/, "Use an HTTP(S) or root-relative URL")
+      .optional(),
     draft: z.boolean().default(false),
   }),
 });

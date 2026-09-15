@@ -15,7 +15,7 @@ const escapeXml = (value: string) =>
 export async function GET({ site }: { site: URL }) {
   const posts = await getCollection(
     "writing",
-    ({ data }) => !data.draft && !data.externalUrl,
+    ({ data }) => !data.draft && !data.link,
   );
   const paths = [
     "/",
