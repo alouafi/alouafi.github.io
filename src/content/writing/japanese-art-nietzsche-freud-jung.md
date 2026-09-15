@@ -9,15 +9,15 @@ draft: false
 
 I’ve always been a sucker for “edgy” and “pretentious” stories. Give me a tormented protagonist, some obscure religious imagery, and a plot that questions God or reality, and I’m interested. Inevitably, that led me to _Xenogears_ (that, and my obsession with Japan and RPGs, I guess).
 
-Most of the game’s philosophy went straight over my head at the time. Still, it made me curious. Long before I read Nietzsche, Freud, or Jung, _Xenogears_ made me feel the questions their work would later help me understand: memory, desire, guilt, and the desperate longing for meaning.
+I would not say the game taught me philosophy. Most of its ideas went straight over my head at the time. But it made me curious. Long before I read Nietzsche, Freud, or Jung, _Xenogears_ made me feel questions that their work would later help me put into words: memory, desire, guilt, and the desperate longing for meaning.
 
-At the time, I lacked the words to understand what the game was depicting. I knew nothing about repression or the Jungian Shadow. The quote-unquote “death of God” felt like a strange paradox.
+At the time, I did not have the words to understand what the game was depicting. I knew nothing about repression or the Jungian Shadow. The quote-unquote “death of God” had no real meaning for me. It just felt like a strange paradox.
 
-Years later, I came across these concepts in books and felt a weird “anamnesis”. I was discovering them for the first time, yet Japanese fiction had already exposed me to them.
+Years later, I came across these concepts in books and felt a weird “anamnesis”. I was reading about them for the first time, but they already felt familiar. Japanese fiction had exposed me to them before I even knew their names.
 
-I believe my story is one of many. For many people, Nietzsche first appeared through a God they had to fight at the end of an RPG. Freud arrived as a monstrous doppelgänger or a buried memory. Jung hid behind a mask, a Shadow, or a persona.
+I think my experience is far from unique. For many people, Nietzsche first appeared as a God they had to fight at the end of an RPG, years before they opened _Thus Spoke Zarathustra_. Freud arrived as a monstrous doppelgänger or a buried memory. Jung was hiding behind a mask, a Shadow, or a persona.
 
-These “complex” philosophical and psychoanalytic ideas keep returning in Japanese video games, manga, and anime. So do the same motifs: tortured teenagers facing artificial gods, social masks, falsified memories, and the end of the world. Western influence explains part of it. Japan’s history and traumas shape what those borrowed ideas become.
+These “complex” philosophical and psychoanalytic ideas are everywhere in Japanese video games, manga, and anime. The same figures also return: the tortured teenager, the artificial god, the social mask, the falsified memory, the end of the world. A fascination for Western culture explains part of it. Japan’s own history and traumas explain what happens to these borrowed ideas once they arrive.
 
 <figure class="article-figure">
   <img src="/assets/img/writing/japanese-art/xenogears.webp" alt="A dialogue scene from Xenogears asks whether God should be destroyed" width="1440" height="810" loading="lazy" decoding="async">
@@ -26,102 +26,102 @@ These “complex” philosophical and psychoanalytic ideas keep returning in Jap
 
 ## A philosophy learned through images
 
-Western thought has been studied in Japan since the 明治 (Meiji) era. Nietzsche, Freud, and Jung have been translated and discussed in universities and intellectual circles. Thinkers such as 西田幾多郎 (Nishida Kitarō) and the 京都学派 (Kyōto-gakuha, Kyoto School) brought European philosophy into dialogue with Buddhism and Japanese traditions.
+Western thought has been studied in Japan since the 明治 (Meiji) era. Nietzsche, Freud, and Jung have long been translated and discussed in universities and intellectual circles. Thinkers such as 西田幾多郎 (Nishida Kitarō) and the 京都学派 (Kyōto-gakuha, Kyoto School) tried to make European philosophy converse with Buddhism and Japanese traditions.
 
-In high school, the subject called 倫理 (rinri), usually translated as “ethics”, can introduce the main thinkers and their doctrines. It has a smaller role than philosophy in the French lycée. Students mostly learn concepts and authors. The French exercise of building a personal dissertation around an abstract question is less central.
+In high school, the subject called 倫理 (rinri), usually translated as “ethics”, can introduce the major thinkers and their doctrines. It has a much smaller place than philosophy does in a French lycée. Students are more often asked to learn concepts and authors than to build a personal dissertation around an abstract problem.
 
-Students may memorize “God is dead” while keeping the phrase at a safe distance from their own lives. Jung’s Shadow can remain another item on the syllabus, untouched by whatever they refuse to see in themselves.
+You can memorize “God is dead” without ever considering what the disappearance of every value structuring your life would mean. You can learn that Jung theorized the Shadow without looking at what you refuse to recognize in yourself.
 
-Fiction closes some of that distance. A class can define the unconscious; _Silent Hill 2_ builds an entire town from the guilt and denial of its protagonist. A textbook can distinguish the social self from intimate desires; _Perfect Blue_ shows an identity breaking apart under the public gaze.
+Fiction makes these ideas more concrete. A class can define the unconscious. _Silent Hill 2_ builds an entire town from the guilt and denial of its protagonist. A textbook can explain the difference between the social self and intimate desires. _Perfect Blue_ shows an identity breaking apart under the public gaze.
 
-Video games force the player to act inside the idea. “What do you think of this?” becomes “What do you do, now that it determines the world around you?”
+Video games go one step further by making the player act inside the idea. A game can ask, “What do you think of this?” It can also ask, “What do you do, now that this idea determines the world in which you have to act?”
 
-These ideas also came through the student movements of the 1960s and 1970s, the New Left, science fiction, experimental cinema, and a growing critique of institutions. Freud, Marx, Nietzsche, and existentialism gave Japanese creators tools for contesting the family, the state, work, and official narratives. They moved from libraries into manga, films, television, and eventually video games.
+The route from universities to popular culture also passed through the student movements of the 1960s and 1970s, the New Left, science fiction, experimental cinema, and a growing critique of institutions. Freud, Marx, Nietzsche, and existentialism gave Japanese creators a way to question the family, the state, work, and official narratives. These ideas left the libraries and entered manga, films, television, and eventually video games.
 
 ## 1945: living after the sky fell
 
-The atomic bombings of Hiroshima and Nagasaki, the surrender, the American occupation, and the transformation of institutions broke a political and symbolic order. Imperial power had stood at the center of a sacred vision of the nation. In January 1946, Emperor Hirohito’s so-called “Humanity Declaration” broke with this official conception, although historians still debate the exact meaning of the text and of imperial divinity.
+The atomic bombings of Hiroshima and Nagasaki, the surrender, the American occupation, and the transformation of institutions broke an entire political and symbolic order. Imperial power had stood at the center of a sacred vision of the nation. In January 1946, Emperor Hirohito’s so-called “Humanity Declaration” separated the emperor from this official conception, although historians still debate the exact meaning of the text and of imperial divinity.
 
-European Christianity and the Japanese imperial system have separate histories. The parallel with Nietzsche concerns one experience: living in a world where the highest authority can no longer guarantee values.
+European Christianity and the Japanese imperial system have very different histories. The comparison with Nietzsche still helps to understand one common experience: living in a world where the highest authority can no longer guarantee values.
 
-Nietzsche describes the death of God as a catastrophe. Once the transcendent foundation of good and truth disappears, humanity has to invent its own values and risk failure.
+For Nietzsche, the death of God is a catastrophe. Once the transcendent foundation of good and truth disappears, humanity has to invent its own values, without any certainty of succeeding.
 
-Postwar Japan also had to rebuild a collective horizon. Economic growth, technology, the company, and consumption offered new narratives. The destroyed country became an industrial power, while the trauma remained underneath.
+Japan after the war also had to rebuild a collective horizon. Economic growth, technology, the company, and consumption offered new narratives. The destroyed country became an industrial power, while the trauma stayed beneath the surface.
 
-_Godzilla_ gave that trauma a body in 1954. Awakened and contaminated by nuclear power, the creature destroys a city that still carries the memory of the bombings. _Akira_ returns to the same pattern: Tokyo is destroyed, rebuilt, and covered with a shining metropolis. Under it remain laboratories, sacrificed children, and the seeds of another apocalypse.
+In 1954, _Godzilla_ gave that trauma a body. Awakened and contaminated by nuclear power, the creature destroys a city that still carries the memory of the bombings. _Akira_ returns to this image. Tokyo has been destroyed and rebuilt as a shining metropolis, but underneath remain laboratories, sacrificed children, and the seeds of another apocalypse.
 
 <figure class="article-figure">
   <img src="/assets/img/writing/japanese-art/godzilla.webp" alt="Godzilla rises behind bridges in a black-and-white scene from the 1954 film" width="739" height="415" loading="lazy" decoding="async">
   <figcaption><cite>Godzilla</cite> (Ishirō Honda, 1954).</figcaption>
 </figure>
 
-_Neon Genesis Evangelion_ places this anxiety inside the body. The Evangelions are organic beings used by adults whose plans go far beyond their teenage pilots. The Human Instrumentality Project promises to abolish loneliness by merging every consciousness. Its salvation requires the disappearance of the individual. The series asks whether ending human separation is worth losing the possibility of being a person.
+_Neon Genesis Evangelion_ places this anxiety inside the body. The Evangelions are organic beings controlled by adults whose plans go far beyond their teenage pilots. The Human Instrumentality Project promises to abolish loneliness by merging every consciousness. This form of salvation requires the individual to disappear. The series asks whether we should end the separation between people if it also means losing the possibility of being a person.
 
 <figure class="article-figure">
   <img src="/assets/img/writing/japanese-art/evangelion.webp" alt="Two characters stand below a pale cruciform figure in Evangelion" width="960" height="540" loading="lazy" decoding="async">
   <figcaption><cite>Evangelion: 3.0+1.0 Thrice Upon a Time</cite> (Khara, 2021).</figcaption>
 </figure>
 
-_Xenogears_ turns religions, institutions, and historical narratives into systems of domination. Even divinity reveals a material, constructed nature. _Shin Megami Tensei_ makes the conflict playable: God represents absolute order, while chaos risks becoming another tyranny. The player has to choose between them, or invent a path whose authority comes from human choice alone. Both stories distrust systems that promise total salvation. They ask what can guide a life once gods, parents, and institutions have failed.
+In _Xenogears_, religions, institutions, and historical narratives hide systems of domination. Even divinity eventually reveals its material and constructed nature. _Shin Megami Tensei_ makes this conflict playable. God represents absolute order, while chaos can become another tyranny. The player has to choose between them, or try to invent a path whose authority comes from human choice alone. Both stories are suspicious of systems that promise total salvation. What can still guide a life once gods, parents, and institutions have failed?
 
 ## From inherited traumas to the crisis of the 1990s
 
-_Evangelion_, _Persona_, and _Xenogears_ emerged decades after the war, mostly in the Japan of the 1990s. The economic bubble had collapsed, beginning the “Lost Decade”. Growth, job stability, and integration into the company no longer looked certain. The 1995 Kobe earthquake and the sarin gas attack by オウム真理教 (Ōmu Shinrikyō) deepened the feeling of insecurity.
+_Evangelion_, _Persona_, and _Xenogears_ appeared decades after the war, mostly in the Japan of the 1990s. The economic bubble had collapsed and the “Lost Decade” had begun. The model based on growth, stable employment, and integration into the company started to crack. In 1995, the Kobe earthquake and the sarin gas attack by オウム真理教 (Ōmu Shinrikyō) made the feeling of insecurity even stronger.
 
-The postwar generation had replaced the old order with a promise of prosperity. The next generation inherited the cracks in that promise, and its heroes were teenagers asked to save a world that adults had already made uninhabitable. Shinji has to get into the Eva. Fei has to confront a history he never chose. The protagonists of _Persona_ repair the corrupted desires of a society that still claims to teach them how to become adults. Their psychological crises give a personal form to the exhaustion of a collective model.
+The postwar generation had replaced the old order with a promise of prosperity. The next generation discovered that this promise was fragile too. Its heroes were teenagers asked to save a world that adults had already made uninhabitable. Shinji has to get into the Eva. Fei has to confront a history he never chose. The protagonists of _Persona_ repair the corrupted desires of a society that still claims to teach them how to become adults. Their psychological crises express the exhaustion of a collective model as much as their own suffering.
 
 ## The mask as a compromise
 
-The notions of 本音 (honne) and 建前 (tatemae) often appear in discussions of the tension between the individual and society. The first refers to intimate feelings and desires; the second to behavior adapted to social expectations.
+The notions of 本音 (honne) and 建前 (tatemae) often appear when people discuss the tension between the individual and society in Japan. 本音 (honne) refers to intimate feelings and desires. 建前 (tatemae) is the behavior adapted to social expectations.
 
-Every society separates what people feel from what they show. In Japan, as elsewhere, the social mask can protect privacy, limit conflict, and make collective life possible. Jung called this public face the persona. A person may start mistaking it for the whole self. Behind it remains the Shadow, made of the desires, fears, and possibilities we refuse to recognize as ours.
+Of course, every society separates what people feel from what they show. The social mask has an ambiguous role: it can protect privacy, limit conflict, and make collective life possible. Jung called this public face the persona. It becomes dangerous when a person starts confusing it with the whole self. Behind it remains the Shadow, made of the desires, fears, and possibilities we refuse to recognize as ours.
 
-The _Persona_ games turn this model into a narrative and gameplay system. In _Persona 4_, denying your Shadow makes it stronger. Progress comes through recognition: the Shadow belongs to the character, even when its words are distorted or cruel. In _Persona 5_, the heroes tear off masks imposed by adults who define their place. Those same masks then give them form, power, and language.
+The _Persona_ games turn this model directly into a narrative and gameplay system. In _Persona 4_, denying your Shadow makes it stronger. A character progresses by accepting that the Shadow belongs to them, even when its words are distorted or cruel. In _Persona 5_, the heroes tear off masks imposed by adults who define their place. They then use these same masks to give a form and a language to their revolt.
 
-In _Perfect Blue_, Mima leaves her career as an idol to become an actress, while the public keeps demanding her former image. That image becomes a persecuting double. Soon, she cannot tell whether she wants her new life or whether each identity comes from the gaze of others. The film asks whether an authentic self can survive when images have shaped every way we see ourselves.
+In _Perfect Blue_, Mima leaves her career as an idol to become an actress, but the public keeps demanding her former image. That image becomes a persecuting double. Soon, she cannot tell if she really wants her new life, or if each of her identities has been produced by the gaze of others. The film leaves us with an unsettling question: can an authentic self survive when images have shaped every way we see ourselves?
 
 <figure class="article-figure">
   <img src="/assets/img/writing/japanese-art/perfect-blue.webp" alt="Mima and her former idol image overlap in a train window reflection in Perfect Blue" width="1024" height="572" loading="lazy" decoding="async">
   <figcaption><cite>Perfect Blue</cite> (Satoshi Kon, 1997).</figcaption>
 </figure>
 
-## When what is buried takes a body
+## When what is buried takes on a body
 
-Freud gives another language to this crisis. The repressed never completely disappears. It returns through symptoms, dreams, repetitions, and behaviors whose origin remains hidden from the subject.
+Freud gives another language to this crisis. For him, the repressed never completely disappears. It returns through symptoms, dreams, repetitions, or behaviors whose origin remains hidden from the subject.
 
-Japanese pop culture often gives this return a physical body. In _Xenogears_, Id materializes the violence tied to Fei’s trauma. His name evokes the Freudian id, while the character also draws on dissociation, reincarnation, and science fiction. Freud’s concept becomes a character in a wider mythology.
+Japanese pop culture often makes this return physical. In _Xenogears_, Id gives a body to the violence tied to Fei’s trauma. His name directly evokes the Freudian id, although the character also mixes dissociation, reincarnation, and science fiction. The concept becomes part of a wider mythology.
 
-In _Silent Hill 2_, the town itself works like a psychic space. Each creature gives physical form to James’s guilt, desires, and buried memories. Moving forward means approaching the truth he has organized his whole existence to avoid.
+In _Silent Hill 2_, the entire town works like a psychic space. The creatures give a form to James’s guilt, desires, and buried memories. To move forward, he has to come closer to a truth that he has organized his whole existence to avoid.
 
 <figure class="article-figure">
   <img src="/assets/img/writing/japanese-art/silent-hill-2.webp" alt="James Sunderland looks at his reflection in a cracked mirror in Silent Hill 2" width="739" height="415" loading="lazy" decoding="async">
   <figcaption><cite>Silent Hill 2</cite> (Konami, 2001).</figcaption>
 </figure>
 
-_Paprika_ lets the unconscious contaminate reality through a machine that opens dreams. _Paranoia Agent_ turns the same mechanism into a social phenomenon: a fantasy spreads because an entire society needs an external culprit. In both cases, private fears escape the individual and become collective.
+In _Paprika_, a machine opens dreams and lets the unconscious contaminate reality. _Paranoia Agent_ turns a similar mechanism into a social phenomenon. A fantasy spreads because an entire society needs an external culprit. In both works, private fears escape the individual and become collective.
 
-_Mob Psycho 100_ offers a lighter version. Mob holds back his emotions to protect others, turning them into a pressure measured from 0 to 100. When it reaches its limit, everything returns at once. Growing up means finding a place for these emotions before they explode.
+_Mob Psycho 100_ takes a lighter approach. Mob constantly holds back his emotions because he is afraid of hurting others. They become a pressure measured from 0 to 100, and everything returns at once when the limit is reached. For him, growing up means finding a place for these emotions before they explode.
 
 ## Playing the unconscious
 
-Video games can place these conflicts inside their rules. In _Persona_, time is divided between school, social relationships, and psychic worlds. Bonds made in daily life strengthen the powers used in combat. Social life and inner power grow together.
+Video games can go further because they place these conflicts inside their rules. In _Persona_, the player divides their time between school, social relationships, and psychic worlds. The bonds built in daily life strengthen the powers used in combat. Social life and inner power develop together.
 
-In _Shin Megami Tensei_, ideas become choices. Law, Chaos, and the paths between them change alliances, enemies, and sometimes the world itself. The chosen alignment has consequences the player must accept.
+In _Shin Megami Tensei_, ideas become choices. Law, Chaos, and the paths between them change your allies, your enemies, and sometimes the world itself. The player has to live with the consequences of the system they choose.
 
-_NieR: Automata_ places repetition inside a world whose creators, causes, and purposes have disappeared. The player still has to act. Replaying events from another perspective slowly destroys the certainty that we understood our actions. Enemies become subjects, and the missions lose their legitimacy. Meanwhile, machines imitate humans because they are desperately looking for a reason to exist.
+_NieR: Automata_ uses repetition in a world where creators, causes, and purposes have disappeared. The player still has to act. Replaying events from another perspective slowly destroys the certainty that we understood what we were doing. Enemies become subjects. Missions lose their legitimacy. Meanwhile, the machines imitate human behavior because they are desperately searching for a reason to exist.
 
-Pascal, Simone de Beauvoir, and Kierkegaard appear as names, sometimes with deliberate irony. Their doctrines arrive as fragments in a world that has forgotten how to use them. _NieR_ reshapes those fragments around repetition, memory, and the need for transcendence. Elsewhere, Nietzsche, Freud, and Jung become mythological material alongside Kabbalah, Christianity, Buddhism, Shinto, and Gnosticism. Japanese fiction absorbs them and makes something else from them.
+Pascal, Simone de Beauvoir, and Kierkegaard appear as names, sometimes with deliberate irony. Their doctrines survive as fragments in a world that has forgotten how to use them. _NieR_ rearranges these fragments around repetition, memory, and the need for transcendence. Elsewhere, Nietzsche, Freud, and Jung become mythological material alongside Kabbalah, Christianity, Buddhism, Shinto, and Gnosticism. Japanese fiction absorbs all of it and produces something of its own.
 
 ## A collective couch, beyond Japan
 
-Calling Japanese pop culture a “collective couch” captures recurring pressures across many works. Japanese society itself is too varied for that diagnosis. These stories came from different creators and periods, and audiences read them differently.
+I like the idea of Japanese pop culture as a “collective couch”, but it has its limits. Japanese society is obviously too diverse to receive one diagnosis. These stories come from different creators and periods, and their audiences do not all read them in the same way.
 
-They still share certain historical tensions: war, nuclear fear, technological reconstruction, institutional pressure, economic crisis, and isolation. Freud, Jung, and Nietzsche give these tensions a language. The social mask, repression, loneliness, and the loss of meaning also travel far beyond Japan.
+There is still a common background running through many of them: the memory of the war, nuclear fear, technological reconstruction, institutional pressure, economic crisis, and isolation. Freud, Jung, and Nietzsche offer a vocabulary for these tensions. The social mask, repression, loneliness, and the loss of meaning also exist far beyond Japan.
 
-European ideas arrive in Japan, meet local traditions and traumas, then return to Western audiences through games and anime. Some readers eventually encounter Nietzsche or Jung because they first played _Xenogears_, _Persona_, or _NieR_. I followed that path myself. Returning to the works that marked me, I understand their role more clearly: they prepared me for questions before I knew their names.
+European ideas arrive in Japan, encounter local traditions and traumas, then return to Western audiences through games and anime. Some readers eventually discover Nietzsche or Jung because they first played _Xenogears_, _Persona_, or _NieR_. This is exactly what happened to me. When I return to the works that marked me, I understand their role a little better. They prepared me for questions before I knew their names.
 
 What speaks inside us when we lose control? Are we anything more than the roles others assign to us? How can we live when no authority guarantees the meaning of our existence? Can we recognize our Shadow without letting it swallow us? What remains after the death of the gods?
 
-As a child, I thought I was helping heroes save their world. I understand today that these heroes were trying to rebuild an inner world.
+As a child, I thought I was helping heroes save their world. Today, I understand that these heroes were mostly trying to rebuild a world inside themselves.
 
 Long before I could define the unconscious, video games had already taught me to listen to what speaks inside us when the mask begins to crack.
