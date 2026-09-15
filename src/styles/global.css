@@ -527,6 +527,7 @@ button {
 
 .post-row:hover .post-date,
 .post-row:hover .post-tags,
+.post-row:hover .post-director,
 .post-row:hover::before {
   color: rgba(242, 240, 232, 0.68);
 }
@@ -550,6 +551,19 @@ button {
   letter-spacing: -0.04em;
 }
 
+.post-heading {
+  min-width: 0;
+}
+
+.post-director {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .post-row h2 a {
   text-decoration: none;
 }
@@ -561,6 +575,7 @@ button {
 
 .post-kind {
   justify-self: end;
+  text-align: right;
 }
 
 .post-count {
@@ -777,7 +792,7 @@ button {
     padding: 2.25rem 1rem 1.25rem;
   }
 
-  .post-row h2 {
+  .post-heading {
     grid-column: 1 / -1;
     grid-row: 2;
   }

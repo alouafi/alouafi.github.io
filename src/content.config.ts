@@ -10,6 +10,8 @@ const writing = defineCollection({
     publishedAt: z.coerce.date(),
     language: z.enum(["en", "fr"]),
     topic: z.enum(["tech", "cinema", "notes"]),
+    director: z.string().optional(),
+    publisher: z.string().optional(),
     externalUrl: z.url().optional(),
     draft: z.boolean().default(false),
   }),

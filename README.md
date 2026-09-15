@@ -57,6 +57,8 @@ description: A short description of the review.
 publishedAt: 2026-10-10
 language: fr
 topic: cinema
+director: Film Director
+publisher: Publication Name
 externalUrl: https://example.com/the-article
 draft: false
 ---

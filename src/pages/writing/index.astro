@@ -8,7 +8,7 @@ const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
 const languageLabels = { en: "English", fr: "Français" } as const;
 const topicLabels = {
   tech: "Work",
-  cinema: "Cinema",
+  cinema: "Review",
   notes: "Other",
 } as const;
 const initialTopic = "cinema";
@@ -102,18 +102,27 @@ const initialCount = posts.filter(
                   { day: "2-digit", month: "short", year: "numeric" },
                 )}
               </time>
-              <h2>
-                <a href={href} rel={external ? "noreferrer" : undefined}>
-                  {post.data.title}
-                  {external && <span class="visually-hidden"> (external)</span>}
-                </a>
-              </h2>
+              <div class="post-heading">
+                <h2>
+                  <a href={href} rel={external ? "noreferrer" : undefined}>
+                    {post.data.title}
+                    {external && (
+                      <span class="visually-hidden"> (external)</span>
+                    )}
+                  </a>
+                </h2>
+                {post.data.director && (
+                  <p class="post-director">Directed by {post.data.director}</p>
+                )}
+              </div>
               <span class="post-tags">
                 {languageLabels[post.data.language]} ·{" "}
                 {topicLabels[post.data.topic]}
               </span>
               <span class="post-kind">
-                {external ? "External ↗" : "Internal →"}
+                {external
+                  ? `${post.data.publisher ?? "External"} ↗`
+                  : "Internal →"}
               </span>
             </li>
           );
