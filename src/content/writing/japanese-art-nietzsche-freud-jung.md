@@ -17,7 +17,7 @@ Years later, I came across these concepts in books and felt a weird “anamnesis
 
 I believe my story is one of many. For many people, Nietzsche first appeared through a God they had to fight at the end of an RPG. Freud arrived as a monstrous doppelgänger or a buried memory. Jung hid behind a mask, a Shadow, or a persona.
 
-These “complex” philosophical and psychoanalytic ideas keep returning in Japanese video games, 漫画 (manga), and アニメ (anime). So do the same motifs: tortured teenagers facing artificial gods, social masks, falsified memories, and the end of the world. Western influence explains part of it. Japan’s history and traumas shape what those borrowed ideas become.
+These “complex” philosophical and psychoanalytic ideas keep returning in Japanese video games, manga, and anime. So do the same motifs: tortured teenagers facing artificial gods, social masks, falsified memories, and the end of the world. Western influence explains part of it. Japan’s history and traumas shape what those borrowed ideas become.
 
 <figure class="article-figure">
   <img src="/assets/img/writing/japanese-art/xenogears.webp" alt="A dialogue scene from Xenogears asks whether God should be destroyed" width="1440" height="810" loading="lazy" decoding="async">
@@ -110,7 +110,7 @@ In _Shin Megami Tensei_, ideas become choices. Law, Chaos, and the paths between
 
 _NieR: Automata_ places repetition inside a world whose creators, causes, and purposes have disappeared. The player still has to act. Replaying events from another perspective slowly destroys the certainty that we understood our actions. Enemies become subjects, and the missions lose their legitimacy. Meanwhile, machines imitate humans because they are desperately looking for a reason to exist.
 
-Pascal, Simone de Beauvoir, and Kierkegaard appear as names, sometimes with deliberate irony. Their doctrines arrive as fragments in a world that has forgotten how to use them. _NieR_ reshapes those fragments around repetition, memory, and the need for transcendence. Elsewhere, Nietzsche, Freud, and Jung become mythological material alongside Kabbalah, Christianity, Buddhism, 神道 (shintō), and Gnosticism. Japanese fiction absorbs them and makes something else from them.
+Pascal, Simone de Beauvoir, and Kierkegaard appear as names, sometimes with deliberate irony. Their doctrines arrive as fragments in a world that has forgotten how to use them. _NieR_ reshapes those fragments around repetition, memory, and the need for transcendence. Elsewhere, Nietzsche, Freud, and Jung become mythological material alongside Kabbalah, Christianity, Buddhism, Shinto, and Gnosticism. Japanese fiction absorbs them and makes something else from them.
 
 ## A collective couch, beyond Japan
 
