@@ -21,6 +21,11 @@ That is what fascinates me: these “complex” philosophical and psychoanalytic
 
 Western influence is part of the answer. Japan’s own history and traumas offer another part.
 
+<figure class="article-figure">
+  <img src="/assets/img/writing/japanese-art/xenogears.webp" alt="A dialogue scene from Xenogears asks whether God should be destroyed" width="1440" height="810" loading="lazy" decoding="async">
+  <figcaption><cite>Xenogears</cite> (Square, 1998).</figcaption>
+</figure>
+
 ## A philosophy learned through images
 
 It is tempting to link this obsession to the place of philosophy in Japanese schools. The reality is more nuanced.
@@ -51,7 +56,17 @@ Postwar Japan also had to rebuild a collective horizon. Economic growth, technol
 
 _Godzilla_ gave that trauma a body in 1954. Awakened and contaminated by nuclear power, the creature destroys a city that still carries the memory of the bombings. _Akira_ returns to the same pattern: Tokyo is destroyed, rebuilt, and covered with a shining metropolis. Under it remain laboratories, sacrificed children, and the seeds of another apocalypse.
 
+<figure class="article-figure">
+  <img src="/assets/img/writing/japanese-art/godzilla.webp" alt="Godzilla rises behind bridges in a black-and-white scene from the 1954 film" width="739" height="415" loading="lazy" decoding="async">
+  <figcaption><cite>Godzilla</cite> (Ishirō Honda, 1954).</figcaption>
+</figure>
+
 _Neon Genesis Evangelion_ places this anxiety inside the body. The Evangelions are organic beings used by adults whose plans go far beyond their teenage pilots. The Human Instrumentality Project promises to abolish loneliness by merging every consciousness. Its salvation requires the disappearance of the individual. The series asks whether ending human separation is worth losing the possibility of being a person.
+
+<figure class="article-figure">
+  <img src="/assets/img/writing/japanese-art/evangelion.webp" alt="Two characters stand below a pale cruciform figure in Evangelion" width="960" height="540" loading="lazy" decoding="async">
+  <figcaption><cite>Evangelion: 3.0+1.0 Thrice Upon a Time</cite> (Khara, 2021).</figcaption>
+</figure>
 
 _Xenogears_ turns religions, institutions, and historical narratives into systems of domination. Even divinity reveals a material, constructed nature. _Shin Megami Tensei_ makes the conflict playable: God represents absolute order, while chaos risks becoming another tyranny. The player has to choose between them, or invent a path with no transcendent guarantee.
 
@@ -79,6 +94,11 @@ The _Persona_ games turn this model into a narrative and gameplay system. In _Pe
 
 _Perfect Blue_ takes the conflict somewhere darker. Mima leaves her career as an idol to become an actress, while the public keeps demanding her former image. That image becomes a persecuting double. Soon, she cannot tell whether she wants her new life or whether each identity comes from the gaze of others. The film asks a disturbing question: can an authentic self survive when images have shaped every way we see ourselves?
 
+<figure class="article-figure">
+  <img src="/assets/img/writing/japanese-art/perfect-blue.webp" alt="Mima and her former idol image overlap in a train window reflection in Perfect Blue" width="1024" height="572" loading="lazy" decoding="async">
+  <figcaption><cite>Perfect Blue</cite> (Satoshi Kon, 1997).</figcaption>
+</figure>
+
 ## When what is buried takes a body
 
 Freud gives another language to this crisis. The repressed never completely disappears. It returns through symptoms, dreams, repetitions, and behaviors whose origin remains hidden from the subject.
@@ -86,6 +106,11 @@ Freud gives another language to this crisis. The repressed never completely disa
 Japanese pop culture often gives this return a physical body. In _Xenogears_, Id materializes the violence tied to Fei’s trauma. His name evokes the Freudian id, yet the character also mixes dissociation, reincarnation, and science fiction. The theory becomes a living myth.
 
 In _Silent Hill 2_, the town itself works like a psychic space. Each creature gives physical form to James’s guilt, desires, and buried memories. Moving forward means approaching the truth he has organized his whole existence to avoid.
+
+<figure class="article-figure">
+  <img src="/assets/img/writing/japanese-art/silent-hill-2.webp" alt="James Sunderland looks at his reflection in a cracked mirror in Silent Hill 2" width="739" height="415" loading="lazy" decoding="async">
+  <figcaption><cite>Silent Hill 2</cite> (Konami, 2001).</figcaption>
+</figure>
 
 _Paprika_ lets the unconscious contaminate reality through a machine that opens dreams. _Paranoia Agent_ turns the same mechanism into a social phenomenon: a fantasy spreads because an entire society needs an external culprit. In both cases, private fears escape the individual and become collective.
 
