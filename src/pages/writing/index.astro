@@ -7,10 +7,14 @@ const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
 );
 const languageLabels = { en: "English", fr: "Français" } as const;
 const topicLabels = {
-  tech: "Technology",
+  tech: "Work",
   cinema: "Cinema",
-  notes: "Notes",
+  notes: "Other",
 } as const;
+const initialTopic = "cinema";
+const initialCount = posts.filter(
+  (post) => post.data.topic === initialTopic,
+).length;
 ---
 
 <BaseLayout
@@ -31,97 +35,97 @@ const topicLabels = {
       </p>
     </header>
 
-    <div class="filter-bar" aria-label="Filter writing">
+    <div class="filter-bar" role="tablist" aria-label="Writing categories">
       <button
         class="filter-button"
         type="button"
-        data-filter="all"
-        aria-pressed="true"
-      >
-        All
-      </button>
-      <button
-        class="filter-button"
-        type="button"
-        data-filter="en"
-        aria-pressed="false"
-      >
-        English
-      </button>
-      <button
-        class="filter-button"
-        type="button"
-        data-filter="fr"
-        aria-pressed="false"
-      >
-        Français
-      </button>
-      <button
-        class="filter-button"
-        type="button"
+        id="tab-work"
+        role="tab"
         data-filter="tech"
-        aria-pressed="false"
+        aria-selected="false"
+        aria-controls="writing-panel"
+        tabindex="-1"
       >
-        Technology
+        Work
       </button>
       <button
         class="filter-button"
         type="button"
+        id="tab-cinema"
+        role="tab"
         data-filter="cinema"
-        aria-pressed="false"
+        aria-selected="true"
+        aria-controls="writing-panel"
       >
         Cinema
       </button>
       <button
         class="filter-button"
         type="button"
+        id="tab-other"
+        role="tab"
         data-filter="notes"
-        aria-pressed="false"
+        aria-selected="false"
+        aria-controls="writing-panel"
+        tabindex="-1"
       >
-        Notes
+        Other
       </button>
     </div>
 
-    <ol class="post-list" data-post-list>
-      {posts.map((post) => {
-        const external = Boolean(post.data.externalUrl);
-        const href = post.data.externalUrl ?? `/writing/${post.id}/`;
-        return (
-          <li
-            class="post-row reveal"
-            data-post
-            data-language={post.data.language}
-            data-topic={post.data.topic}
-          >
-            <time
-              class="post-date"
-              datetime={post.data.publishedAt.toISOString()}
+    <section
+      class="writing-panel"
+      id="writing-panel"
+      role="tabpanel"
+      aria-labelledby="tab-cinema"
+      tabindex="0"
+      data-writing-panel
+    >
+      <ol class="post-list" data-post-list>
+        {posts.map((post) => {
+          const external = Boolean(post.data.externalUrl);
+          const href = post.data.externalUrl ?? `/writing/${post.id}/`;
+          return (
+            <li
+              class="post-row reveal"
+              data-post
+              data-language={post.data.language}
+              data-topic={post.data.topic}
+              hidden={post.data.topic !== initialTopic}
             >
-              {post.data.publishedAt.toLocaleDateString(
-                post.data.language === "fr" ? "fr-FR" : "en-GB",
-                { day: "2-digit", month: "short", year: "numeric" },
-              )}
-            </time>
-            <h2>
-              <a href={href} rel={external ? "noreferrer" : undefined}>
-                {post.data.title}
-                {external && <span class="visually-hidden"> (external)</span>}
-              </a>
-            </h2>
-            <span class="post-tags">
-              {languageLabels[post.data.language]} ·{" "}
-              {topicLabels[post.data.topic]}
-            </span>
-            <span class="post-kind">
-              {external ? "External ↗" : "Internal →"}
-            </span>
-          </li>
-        );
-      })}
-    </ol>
-    <p class="post-count" aria-live="polite" data-post-count>
-      {posts.length} {posts.length === 1 ? "entry" : "entries"}
-    </p>
+              <time
+                class="post-date"
+                datetime={post.data.publishedAt.toISOString()}
+              >
+                {post.data.publishedAt.toLocaleDateString(
+                  post.data.language === "fr" ? "fr-FR" : "en-GB",
+                  { day: "2-digit", month: "short", year: "numeric" },
+                )}
+              </time>
+              <h2>
+                <a href={href} rel={external ? "noreferrer" : undefined}>
+                  {post.data.title}
+                  {external && <span class="visually-hidden"> (external)</span>}
+                </a>
+              </h2>
+              <span class="post-tags">
+                {languageLabels[post.data.language]} ·{" "}
+                {topicLabels[post.data.topic]}
+              </span>
+              <span class="post-kind">
+                {external ? "External ↗" : "Internal →"}
+              </span>
+            </li>
+          );
+        })}
+      </ol>
+      <p class="empty-state" data-empty-state hidden>
+        Nothing published here yet.
+      </p>
+      <p class="post-count" aria-live="polite" data-post-count>
+        {initialCount} {initialCount === 1 ? "entry" : "entries"}
+      </p>
+    </section>
   </main>
 
   <script>
@@ -129,25 +133,56 @@ const topicLabels = {
       document.querySelectorAll<HTMLButtonElement>("[data-filter]");
     const entries = document.querySelectorAll<HTMLElement>("[data-post]");
     const count = document.querySelector<HTMLElement>("[data-post-count]");
+    const emptyState =
+      document.querySelector<HTMLElement>("[data-empty-state]");
+    const panel = document.querySelector<HTMLElement>("[data-writing-panel]");
+
+    const activateTab = (button: HTMLButtonElement, updateHash = true) => {
+      const filter = button.dataset.filter ?? "cinema";
+      let visible = 0;
+
+      buttons.forEach((candidate) => {
+        const selected = candidate === button;
+        candidate.setAttribute("aria-selected", String(selected));
+        candidate.tabIndex = selected ? 0 : -1;
+      });
+      entries.forEach((entry) => {
+        const matches = entry.dataset.topic === filter;
+        entry.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      if (panel) panel.setAttribute("aria-labelledby", button.id);
+      if (emptyState) emptyState.hidden = visible !== 0;
+      if (count)
+        count.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
+      if (updateHash) history.replaceState(null, "", `#${button.id.slice(4)}`);
+    };
 
     buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const filter = button.dataset.filter ?? "all";
-        let visible = 0;
-        buttons.forEach((candidate) =>
-          candidate.setAttribute("aria-pressed", String(candidate === button)),
-        );
-        entries.forEach((entry) => {
-          const matches =
-            filter === "all" ||
-            entry.dataset.language === filter ||
-            entry.dataset.topic === filter;
-          entry.hidden = !matches;
-          if (matches) visible += 1;
-        });
-        if (count)
-          count.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
+      button.addEventListener("click", () => activateTab(button));
+      button.addEventListener("keydown", (event) => {
+        const currentIndex = Array.from(buttons).indexOf(button);
+        let nextIndex: number | undefined;
+        if (event.key === "ArrowRight")
+          nextIndex = (currentIndex + 1) % buttons.length;
+        if (event.key === "ArrowLeft")
+          nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+        if (event.key === "Home") nextIndex = 0;
+        if (event.key === "End") nextIndex = buttons.length - 1;
+        if (nextIndex === undefined) return;
+        event.preventDefault();
+        const nextButton = buttons[nextIndex];
+        if (nextButton) {
+          nextButton.focus();
+          activateTab(nextButton);
+        }
       });
     });
+
+    const requestedTab = Array.from(buttons).find(
+      (button) => button.id === `tab-${location.hash.slice(1)}`,
+    );
+    if (requestedTab) activateTab(requestedTab, false);
   </script>
 </BaseLayout>
