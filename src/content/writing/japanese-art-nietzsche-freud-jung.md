@@ -1,5 +1,5 @@
 ---
-title: Why are Japanese works of art so obsessed with Nietzsche, Freud, and Jung?
+title: Why do Nietzsche, Freud, and Jung keep appearing in Japanese pop culture?
 description: Why Nietzsche, Freud, and Jung recur so often in Japanese video games, manga, and anime.
 publishedAt: 2026-09-15
 language: en
