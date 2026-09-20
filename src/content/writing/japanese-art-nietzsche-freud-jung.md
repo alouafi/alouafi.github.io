@@ -46,9 +46,7 @@ European Christianity and the Japanese imperial system have very different histo
 
 For Nietzsche, the death of God could be as much a catastrophe as a blessing in disguise. Once the transcendent foundation of good and truth disappears, humanity has to invent its own values, without any certainty of succeeding.
 
-Japan after the war also had to rebuild a collective horizon. Economic growth, technology, the company, and consumption offered new narratives. The destroyed country became an industrial power, while the trauma stayed beneath the surface.
-
-There is also Yukio Mishima, who perhaps took this crisis more literally than anyone else. He looked at postwar prosperity and saw a country becoming comfortable but spiritually empty. His books often return to the body, beauty, death, and the emperor, almost as if intensity could replace the values Japan had lost. In 1970, he attempted a coup and killed himself. His answer was nationalist and extreme, of course. The question behind it feels familiar by now: what do you do once the old values have collapsed?
+Japan after the war also had to rebuild a collective horizon. Economic growth, technology, the company, and consumption offered new narratives. I think Yukio Mishima took this crisis in a nationalist and extreme direction: he saw postwar comfort as spiritual emptiness, returned in his books to the body, beauty, death and the emperor, then attempted a coup and killed himself in 1970. The destroyed country became an industrial power, while the trauma stayed beneath the surface.
 
 I believe one of the earliest and most successful depictions of that trauma is _Godzilla_ (1954). Awakened and contaminated by nuclear power, the creature destroys a city that still carries the memory of the bombings. _Akira_ returns to this image. Tokyo has been destroyed and rebuilt as a shining metropolis, but underneath remain laboratories, sacrificed children, and the seeds of another apocalypse.
 
@@ -64,15 +62,13 @@ _Neon Genesis Evangelion_ places this anxiety inside the body. The Evas are orga
   <figcaption><cite>Evangelion: 3.0+1.0 Thrice Upon a Time</cite> (Khara, 2021).</figcaption>
 </figure>
 
-In _Xenogears_, religions, institutions, and historical narratives hide systems of domination. Even divinity eventually reveals its material and constructed nature. Fei has to refuse the identities that others constructed for him. The game is dubious about systems that promise any absolute form of salvation. What can still guide a life once gods, parents, and institutions have failed?
+In _Xenogears_, religions, institutions, and historical narratives hide systems of domination. Even divinity eventually reveals its material and constructed nature. Fei has to refuse the identities that others constructed for him, and the game remains dubious about systems that promise any absolute form of salvation. What can still guide a life once gods, parents, and institutions have failed?
 
 ## From inherited traumas to the crisis of the 1990s
 
 _Evangelion_, _Persona_, and _Xenogears_ appeared decades after the war, mostly in the Japan of the 1990s. The economic bubble had collapsed and the “Lost Decade” had begun. The model based on growth, stable employment, and integration into the company started to crack. In 1995, the Kobe earthquake and the sarin gas attack by オウム真理教 (Ōmu Shinrikyō) made the feeling of insecurity even stronger.
 
-The postwar generation had replaced the old order with a promise of prosperity. The next generation discovered that this promise was fragile too. Its heroes were teenagers asked to save a world that adults had already made uninhabitable. Shinji has to get into the Eva. Fei has to confront a history he never chose, passed down through generations. The protagonists of _Persona_ repair the corrupted desires of a society that still claims to teach them how to become adults. Their psychological crises express the exhaustion of a collective model as much as their own suffering.
-
-_Texhnolyze_, released a few years later, takes a more direct route through Kazuho Yoshii. He comes down from the surface and finds a city that seems to have accepted its own death. I read Yoshii as a kind of distorted Übermensch. He tries to wake Lux up by creating conflict and imposing his own will on it. In the end, he accelerates the collapse he wanted to escape.
+The postwar generation had replaced the old order with a promise of prosperity. _Texhnolyze_ came a few years later, and I read Kazuho Yoshii as a distorted Übermensch: he descends into a city that has accepted its own death and tries to wake it by imposing his will through conflict, only to accelerate its collapse. The next generation discovered that this promise was fragile too. Its heroes were teenagers asked to save a world that adults had already made uninhabitable. Shinji has to get into the Eva. Fei has to confront a history he never chose, passed down through generations. The protagonists of _Persona_ repair the corrupted desires of a society that still claims to teach them how to become adults. Their psychological crises express the exhaustion of a collective model as much as their own suffering.
 
 ## The mask as a compromise
 
