@@ -48,7 +48,7 @@ For Nietzsche, the death of God could be as much a catastrophe as a blessing in 
 
 Japan after the war also had to rebuild a collective horizon. Economic growth, technology, the company, and consumption offered new narratives. The destroyed country became an industrial power, while the trauma stayed beneath the surface.
 
-Yukio Mishima is perhaps the most literal version of this crisis. He looked at postwar prosperity and saw comfort, materialism, and a loss of spiritual purpose. His books constantly return to the body, beauty, death, and the emperor as ways of recovering some intensity in a world he found empty. In 1970, this search ended with his failed coup and suicide. Of course, his answer was nationalist and extreme, but the question behind it feels familiar: what do you do after the old values have collapsed?
+There is also Yukio Mishima, who perhaps took this crisis more literally than anyone else. He looked at postwar prosperity and saw a country becoming comfortable but spiritually empty. His books often return to the body, beauty, death, and the emperor, almost as if intensity could replace the values Japan had lost. In 1970, he attempted a coup and killed himself. His answer was nationalist and extreme, of course. The question behind it feels familiar by now: what do you do once the old values have collapsed?
 
 I believe one of the earliest and most successful depictions of that trauma is _Godzilla_ (1954). Awakened and contaminated by nuclear power, the creature destroys a city that still carries the memory of the bombings. _Akira_ returns to this image. Tokyo has been destroyed and rebuilt as a shining metropolis, but underneath remain laboratories, sacrificed children, and the seeds of another apocalypse.
 
@@ -72,7 +72,7 @@ _Evangelion_, _Persona_, and _Xenogears_ appeared decades after the war, mostly 
 
 The postwar generation had replaced the old order with a promise of prosperity. The next generation discovered that this promise was fragile too. Its heroes were teenagers asked to save a world that adults had already made uninhabitable. Shinji has to get into the Eva. Fei has to confront a history he never chose, passed down through generations. The protagonists of _Persona_ repair the corrupted desires of a society that still claims to teach them how to become adults. Their psychological crises express the exhaustion of a collective model as much as their own suffering.
 
-_Texhnolyze_, released a few years later, gives this nihilism a more Nietzschean figure in Kazuho Yoshii. He descends from the surface and sees that Lux has accepted its own death. Yoshii tries to force the city back into life by creating conflict. He can be read as a distorted Übermensch, rejecting the passive nihilism around him and trying to assert his own will over the city. This self-assertion only produces more destruction and accelerates the collapse he wanted to escape.
+_Texhnolyze_, released a few years later, takes a more direct route through Kazuho Yoshii. He comes down from the surface and finds a city that seems to have accepted its own death. I read Yoshii as a kind of distorted Übermensch. He tries to wake Lux up by creating conflict and imposing his own will on it. In the end, he accelerates the collapse he wanted to escape.
 
 ## The mask as a compromise
 
