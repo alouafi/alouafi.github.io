@@ -26,13 +26,13 @@ These “complex” philosophical and psychoanalytic ideas are everywhere in Jap
 
 ## A philosophy learned through images
 
-Western philosophy has been studied in Japan since the 明治 (Meiji) era. Nietzsche, Freud, and Jung have long been translated and discussed in universities and intellectual circles there. Thinkers such as 西田幾多郎 (Nishida Kitarō) and the 京都学派 (Kyōto-gakuha, Kyoto School) tried to make European philosophy converse with Buddhism and Japanese traditions.
+Western philosophy has been studied in Japan since the 明治 (Meiji) era. Nietzsche, Freud, and Jung had long been translated and discussed in universities and intellectual circles there. Thinkers such as 西田幾多郎 (Nishida Kitarō) and the 京都学派 (Kyōto-gakuha, Kyoto School) tried to connect European philosophy with Buddhism and Japanese traditions.
 
-In Japanese high schools, there is a special course called 倫理 (rinri), usually translated as “ethics”, which introduces the major thinkers and their doctrines. It has much less impact and importance than philosophy does in a French lycée. Students generally learn concepts and authors instead of building a dissertation.
+In Japanese high schools, there is a special course called 倫理 (rinri), usually translated as “ethics”, which introduces the major thinkers and their doctrines. It has much less impact and importance than philosophy does in a French lycée. Students generally learn concepts and authors instead of actually building a dissertation or applying dialectics.
 
-One can memorize “God is dead” without ever considering what the disappearance of every value structuring one’s life would mean. You can learn that Jung theorized the Shadow without looking at what you refuse to recognize in yourself.
+Students are expected to memorize “God is dead”, but without ever considering what the disappearance of every value structuring life actually implies. You can learn that Jung theorized the Shadow without looking at what that concept could imply for your own identity.
 
-Fiction makes these ideas more concrete. A teacher can probably give you a somewhat clear definition of the unconscious. _Silent Hill 2_ builds an entire town from the guilt and denial of its protagonist and makes that concept feel real. A textbook can explain the difference between the social self and intimate desires. _Perfect Blue_ shows an identity breaking apart under the public gaze.
+One of the roles of fiction is making these ideas more concrete. A teacher can probably give you a somewhat clear definition of the unconscious. _Silent Hill 2_ builds an entire town from the guilt and denial of its protagonist and makes that concept feel real. A textbook can explain the difference between the social self and intimate desires. _Perfect Blue_ shows an identity breaking apart under the public gaze.
 
 Video games go one step further by making the player act inside the concept. A game can ask, “What do you think of this?” It can also ask, “What do you do, now that this idea determines the world in which you have to act?”
 
