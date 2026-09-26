@@ -185,7 +185,6 @@ button {
 .header-status,
 .menu-button,
 .eyebrow,
-.slate,
 .text-link,
 .intro-links,
 .post-date,
@@ -371,28 +370,6 @@ button {
 
 .intro-copy {
   min-width: 0;
-}
-
-.slate {
-  display: flex;
-  gap: 0;
-  width: max-content;
-  margin: 0 0 clamp(2rem, 5vw, 3rem);
-  border: 1px solid var(--line-strong);
-  color: var(--muted);
-}
-
-.slate span {
-  padding: 0.45rem 0.8rem;
-}
-
-.slate span + span {
-  border-left: 1px solid var(--line-strong);
-}
-
-.slate span:first-child {
-  color: var(--film);
-  background: var(--ink);
 }
 
 .intro h1 {
@@ -939,7 +916,7 @@ button {
 
 .article-body,
 .article-footer {
-  max-width: 41rem;
+  max-width: 52rem;
   margin-inline: auto;
 }
 
@@ -947,7 +924,7 @@ button {
   margin-top: clamp(2.5rem, 5vw, 4rem);
   color: var(--body-ink);
   font-family: var(--serif);
-  font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+  font-size: clamp(1.1rem, 1.45vw, 1.3rem);
   font-optical-sizing: auto;
   line-height: 1.65;
   counter-reset: scene;
@@ -1055,7 +1032,7 @@ button {
   position: relative;
   left: 50%;
   width: min(
-    58rem,
+    66rem,
     calc(
       100vw - var(--film-rail) - var(--film-rail) - var(--gutter) -
         var(--gutter)
