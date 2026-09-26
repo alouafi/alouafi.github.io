@@ -1,8 +1,38 @@
 ---
+import { profile } from "../data/profile";
+
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <p>© {year} Aïmen Louafi</p>
-  <a href="#main">Back to top ↑</a>
+  <dl class="credits">
+    <div>
+      <dt>Written &amp; directed by</dt>
+      <dd>{profile.name}</dd>
+    </div>
+    <div>
+      <dt>Location</dt>
+      <dd>Paris, France</dd>
+    </div>
+    <div>
+      <dt>Elsewhere</dt>
+      <dd>
+        <a href={profile.links.linkedin} rel="me noreferrer">
+          LinkedIn
+        </a>
+        <span aria-hidden="true">·</span>
+        <a href={profile.links.github} rel="me noreferrer">
+          GitHub
+        </a>
+        <span aria-hidden="true">·</span>
+        <a href="/rss.xml">RSS</a>
+      </dd>
+    </div>
+  </dl>
+  <div class="footer-bar">
+    <p>
+      © {year} {profile.name}
+    </p>
+    <a href="#main">Back to top ↑</a>
+  </div>
 </footer>

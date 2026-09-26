@@ -1,31 +1,31 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { profile } from "../data/profile";
+import {
+  formatDate,
+  getPublishedPosts,
+  isExternal,
+  postHref,
+} from "../lib/posts";
+
+const latest = (await getPublishedPosts()).slice(0, 4);
+const topicLabels = { tech: "Work", cinema: "Review", notes: "Other" } as const;
 ---
 
 <BaseLayout current="home">
   <main class="home" id="main">
     <section class="intro" aria-labelledby="intro-title">
-      <figure class="portrait">
-        <div class="portrait-window">
-          <img
-            src={profile.portrait}
-            alt="Portrait of Aïmen Louafi"
-            width="512"
-            height="512"
-          />
-          <span class="registration-mark" aria-hidden="true"></span>
-        </div>
-      </figure>
-
-      <div class="intro-copy">
-        <div class="frame-meta" aria-hidden="true">
-          <span>About</span>
-          <span>AI engineer · Paris</span>
-        </div>
-        <p class="eyebrow">Paris, France · 2026</p>
+      <div class="intro-copy reveal">
+        <p class="slate" aria-hidden="true">
+          <span>Sc. 01</span>
+          <span>Take 1</span>
+          <span>Paris, France</span>
+        </p>
         <h1 id="intro-title">
-          Aïmen Louafi<span class="accent-mark">.</span>
+          Aïmen{" "}
+          <em>
+            Louafi<span class="accent-mark">.</span>
+          </em>
         </h1>
         <div class="intro-body">
           <p>
@@ -40,7 +40,7 @@ import { profile } from "../data/profile";
           </p>
         </div>
         <nav class="intro-links" aria-label="Profile links">
-          <a href="/writing/">Writing</a>
+          <a href="/writing/">Writing →</a>
           <a href={profile.links.linkedin} rel="me noreferrer">
             LinkedIn ↗
           </a>
@@ -49,6 +49,56 @@ import { profile } from "../data/profile";
           </a>
         </nav>
       </div>
+
+      <figure class="portrait reveal">
+        <div class="viewfinder">
+          <img
+            src={profile.portrait}
+            alt="Portrait of Aïmen Louafi"
+            width="512"
+            height="512"
+          />
+          <span class="corner corner-tl" aria-hidden="true"></span>
+          <span class="corner corner-tr" aria-hidden="true"></span>
+          <span class="corner corner-bl" aria-hidden="true"></span>
+          <span class="corner corner-br" aria-hidden="true"></span>
+          <span class="registration-mark" aria-hidden="true"></span>
+        </div>
+        <figcaption aria-hidden="true">
+          <span>A001 · C001</span>
+          <span>1:1 · B&amp;W</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="now-showing" aria-labelledby="now-showing-title">
+      <header class="section-head">
+        <h2 id="now-showing-title">Now showing</h2>
+        <a class="text-link" href="/writing/">
+          All writing →
+        </a>
+      </header>
+      <ol class="reel-list">
+        {latest.map((post) => {
+          const href = postHref(post);
+          const external = isExternal(href);
+          return (
+            <li class="reel-item">
+              <a href={href} rel={external ? "noreferrer" : undefined}>
+                <span class="reel-title">{post.data.title}</span>
+                <span class="reel-meta">
+                  <time datetime={post.data.publishedAt.toISOString()}>
+                    {formatDate(post)}
+                  </time>
+                  <span>{topicLabels[post.data.topic]}</span>
+                  <span aria-hidden="true">{external ? "↗" : "→"}</span>
+                </span>
+                {external && <span class="visually-hidden"> (external)</span>}
+              </a>
+            </li>
+          );
+        })}
+      </ol>
     </section>
   </main>
 </BaseLayout>

@@ -1,4 +1,6 @@
 ---
+import { profile } from "../data/profile";
+
 interface Props {
   current?: "home" | "writing" | undefined;
 }
@@ -33,9 +35,18 @@ const { current } = Astro.props;
     >
       Writing
     </a>
-    <a href="https://www.linkedin.com/in/aimen-louafi" rel="me noreferrer">
+    <a href={profile.links.linkedin} rel="me noreferrer">
       LinkedIn ↗
     </a>
+    <a href={profile.links.github} rel="me noreferrer">
+      GitHub ↗
+    </a>
   </nav>
-  <p class="header-status">Paris, France</p>
+  <p class="header-status" aria-hidden="true">
+    <span class="tally-light"></span>
+    <span>TC</span>
+    <span class="timecode" data-timecode>
+      00:00:00:00
+    </span>
+  </p>
 </header>

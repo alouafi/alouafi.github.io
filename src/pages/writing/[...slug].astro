@@ -1,6 +1,7 @@
 ---
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { readingMinutes } from "../../lib/posts";
 
 interface Props {
   post: CollectionEntry<"writing">;
@@ -29,6 +30,7 @@ const { Content } = await render(post);
   language={post.data.language}
   topic={post.data.topic}
   format={post.data.format}
+  minutes={readingMinutes(post.body)}
 >
   <Content />
 </ArticleLayout>
