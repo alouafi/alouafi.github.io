@@ -1,13 +1,13 @@
 ---
 title: "Cannes 2026 : mon bilan, cinq mois après"
-description: Vingt et un films de la Compétition, mon palmarès contre celui du jury, six films de guerre en lice et une conférence de presse qui a avalé Moulin. Retour sur la 79e édition du Festival, avec ce qu’en a dit la critique.
+description: Trente-cinq films en huit jours, mon palmarès contre celui du jury, six films de guerre en lice et une conférence de presse qui a avalé Moulin. Retour sur la 79e édition du Festival, avec ce qu’en a dit la critique.
 publishedAt: 2026-10-25
 language: fr
 topic: cinema
 draft: false
 ---
 
-En mai, j’étais à Cannes pour la 79e édition du Festival, avec une accréditation Cinéphile (les deux années d’avant, j’étais venu avec le programme Trois Jours à Cannes). Sur les 22 films de la Compétition, j’en ai vu 21, il ne me manque que _Nagi Notes_ de Kōji Fukada. J’ai aussi vu quelques films à la Semaine de la Critique, à la Quinzaine des cinéastes, à l’ACID et hors compétition. Presque tous ont eu droit à une critique [sur Letterboxd](https://letterboxd.com/endtell/), et celle de _La Gradiva_ est parue sur [Le Blog du Cinéma](https://www.leblogducinema.com/critique-film/la-gradiva-65539467/).
+En mai, j’étais à Cannes pour la 79e édition du Festival, avec une accréditation Cinéphile (les deux années d’avant, j’étais venu avec le programme Trois Jours à Cannes). En huit jours, j’ai vu 35 films au total. Dont 21 des 22 films de la Compétition (il ne me manque que _Nagi Notes_ de Kōji Fukada), et le reste à la Semaine de la Critique, à la Quinzaine des cinéastes, à l’ACID et hors compétition. La plupart ont eu droit à une critique [sur Letterboxd](https://letterboxd.com/endtell/), et celle de _La Gradiva_ est parue sur [Le Blog du Cinéma](https://www.leblogducinema.com/critique-film/la-gradiva-65539467/).
 
 Je voulais faire ce bilan à chaud. Je le fais cinq mois plus tard, et ce n’est pas plus mal : _Moulin_ sort mercredi, _La Gradiva_ le 4 novembre, et entre-temps j’ai lu ce que les autres en ont pensé. Ce texte mélange donc mes notes de mai et ce qu’a écrit la critique, en France et un peu ailleurs.
 
