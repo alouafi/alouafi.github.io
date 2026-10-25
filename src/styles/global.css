@@ -1052,6 +1052,46 @@ button {
     0 2rem 4rem -1.5rem rgba(0, 0, 0, 0.7);
 }
 
+.article-figure--portrait {
+  left: auto;
+  width: min(26rem, 100%);
+  margin-inline: auto;
+  transform: none;
+}
+
+.article-figure--portrait img,
+.article-gallery img {
+  height: auto;
+  aspect-ratio: 9 / 16;
+}
+
+.article-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  width: min(
+    52rem,
+    calc(
+      100vw - var(--film-rail) - var(--film-rail) - var(--gutter) -
+        var(--gutter)
+    )
+  );
+}
+
+.article-figure a {
+  display: block;
+}
+
+.article-gallery figcaption {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 40rem) {
+  .article-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
 .article-figure figcaption {
   margin-top: 0.9rem;
   color: var(--faint);

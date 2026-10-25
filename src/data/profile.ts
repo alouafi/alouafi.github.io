@@ -6,5 +6,6 @@ export const profile = {
   links: {
     github: "https://github.com/alouafi",
     linkedin: "https://www.linkedin.com/in/aimen-louafi",
+    letterboxd: "https://letterboxd.com/endtell/",
   },
 } as const;
