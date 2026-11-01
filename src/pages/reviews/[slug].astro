@@ -1,0 +1,66 @@
+---
+import backlog from "../../data/letterboxd-reviews.json";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import {
+  reviewHtml,
+  stars,
+  toReview,
+  type ReviewSource,
+} from "../../lib/letterboxd";
+import { readingMinutes } from "../../lib/posts";
+
+interface Props {
+  source: ReviewSource;
+}
+
+export function getStaticPaths() {
+  return (backlog as ReviewSource[]).map((source) => ({
+    params: { slug: source.slug ?? "" },
+    props: { source },
+  }));
+}
+
+const { source } = Astro.props;
+const review = toReview(source);
+const edition = review.label?.match(/^Cannes (\d{4})$/)?.[1];
+---
+
+<ArticleLayout
+  title={source.title}
+  description={
+    review.excerpt ||
+    `Review of ${source.title} (${source.year}) by Aïmen Louafi.`
+  }
+  publishedAt={new Date(source.date)}
+  language={review.lang}
+  topic="cinema"
+  format="post"
+  minutes={readingMinutes(source.text)}
+  eyebrow={`${review.label ?? "Cinema"} · Review`}
+  deck={null}
+  dateLabel="Reviewed"
+  details={[
+    { label: "Film", value: source.year },
+    ...(source.rating === null
+      ? []
+      : [
+          {
+            label: "Rating",
+            value: stars(source.rating),
+            spoken: `${source.rating} out of 5`,
+          },
+        ]),
+  ]}
+  back={
+    edition
+      ? { href: `/cannes/#cannes-${edition}`, label: `Cannes ${edition}` }
+      : undefined
+  }
+>
+  <Fragment set:html={reviewHtml(source.text)} />
+  <p class="review-source">
+    <a href={source.url} rel="noreferrer">
+      First published on Letterboxd ↗
+    </a>
+  </p>
+</ArticleLayout>

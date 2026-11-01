@@ -12,12 +12,15 @@ export interface Film {
   poster: string | null;
 }
 
-// A full review, as stored in src/data/letterboxd-reviews.json.
+// A full review, as stored in src/data/letterboxd-reviews.json. Reviews from
+// the live feed have no slug: they get a page on the next import.
 export interface ReviewSource {
+  slug?: string;
   title: string;
   year: string;
   rating: number | null;
   date: string;
+  watchedDate?: string;
   url: string;
   text: string;
   spoilers: boolean;
@@ -25,6 +28,7 @@ export interface ReviewSource {
 
 // What the Cinema page shows for a review.
 export interface Review {
+  slug: string | null;
   title: string;
   year: string;
   rating: number | null;
@@ -76,12 +80,20 @@ const smallPoster = (url: string) =>
 const plainText = (html: string) =>
   decode(html.replace(/<br\s*\/?>/gi, "\n").replace(/<[^>]+>/g, ""));
 
-const paragraphs = (text: string) =>
+const rawParagraphs = (text: string) =>
   text
     .replace(/\r\n?/g, "\n")
     .split(/\n\s*\n/)
-    .map((paragraph) => plainText(paragraph).replace(/\s+/g, " "))
-    .filter(Boolean);
+    .map((paragraph) => paragraph.trim())
+    .filter((paragraph) => plainText(paragraph));
+
+// Reviews often open with a short context line such as "Cannes 2026".
+const splitLabel = (parts: string[]) => {
+  const first = parts[0];
+  return parts.length > 1 && first !== undefined && plainText(first).length < 60
+    ? { label: plainText(first), body: parts.slice(1) }
+    : { label: null, body: parts };
+};
 
 const frenchWords =
   /\b(?:le|la|les|des|une|est|qui|que|dans|pas|du|ce|sur|pour|avec|mais|plus|ses|son|aux)\b/gi;
@@ -97,23 +109,23 @@ const guessLanguage = (text: string): "en" | "fr" =>
 const excerptLength = 280;
 
 export const toReview = (source: ReviewSource): Review => {
-  const parts = paragraphs(source.text);
-  // Reviews often open with a short context line such as "Cannes 2026".
-  const label =
-    parts.length > 1 && (parts[0]?.length ?? 0) < 60 ? parts.shift() : null;
-  const body = parts.join(" ");
+  const { label, body: parts } = splitLabel(rawParagraphs(source.text));
+  const body = parts
+    .map((paragraph) => plainText(paragraph).replace(/\s+/g, " "))
+    .join(" ");
   const cut = body.lastIndexOf(" ", excerptLength);
   const excerpt =
     body.length > excerptLength
       ? `${body.slice(0, cut > 0 ? cut : excerptLength).replace(/[\s,;:.]+$/, "")}…`
       : body;
   return {
+    slug: source.slug ?? null,
     title: source.title,
     year: source.year,
     rating: source.rating,
     date: source.date,
     url: source.url,
-    label: label ?? null,
+    label,
     // Spoiler reviews only link to Letterboxd, which hides their text too.
     excerpt: source.spoilers ? "" : excerpt,
     lang: guessLanguage(body),
@@ -203,7 +215,7 @@ const escapeHtml = (value: string) =>
       ] ?? character,
   );
 
-const stars = (rating: number) =>
+export const stars = (rating: number) =>
   "★".repeat(Math.floor(rating)) + (rating % 1 ? "½" : "");
 
 const ratingHtml = (rating: number | null) =>
@@ -249,19 +261,39 @@ export const renderFilms = (films: Film[]) =>
     })
     .join("");
 
+// Imported reviews have their own page; live ones link to Letterboxd until
+// the next import.
+export const reviewHref = (review: { slug?: string | null; url: string }) =>
+  review.slug ? `/reviews/${review.slug}/` : review.url;
+
+const allowedTags = /&lt;(\/?)(b|i|em|strong)&gt;/g;
+
+// The review as HTML paragraphs, without its context line. Letterboxd's bold
+// and italic survive; any other markup is escaped.
+export const reviewHtml = (text: string) =>
+  splitLabel(rawParagraphs(text))
+    .body.map(
+      (paragraph) =>
+        `<p>${escapeHtml(paragraph).replace(allowedTags, "<$1$2>").replace(/\n/g, "<br>")}</p>`,
+    )
+    .join("\n");
+
+export const reviewLabel = (text: string) =>
+  splitLabel(rawParagraphs(text)).label;
+
 export const renderReviews = (reviews: Review[]) =>
   reviews
     .map(
       (review) => `<li class="review">
   ${review.label ? `<p class="review-label">${escapeHtml(review.label)}</p>` : ""}
-  <h3 class="review-title"><a href="${escapeHtml(review.url)}" rel="noreferrer">${escapeHtml(review.title)}<span class="visually-hidden">, review on Letterboxd</span></a> <span class="review-year">${escapeHtml(review.year)}</span></h3>
+  <h3 class="review-title"><a href="${escapeHtml(reviewHref(review))}"${review.slug ? "" : ' rel="noreferrer"'}>${escapeHtml(review.title)}<span class="visually-hidden">${review.slug ? ", full review" : ", review on Letterboxd"}</span></a> <span class="review-year">${escapeHtml(review.year)}</span></h3>
   <p class="review-meta"><span class="film-rating">${ratingHtml(review.rating)}</span><time datetime="${escapeHtml(review.date)}">${formatDate(review.date, true)}</time></p>
   ${
     review.spoilers
       ? `<p class="review-excerpt review-spoiler">Contains spoilers.</p>`
       : `<p class="review-excerpt" lang="${review.lang}">${escapeHtml(review.excerpt)}</p>`
   }
-  <p class="review-more" aria-hidden="true">Read on Letterboxd ↗</p>
+  <p class="review-more" aria-hidden="true">${review.slug ? "Read the review →" : "Read on Letterboxd ↗"}</p>
 </li>`,
     )
     .join("");

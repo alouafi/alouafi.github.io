@@ -63,11 +63,35 @@ const column = (name) => {
   return index;
 };
 const columns = Object.fromEntries(
-  ["Date", "Name", "Year", "Letterboxd URI", "Rating", "Review"].map((name) => [
-    name,
-    column(name),
-  ]),
+  [
+    "Date",
+    "Name",
+    "Year",
+    "Letterboxd URI",
+    "Rating",
+    "Review",
+    "Watched Date",
+  ].map((name) => [name, column(name)]),
 );
+
+const slugify = (value) =>
+  value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+// Review pages live at /reviews/<slug>/, so slugs must stay unique.
+const taken = new Set();
+const uniqueSlug = (title, year) => {
+  const base = `${slugify(title) || "review"}-${year}`;
+  let slug = base;
+  for (let suffix = 2; taken.has(slug); suffix += 1) slug = `${base}-${suffix}`;
+  taken.add(slug);
+  return slug;
+};
 
 const reviews = records
   .map((cells) => ({
@@ -75,6 +99,7 @@ const reviews = records
     year: cells[columns.Year],
     rating: cells[columns.Rating] ? Number(cells[columns.Rating]) : null,
     date: cells[columns.Date],
+    watchedDate: cells[columns["Watched Date"]] || cells[columns.Date],
     url: cells[columns["Letterboxd URI"]],
     text: cells[columns.Review].replace(/\r\n?/g, "\n").trim(),
     // The export has no spoiler flag; set it by hand for reviews that need one.
@@ -83,7 +108,11 @@ const reviews = records
   .filter((review) => review.title && review.text)
   .sort(
     (a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title),
-  );
+  )
+  .map((review) => ({
+    slug: uniqueSlug(review.title, review.year),
+    ...review,
+  }));
 
 const output = new URL("../src/data/letterboxd-reviews.json", import.meta.url);
 writeFileSync(output, `${JSON.stringify(reviews, null, 2)}\n`);

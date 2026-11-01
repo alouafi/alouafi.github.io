@@ -1,4 +1,6 @@
 import { getCollection } from "astro:content";
+import backlog from "../data/letterboxd-reviews.json";
+import type { ReviewSource } from "../lib/letterboxd";
 import { topicHref, topics } from "../lib/posts";
 
 const escapeXml = (value: string) =>
@@ -21,7 +23,9 @@ export async function GET({ site }: { site: URL }) {
   const paths = [
     "/",
     ...topics.map(topicHref),
+    "/cannes/",
     ...posts.map((post) => `/writing/${post.id}/`),
+    ...(backlog as ReviewSource[]).map((review) => `/reviews/${review.slug}/`),
   ];
   const urls = paths
     .map(

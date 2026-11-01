@@ -196,6 +196,12 @@ button {
 .film-meta,
 .review-label,
 .review-year,
+.review-source,
+.cannes-stats dt,
+.edition-number,
+.edition-meta,
+.edition-posts span,
+.edition-rating,
 .review-meta,
 .review-more,
 .article-meta,
@@ -941,6 +947,144 @@ button {
   color: var(--ink);
 }
 
+/* Cannes page */
+.writing-hero-copy a {
+  color: var(--ink);
+  text-decoration-color: var(--accent);
+}
+
+.writing-hero-copy a:hover {
+  color: var(--accent);
+}
+
+.cannes-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border-block: 1px solid var(--line-strong);
+}
+
+.cannes-stats div {
+  padding: 1.25rem 0;
+}
+
+.cannes-stats div + div {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--line);
+}
+
+.cannes-stats dt {
+  color: var(--muted);
+}
+
+.cannes-stats dd {
+  margin: 0.4rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  line-height: 1;
+}
+
+.edition {
+  margin-top: clamp(4rem, 9vw, 6rem);
+  scroll-margin-top: 2rem;
+}
+
+.edition-number {
+  margin-left: 0.5rem;
+  color: var(--faint);
+  vertical-align: 0.6em;
+}
+
+.edition-number sup {
+  font-size: 0.8em;
+  line-height: 0;
+  text-transform: none;
+}
+
+.edition-meta {
+  margin: 0;
+  color: var(--muted);
+  text-align: right;
+}
+
+.edition-posts,
+.edition-reviews {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.edition-posts li,
+.edition-reviews li {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.edition-posts li {
+  padding: 1.25rem 0;
+}
+
+.edition-posts a {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  line-height: 1.1;
+}
+
+.edition-posts span {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.edition-reviews {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 2rem;
+  margin-top: 0.5rem;
+}
+
+.edition-reviews li {
+  padding: 0.9rem 0;
+}
+
+.edition-reviews a {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  line-height: 1.15;
+}
+
+.edition-posts a,
+.edition-reviews a {
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.edition-posts a::after,
+.edition-reviews a::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.edition-posts li:hover a,
+.edition-reviews li:hover a {
+  color: var(--accent);
+}
+
+.edition-rating {
+  flex-shrink: 0;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+.article-body .review-source {
+  margin-top: 3rem;
+  color: var(--muted);
+}
+
 /* Article */
 .reel-progress {
   position: fixed;
@@ -1395,6 +1539,23 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .cannes-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cannes-stats div:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .cannes-stats div:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+
+  .edition-reviews {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .reel-item a {
     grid-template-columns: 2rem minmax(0, 1fr);
     gap: 0.5rem 1rem;
@@ -1416,6 +1577,19 @@ button {
 }
 
 @media (max-width: 560px) {
+  .edition-reviews {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head:has(.edition-meta) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .edition-meta {
+    text-align: left;
+  }
+
   .article-meta {
     gap: 0.5rem 1.5rem;
   }

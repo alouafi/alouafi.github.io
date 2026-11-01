@@ -4,6 +4,7 @@ description: Grand Prix de la Semaine de la Critique à Cannes en 2026, La Gradi
 publishedAt: 2026-06-28
 language: fr
 topic: cinema
+cannes: 2026
 director: Marine Atlan
 publisher: Le Blog du Cinéma
 link: https://www.leblogducinema.com/critique-film/la-gradiva-65539467/

@@ -80,6 +80,8 @@ The Cinema page shows recently watched films and the latest reviews from the [Le
 
 The RSS feed only carries the last 50 diary entries, so older reviews come from Letterboxd's data export (Settings → Data → Export your data). To refresh them, for example after editing an old review, run `npm run import:reviews -- ~/Downloads/letterboxd-<user>-<date>.zip` and commit `src/data/letterboxd-reviews.json`. The export has no spoiler flag: set `"spoilers": true` by hand on any review whose excerpt should stay hidden.
 
+Imported reviews also get their own page at `/reviews/<slug>/`, and those labelled "Cannes YYYY" in their first line are grouped by edition on `/cannes/`. To list a post on that page too, add `cannes: 2027` (the edition's year) to its frontmatter. The number of films seen per edition is set by hand in `src/pages/cannes.astro`.
+
 The relay runs on Cloudflare, not GitHub Pages, so pushing to `main` does not update it. After changing `workers/letterboxd/` or `src/lib/letterboxd.ts`, run `npx wrangler@4 login` once, then `npm run deploy:relay`. Its URL is `letterboxdRelay` in `src/data/profile.ts`.
 
 ## Deployment

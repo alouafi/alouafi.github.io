@@ -14,6 +14,8 @@ const writing = defineCollection({
     authors: z.array(z.string()).optional(),
     director: z.string().optional(),
     publisher: z.string().optional(),
+    // Year of the Festival de Cannes this post covers; lists it on /cannes/.
+    cannes: z.number().int().optional(),
     // Image shown in link previews when the post is shared.
     cover: z
       .object({

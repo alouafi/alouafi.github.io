@@ -1,0 +1,153 @@
+---
+import backlog from "../data/letterboxd-reviews.json";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  reviewHref,
+  stars,
+  toReview,
+  type ReviewSource,
+} from "../lib/letterboxd";
+import { getPublishedPosts, isExternal, postHref } from "../lib/posts";
+
+// Films seen per edition are counted by hand: the Letterboxd diary also holds
+// films watched at home during the festival, so it can't give an exact count.
+const editions = [
+  { year: 2026, number: 79, dates: "12 – 23 mai 2026", films: 35 },
+  { year: 2025, number: 78, dates: "13 – 24 mai 2025", films: null },
+  { year: 2024, number: 77, dates: "14 – 25 mai 2024", films: null },
+];
+
+const posts = await getPublishedPosts();
+const reviews = (backlog as ReviewSource[]).map((source) => ({
+  source,
+  review: toReview(source),
+}));
+
+const sections = editions.map((edition) => ({
+  ...edition,
+  posts: posts.filter((post) => post.data.cannes === edition.year),
+  // In the order the films were seen.
+  reviews: reviews
+    .filter(({ review }) => review.label === `Cannes ${edition.year}`)
+    .sort(
+      (a, b) =>
+        (a.source.watchedDate ?? a.source.date).localeCompare(
+          b.source.watchedDate ?? b.source.date,
+        ) || a.source.title.localeCompare(b.source.title),
+    ),
+}));
+
+const reviewCount = sections.reduce((n, s) => n + s.reviews.length, 0);
+const postCount = sections.reduce((n, s) => n + s.posts.length, 0);
+const latestFilms = sections.find((section) => section.films)?.films;
+const plural = (count: number, word: string) =>
+  `${count} ${word}${count > 1 ? "s" : ""}`;
+---
+
+<BaseLayout
+  title="Cannes, 2024 – 2026 — Aïmen Louafi"
+  description="Trois éditions du Festival de Cannes, de 2024 à 2026 : critiques, bilan et articles d’Aïmen Louafi."
+  current="cinema"
+  lang="fr"
+  image="/assets/img/writing/cannes-2026/cover.jpg"
+  imageAlt="Aïmen Louafi en costume sombre sur les marches rouges du Palais des festivals, à Cannes"
+>
+  <main class="writing-main" id="main">
+    <header class="writing-hero reveal">
+      <p class="eyebrow">Festival de Cannes · 2024 – 2026</p>
+      <h1>
+        Cannes<span class="accent-mark">.</span>
+      </h1>
+      <p class="writing-hero-copy">
+        Trois éditions du Festival, de 2024 à 2026, et ce que j’en ai écrit :
+        des critiques sur place ou au retour, un bilan de l’édition 2026 et des
+        articles pour Le Blog du Cinéma.
+      </p>
+    </header>
+
+    <dl class="cannes-stats">
+      <div>
+        <dt>Éditions</dt>
+        <dd>{sections.length}</dd>
+      </div>
+      <div>
+        <dt>Critiques</dt>
+        <dd>{reviewCount}</dd>
+      </div>
+      <div>
+        <dt>Articles</dt>
+        <dd>{postCount}</dd>
+      </div>
+      {latestFilms && (
+        <div>
+          <dt>Films vus en {sections[0]?.year}</dt>
+          <dd>{latestFilms}</dd>
+        </div>
+      )}
+    </dl>
+
+    {sections.map((edition) => (
+      <section
+        class="edition"
+        id={`cannes-${edition.year}`}
+        aria-labelledby={`cannes-${edition.year}-title`}
+      >
+        <header class="section-head">
+          <h2 id={`cannes-${edition.year}-title`}>
+            {edition.year}{" "}
+            <span class="edition-number">
+              {edition.number}
+              <sup>e</sup> édition
+            </span>
+          </h2>
+          <p class="edition-meta">
+            {[
+              edition.dates,
+              edition.films && plural(edition.films, "film"),
+              plural(edition.reviews.length, "critique"),
+            ]
+              .filter(Boolean)
+              .join(" · ")}
+          </p>
+        </header>
+
+        {edition.posts.length > 0 && (
+          <ul class="edition-posts">
+            {edition.posts.map((post) => {
+              const href = postHref(post);
+              const external = isExternal(href);
+              return (
+                <li>
+                  <a href={href} rel={external ? "noreferrer" : undefined}>
+                    {post.data.title}
+                  </a>
+                  <span>
+                    {post.data.publisher
+                      ? `${post.data.publisher} ↗`
+                      : "Lire le bilan →"}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+
+        <ol class="edition-reviews">
+          {edition.reviews.map(({ source, review }) => (
+            <li>
+              <a href={reviewHref(review)}>{source.title}</a>
+              {source.rating !== null && (
+                <span class="edition-rating">
+                  <span aria-hidden="true">{stars(source.rating)}</span>
+                  <span class="visually-hidden">
+                    , {String(source.rating).replace(".", ",")} sur 5
+                  </span>
+                </span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </main>
+</BaseLayout>
