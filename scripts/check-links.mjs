@@ -31,7 +31,12 @@ const pages = walk(outputDirectory).filter((path) => path.endsWith(".html"));
 const failures = [];
 
 for (const page of pages) {
-  const html = readFileSync(page, "utf8");
+  // Inline script bodies may contain markup templates, not page links; keep
+  // the opening tag so a script's own src is still checked.
+  const html = readFileSync(page, "utf8").replace(
+    /(<script\b[^>]*>)[\s\S]*?(<\/script>)/g,
+    "$1$2",
+  );
   const references = html.matchAll(/(?:href|src)="([^"]+)"/g);
 
   for (const [, target] of references) {
