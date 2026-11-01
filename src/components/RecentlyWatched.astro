@@ -1,0 +1,63 @@
+---
+import { profile } from "../data/profile";
+import { renderFilms, type Film } from "../lib/letterboxd";
+
+// A build-time snapshot, so the strip shows up without JavaScript. The script
+// below swaps in the live diary from the relay on every visit.
+const loadFilms = async (): Promise<Film[]> => {
+  try {
+    const response = await fetch(profile.letterboxdRelay, {
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!response.ok) return [];
+    const { films } = (await response.json()) as { films?: Film[] };
+    return films ?? [];
+  } catch {
+    return [];
+  }
+};
+
+const films = await loadFilms();
+---
+
+<section
+  class="watched"
+  aria-labelledby="watched-title"
+  hidden={films.length === 0}
+  data-watched
+  data-relay={profile.letterboxdRelay}
+  data-films={JSON.stringify(films)}
+>
+  <header class="section-head">
+    <h2 id="watched-title">Recently watched</h2>
+    <a class="text-link" href={profile.links.letterboxd} rel="me noreferrer">
+      Letterboxd ↗
+    </a>
+  </header>
+  <ol class="film-strip" data-film-strip set:html={renderFilms(films)} />
+</section>
+
+<script>
+  import { renderFilms, type Film } from "../lib/letterboxd";
+
+  const section = document.querySelector<HTMLElement>("[data-watched]");
+  const strip = section?.querySelector<HTMLElement>("[data-film-strip]");
+  const relay = section?.dataset.relay;
+
+  if (section && strip && relay) {
+    fetch(relay)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data: { films?: Film[] } | null) => {
+        const films = data?.films;
+        if (!films?.length) return;
+        const latest = JSON.stringify(films);
+        if (latest !== section.dataset.films) {
+          strip.innerHTML = renderFilms(films);
+          section.dataset.films = latest;
+        }
+        section.hidden = false;
+      })
+      // Keep the build-time snapshot if the relay is unreachable.
+      .catch(() => {});
+  }
+</script>

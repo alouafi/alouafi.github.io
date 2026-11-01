@@ -74,6 +74,12 @@ draft: false
 
 Allowed languages are `en` and `fr`. Allowed topics are `cinema`, `tech`, and `notes`; they are listed at `/cinema/`, `/tech/`, and `/other/`, each with its own feed (`/cinema/rss.xml`, and so on) next to the full `/rss.xml`. Set `draft: true` to keep an entry out of the site and RSS feed.
 
+## Letterboxd strip
+
+The Cinema page shows recently watched films from the [Letterboxd](https://letterboxd.com/endtell/) diary. Letterboxd's RSS feed can't be read from a browser (it sends no CORS headers), so a small Cloudflare Worker in `workers/letterboxd/` relays it as JSON and keeps a copy for five minutes. The page includes a snapshot taken at build time and replaces it with the relay's list on every visit; if the relay is unreachable, the snapshot stays.
+
+The relay runs on Cloudflare, not GitHub Pages, so pushing to `main` does not update it. After changing `workers/letterboxd/` or `src/lib/letterboxd.ts`, run `npx wrangler@4 login` once, then `npm run deploy:relay`. Its URL is `letterboxdRelay` in `src/data/profile.ts`.
+
 ## Deployment
 
 Pushes to `main` run `.github/workflows/deploy.yml`, which type-checks, builds, and deploys `dist/` to GitHub Pages. The canonical site URL is configured in `astro.config.mjs`.
