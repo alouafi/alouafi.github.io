@@ -1,13 +1,17 @@
 // Relays the Letterboxd diary feed as JSON with CORS headers, so the Cinema
-// page can show recent films without waiting for a site rebuild.
+// page can show recent films and reviews without waiting for a site rebuild.
 import { profile } from "../../src/data/profile";
-import { parseLetterboxdFeed, type Film } from "../../src/lib/letterboxd";
+import {
+  parseLetterboxdFeed,
+  type Film,
+  type Review,
+} from "../../src/lib/letterboxd";
 
 const feedUrl = `${profile.links.letterboxd}rss/`;
 // Each worker instance asks Letterboxd at most once every five minutes.
 const freshForMs = 5 * 60 * 1000;
 
-let latest: { films: Film[]; fetchedAt: string } | undefined;
+let latest: { films: Film[]; reviews: Review[]; fetchedAt: string } | undefined;
 let latestAt = 0;
 
 const json = (body: unknown, status = 200) =>
@@ -39,9 +43,9 @@ export default {
       });
       if (!response.ok)
         throw new Error(`Letterboxd answered ${response.status}`);
-      const films = parseLetterboxdFeed(await response.text());
+      const { films, reviews } = parseLetterboxdFeed(await response.text());
       if (films.length === 0) throw new Error("The feed has no diary entries");
-      latest = { films, fetchedAt: new Date().toISOString() };
+      latest = { films, reviews, fetchedAt: new Date().toISOString() };
       latestAt = Date.now();
       return json(latest);
     } catch (error) {

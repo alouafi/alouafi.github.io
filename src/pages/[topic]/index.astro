@@ -1,5 +1,5 @@
 ---
-import RecentlyWatched from "../../components/RecentlyWatched.astro";
+import Letterboxd from "../../components/Letterboxd.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   formatDate,
@@ -136,6 +136,6 @@ const feed = { title: `Aïmen Louafi — ${label}`, href: topicFeedHref(topic) }
       </p>
     </section>
 
-    {topic === "cinema" && <RecentlyWatched />}
+    {topic === "cinema" && <Letterboxd />}
   </main>
 </BaseLayout>

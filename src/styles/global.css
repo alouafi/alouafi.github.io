@@ -194,6 +194,10 @@ button {
 .post-byline,
 .reel-meta,
 .film-meta,
+.review-label,
+.review-year,
+.review-meta,
+.review-more,
 .article-meta,
 .portrait figcaption,
 .article-figure figcaption,
@@ -789,8 +793,9 @@ button {
   text-align: center;
 }
 
-/* Letterboxd diary on the Cinema page */
-.watched {
+/* Letterboxd diary and reviews on the Cinema page */
+.watched,
+.reviews {
   margin-top: clamp(4rem, 9vw, 6rem);
 }
 
@@ -852,6 +857,88 @@ button {
 .film-rating {
   color: var(--accent);
   letter-spacing: 0;
+}
+
+.review-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.review p {
+  margin: 0;
+}
+
+.review-label {
+  color: var(--accent);
+}
+
+.review-title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.review-title a {
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.review-title a::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.review:hover .review-title a {
+  color: var(--accent);
+}
+
+.review-year {
+  margin-left: 0.35rem;
+  color: var(--faint);
+  vertical-align: 0.35em;
+}
+
+.review-meta {
+  display: flex;
+  gap: 1rem;
+  color: var(--muted);
+}
+
+.review-excerpt {
+  color: var(--body-ink);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.review-spoiler {
+  color: var(--faint);
+  font-style: italic;
+}
+
+.review-more {
+  color: var(--muted);
+  transition: color 160ms ease;
+}
+
+.review:hover .review-more {
+  color: var(--ink);
 }
 
 /* Article */
@@ -1302,6 +1389,10 @@ button {
 
   .film {
     scroll-snap-align: start;
+  }
+
+  .review-list {
+    grid-template-columns: 1fr;
   }
 
   .reel-item a {

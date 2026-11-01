@@ -1,0 +1,143 @@
+---
+import { profile } from "../data/profile";
+import backlog from "../data/letterboxd-reviews.json";
+import {
+  latestReviews,
+  renderFilms,
+  renderReviews,
+  toReview,
+  type Film,
+  type Review,
+  type ReviewSource,
+} from "../lib/letterboxd";
+
+// A build-time snapshot, so both sections show up without JavaScript. The
+// script below swaps in the live diary from the relay on every visit.
+const loadLive = async (): Promise<{ films: Film[]; reviews: Review[] }> => {
+  try {
+    const response = await fetch(profile.letterboxdRelay, {
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!response.ok) return { films: [], reviews: [] };
+    const data = (await response.json()) as {
+      films?: Film[];
+      reviews?: Review[];
+    };
+    return { films: data.films ?? [], reviews: data.reviews ?? [] };
+  } catch {
+    return { films: [], reviews: [] };
+  }
+};
+
+const live = await loadLive();
+const films = live.films;
+// Older reviews come from the Letterboxd export; see npm run import:reviews.
+const reviews = latestReviews([
+  (backlog as ReviewSource[]).map(toReview),
+  live.reviews,
+]);
+---
+
+<div
+  data-letterboxd
+  data-relay={profile.letterboxdRelay}
+  data-films={JSON.stringify(films)}
+  data-reviews={JSON.stringify(reviews)}
+>
+  <section
+    class="watched"
+    aria-labelledby="watched-title"
+    hidden={films.length === 0}
+    data-watched
+  >
+    <header class="section-head">
+      <h2 id="watched-title">Recently watched</h2>
+      <a class="text-link" href={profile.links.letterboxd} rel="me noreferrer">
+        Letterboxd ↗
+      </a>
+    </header>
+    <ol class="film-strip" data-film-strip set:html={renderFilms(films)} />
+  </section>
+
+  <section
+    class="reviews"
+    aria-labelledby="reviews-title"
+    hidden={reviews.length === 0}
+    data-reviews-section
+  >
+    <header class="section-head">
+      <h2 id="reviews-title">Latest reviews</h2>
+      <a
+        class="text-link"
+        href={`${profile.links.letterboxd}reviews/`}
+        rel="noreferrer"
+      >
+        All reviews ↗
+      </a>
+    </header>
+    <ol
+      class="review-list"
+      data-review-list
+      set:html={renderReviews(reviews)}
+    />
+  </section>
+</div>
+
+<script>
+  import {
+    latestReviews,
+    renderFilms,
+    renderReviews,
+    type Film,
+    type Review,
+  } from "../lib/letterboxd";
+
+  const root = document.querySelector<HTMLElement>("[data-letterboxd]");
+  const relay = root?.dataset.relay;
+
+  const update = (
+    section: HTMLElement | null | undefined,
+    list: HTMLElement | null | undefined,
+    key: "films" | "reviews",
+    latest: string,
+    html: () => string,
+  ) => {
+    if (!root || !section || !list) return;
+    if (latest !== root.dataset[key]) {
+      list.innerHTML = html();
+      root.dataset[key] = latest;
+    }
+    section.hidden = false;
+  };
+
+  if (root && relay) {
+    fetch(relay)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data: { films?: Film[]; reviews?: Review[] } | null) => {
+        const films = data?.films ?? [];
+        if (films.length > 0) {
+          update(
+            root.querySelector<HTMLElement>("[data-watched]"),
+            root.querySelector<HTMLElement>("[data-film-strip]"),
+            "films",
+            JSON.stringify(films),
+            () => renderFilms(films),
+          );
+        }
+        // Merge live reviews with the snapshot, which includes the backlog.
+        const snapshot = JSON.parse(root.dataset.reviews ?? "[]") as Review[];
+        const reviews = latestReviews([snapshot, data?.reviews ?? []]);
+        if (reviews.length > 0) {
+          update(
+            root.querySelector<HTMLElement>("[data-reviews-section]"),
+            root.querySelector<HTMLElement>("[data-review-list]"),
+            "reviews",
+            JSON.stringify(reviews),
+            () => renderReviews(reviews),
+          );
+        }
+      })
+      // Keep the build-time snapshot if the relay is unreachable.
+      .catch(() => {});
+  }
+</script>

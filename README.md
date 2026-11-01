@@ -76,7 +76,9 @@ Allowed languages are `en` and `fr`. Allowed topics are `cinema`, `tech`, and `n
 
 ## Letterboxd strip
 
-The Cinema page shows recently watched films from the [Letterboxd](https://letterboxd.com/endtell/) diary. Letterboxd's RSS feed can't be read from a browser (it sends no CORS headers), so a small Cloudflare Worker in `workers/letterboxd/` relays it as JSON and keeps a copy for five minutes. The page includes a snapshot taken at build time and replaces it with the relay's list on every visit; if the relay is unreachable, the snapshot stays.
+The Cinema page shows recently watched films and the latest reviews from the [Letterboxd](https://letterboxd.com/endtell/) diary. Letterboxd's RSS feed can't be read from a browser (it sends no CORS headers), so a small Cloudflare Worker in `workers/letterboxd/` relays it as JSON and keeps a copy for five minutes. The page includes a snapshot taken at build time and replaces it with the relay's list on every visit; if the relay is unreachable, the snapshot stays.
+
+The RSS feed only carries the last 50 diary entries, so older reviews come from Letterboxd's data export (Settings → Data → Export your data). To refresh them, for example after editing an old review, run `npm run import:reviews -- ~/Downloads/letterboxd-<user>-<date>.zip` and commit `src/data/letterboxd-reviews.json`. The export has no spoiler flag: set `"spoilers": true` by hand on any review whose excerpt should stay hidden.
 
 The relay runs on Cloudflare, not GitHub Pages, so pushing to `main` does not update it. After changing `workers/letterboxd/` or `src/lib/letterboxd.ts`, run `npx wrangler@4 login` once, then `npm run deploy:relay`. Its URL is `letterboxdRelay` in `src/data/profile.ts`.
 
