@@ -1,4 +1,5 @@
 ---
+import filmImages from "../data/film-images.json";
 import backlog from "../data/letterboxd-reviews.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { reviewHref, toReview, type ReviewSource } from "../lib/letterboxd";
@@ -39,6 +40,13 @@ const photoAlt =
   "Aïmen Louafi en costume sombre et lunettes de soleil sur les marches rouges du Palais des Festivals, sous l’affiche de Cannes 2026";
 // A heart marks the films rated 3.5 out of 5 or more.
 const loved = (rating: number | null) => rating !== null && rating >= 3.5;
+// Small TMDB posters; see npm run fetch:film-images.
+const poster = (slug: string | undefined) => {
+  const path = (
+    filmImages as Record<string, { poster?: string | null } | undefined>
+  )[slug ?? ""]?.poster;
+  return path ? `https://image.tmdb.org/t/p/w92${path}` : null;
+};
 const fold = (title: string) =>
   title
     .normalize("NFKD")
@@ -181,6 +189,18 @@ const plural = (count: number, word: string) =>
         <ol class="edition-reviews">
           {edition.reviews.map(({ source, review }) => (
             <li>
+              <span class="edition-poster">
+                {poster(source.slug) && (
+                  <img
+                    src={poster(source.slug)}
+                    alt=""
+                    width="92"
+                    height="138"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+              </span>
               <a href={reviewHref(review)}>
                 {source.title}
                 {loved(source.rating) && (
