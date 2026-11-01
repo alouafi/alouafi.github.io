@@ -1,0 +1,67 @@
+---
+import { directedBy, loved, posterUrl } from "../lib/films";
+import { reviewHref, type Review, type ReviewSource } from "../lib/letterboxd";
+
+interface Props {
+  items: { source: ReviewSource; review: Review }[];
+  lang: "en" | "fr";
+  // Show context labels such as "Cannes 2026" next to the director.
+  showLabels?: boolean;
+}
+
+const { items, lang, showLabels = false } = Astro.props;
+const french = lang === "fr";
+---
+
+<ol class="review-rows">
+  {items.map(({ source, review }) => {
+    const poster = posterUrl(source.slug);
+    const director = directedBy(source.slug);
+    return (
+      <li>
+        <span class="row-poster">
+          {poster && (
+            <img
+              src={poster}
+              alt=""
+              width="92"
+              height="138"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+        </span>
+        <div class="row-film">
+          <a href={reviewHref(review)}>
+            {source.title}
+            {loved(source.rating) && (
+              <>
+                <span class="row-heart" aria-hidden="true">
+                  ♥
+                </span>
+                <span class="visually-hidden">
+                  {french ? ", coup de cœur" : ", a favourite"}
+                </span>
+              </>
+            )}
+          </a>
+          {(director || (showLabels && review.label)) && (
+            <span class="row-director">
+              {director}
+              {showLabels && review.label && (
+                <span class="row-tag">{review.label}</span>
+              )}
+            </span>
+          )}
+        </div>
+        <span class="row-read" aria-hidden="true">
+          {french ? "Lire" : "Read"}
+          <span class="row-read-long">
+            {french ? " la critique" : " the review"}
+          </span>{" "}
+          →
+        </span>
+      </li>
+    );
+  })}
+</ol>

@@ -1,0 +1,91 @@
+---
+import backlog from "../data/letterboxd-reviews.json";
+import { directedBy, loved, posterUrl } from "../lib/films";
+import type { ReviewSource } from "../lib/letterboxd";
+import {
+  formatDate,
+  isExternal,
+  postHref,
+  readingMinutes,
+  type Post,
+} from "../lib/posts";
+
+interface Props {
+  posts: Post[];
+  lang: "en" | "fr";
+}
+
+const { posts, lang } = Astro.props;
+const french = lang === "fr";
+// A film article takes its heart from the rating of the film's review, or
+// from its `favourite` frontmatter when the film has no review.
+const ratings = new Map(
+  (backlog as ReviewSource[]).map((review) => [review.slug, review.rating]),
+);
+---
+
+<ul class="article-rows">
+  {posts.map((post) => {
+    const href = postHref(post);
+    const external = isExternal(href);
+    const poster = post.data.poster ?? posterUrl(post.data.film, "w154");
+    const director = post.data.director ?? directedBy(post.data.film);
+    const minutes = readingMinutes(post.body);
+    return (
+      <li>
+        <span class="row-poster">
+          {poster && (
+            <img
+              src={poster}
+              alt=""
+              width="154"
+              height="231"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+        </span>
+        <div class="row-film">
+          <a href={href} rel={external ? "noreferrer" : undefined}>
+            <span lang={post.data.language}>{post.data.title}</span>
+            {(post.data.favourite ||
+              loved(ratings.get(post.data.film ?? ""))) && (
+              <>
+                <span class="row-heart" aria-hidden="true">
+                  ♥
+                </span>
+                <span class="visually-hidden">
+                  {french ? ", coup de cœur" : ", a favourite"}
+                </span>
+              </>
+            )}
+            {external && post.data.publisher && (
+              <span class="visually-hidden">
+                {french
+                  ? `, publié dans ${post.data.publisher}`
+                  : `, published in ${post.data.publisher}`}
+              </span>
+            )}
+          </a>
+          {director && <span class="row-director">{director}</span>}
+        </div>
+        <span class="row-source">
+          <span>
+            {external
+              ? `${post.data.publisher ?? (french ? "Lien externe" : "External")} ↗`
+              : french
+                ? `Lire · ${minutes} min →`
+                : `${minutes} min →`}
+          </span>
+          <time
+            class="row-date"
+            datetime={post.data.publishedAt.toISOString()}
+            lang={post.data.language}
+          >
+            {formatDate(post)}
+          </time>
+        </span>
+      </li>
+    );
+  })}
+</ul>

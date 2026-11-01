@@ -6,6 +6,7 @@ language: fr
 topic: cinema
 cannes: 2025
 director: Bi Gan
+film: resurrection-2025
 publisher: Le Blog du Cinéma
 link: https://www.leblogducinema.com/critique-film/resurrection-2025-65529086/
 draft: false

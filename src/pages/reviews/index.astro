@@ -1,0 +1,91 @@
+---
+import ReviewRows from "../../components/ReviewRows.astro";
+import backlog from "../../data/letterboxd-reviews.json";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { loved } from "../../lib/films";
+import { toReview, type ReviewSource } from "../../lib/letterboxd";
+
+// Newest first, grouped by the year each review was written.
+const reviews = (backlog as ReviewSource[])
+  .map((source) => ({ source, review: toReview(source) }))
+  .sort(
+    (a, b) =>
+      b.source.date.localeCompare(a.source.date) ||
+      a.source.title.localeCompare(b.source.title),
+  );
+const years = [
+  ...new Set(reviews.map(({ source }) => source.date.slice(0, 4))),
+];
+const byYear = years.map((year) => ({
+  year,
+  items: reviews.filter(({ source }) => source.date.startsWith(year)),
+}));
+const lovedCount = (items: typeof reviews) =>
+  items.filter(({ source }) => loved(source.rating)).length;
+const cannesCount = reviews.filter(({ review }) =>
+  review.label?.startsWith("Cannes"),
+).length;
+const plural = (count: number, word: string) =>
+  `${count} ${word}${count === 1 ? "" : "s"}`;
+---
+
+<BaseLayout
+  title="Reviews — Aïmen Louafi"
+  description={`${reviews.length} film reviews by Aïmen Louafi, mostly in French, from ${years.at(-1)} to ${years[0]}.`}
+  current="cinema"
+>
+  <main class="writing-main" id="main">
+    <header class="writing-hero reveal">
+      <p class="eyebrow">Cinema / Reviews</p>
+      <h1>
+        Reviews<span class="accent-mark">.</span>
+      </h1>
+      <p class="writing-hero-copy">
+        Every review I’ve written on Letterboxd since {years.at(-1)}, most of
+        them in French. A heart marks the films I rated 3.5 out of 5 or more.
+      </p>
+    </header>
+
+    <dl class="stats-row">
+      <div>
+        <dt>Reviews</dt>
+        <dd>{reviews.length}</dd>
+      </div>
+      <div>
+        <dt>Favourites</dt>
+        <dd>{lovedCount(reviews)}</dd>
+      </div>
+      <div>
+        <dt>From Cannes</dt>
+        <dd>
+          <a href="/cannes/">{cannesCount}</a>
+        </dd>
+      </div>
+      <div>
+        <dt>Since</dt>
+        <dd>{years.at(-1)}</dd>
+      </div>
+    </dl>
+
+    {byYear.map(({ year, items }) => (
+      <section
+        class="year-section"
+        id={`reviews-${year}`}
+        aria-labelledby={`reviews-${year}-title`}
+      >
+        <header class="section-head">
+          <h2 id={`reviews-${year}-title`}>{year}</h2>
+          <p class="year-meta">
+            {[
+              plural(items.length, "review"),
+              lovedCount(items) > 0 && plural(lovedCount(items), "favourite"),
+            ]
+              .filter(Boolean)
+              .join(" · ")}
+          </p>
+        </header>
+        <ReviewRows items={items} lang="en" showLabels />
+      </section>
+    ))}
+  </main>
+</BaseLayout>

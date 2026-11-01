@@ -5,6 +5,7 @@ publishedAt: 2026-02-05
 language: fr
 topic: cinema
 director: Kelly Reichardt
+film: the-mastermind-2025
 publisher: Le Blog du Cinéma
 link: https://www.leblogducinema.com/critique-film/the-mastermind-critique-avis-kelly-reichardt-65537678/
 draft: false

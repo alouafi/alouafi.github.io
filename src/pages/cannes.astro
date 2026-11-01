@@ -1,8 +1,10 @@
 ---
-import films from "../data/films.json";
+import ArticleRows from "../components/ArticleRows.astro";
+import ReviewRows from "../components/ReviewRows.astro";
 import backlog from "../data/letterboxd-reviews.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { reviewHref, toReview, type ReviewSource } from "../lib/letterboxd";
+import { loved } from "../lib/films";
+import { toReview, type ReviewSource } from "../lib/letterboxd";
 import { getPublishedPosts, isExternal, postHref } from "../lib/posts";
 
 // Films seen per edition are counted by hand: the Letterboxd diary also holds
@@ -34,39 +36,14 @@ const sections = editions.map((edition) => ({
 }));
 
 const reviewCount = sections.reduce((n, s) => n + s.reviews.length, 0);
-const postCount = sections.reduce((n, s) => n + s.posts.length, 0);
+// Pieces published by media outlets, as opposed to essays on this site.
+const pressCount = sections.reduce(
+  (n, s) => n + s.posts.filter((post) => isExternal(postHref(post))).length,
+  0,
+);
 const latestFilms = sections.find((section) => section.films)?.films;
 const photoAlt =
   "Aïmen Louafi en costume sombre et lunettes de soleil sur les marches rouges du Palais des Festivals, sous l’affiche de Cannes 2026";
-// A heart marks the films rated 3.5 out of 5 or more.
-const loved = (rating: number | null) => rating !== null && rating >= 3.5;
-// Small TMDB posters; see npm run fetch:films.
-const film = (slug: string | undefined) =>
-  (
-    films as Record<
-      string,
-      { poster?: string | null; directors?: string[] } | undefined
-    >
-  )[slug ?? ""];
-const poster = (slug: string | undefined, size = "w92") => {
-  const path = film(slug)?.poster;
-  return path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
-};
-const directorList = new Intl.ListFormat("fr", { type: "conjunction" });
-const directedBy = (slug: string | undefined) => {
-  const names = film(slug)?.directors ?? [];
-  return names.length > 0 ? directorList.format(names) : null;
-};
-const fold = (title: string) =>
-  title
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
-// Published articles carry no rating or poster; they take them from the
-// Letterboxd review of the same film in the same edition.
-const articleReview = (title: string, reviews: { source: ReviewSource }[]) =>
-  reviews.find(({ source }) => fold(source.title) === fold(title))?.source;
 const lovedCount = (count: number) =>
   count > 0 && `${count} coup${count > 1 ? "s" : ""} de cœur`;
 const plural = (count: number, word: string) =>
@@ -94,7 +71,7 @@ const plural = (count: number, word: string) =>
       </p>
     </header>
 
-    <dl class="cannes-stats">
+    <dl class="stats-row">
       <div>
         <dt>Éditions</dt>
         <dd>{sections.length}</dd>
@@ -104,8 +81,8 @@ const plural = (count: number, word: string) =>
         <dd>{reviewCount}</dd>
       </div>
       <div>
-        <dt>Articles</dt>
-        <dd>{postCount}</dd>
+        <dt>Publications presse</dt>
+        <dd>{pressCount}</dd>
       </div>
       {latestFilms && (
         <div>
@@ -139,7 +116,7 @@ const plural = (count: number, word: string) =>
 
     {sections.map((edition) => (
       <section
-        class="edition"
+        class="year-section"
         id={`cannes-${edition.year}`}
         aria-labelledby={`cannes-${edition.year}-title`}
       >
@@ -151,7 +128,7 @@ const plural = (count: number, word: string) =>
               <sup>e</sup> édition
             </span>
           </h2>
-          <p class="edition-meta">
+          <p class="year-meta">
             {[
               edition.dates,
               edition.films && plural(edition.films, "film"),
@@ -167,92 +144,10 @@ const plural = (count: number, word: string) =>
         </header>
 
         {edition.posts.length > 0 && (
-          <ul class="edition-posts">
-            {edition.posts.map((post) => {
-              const href = postHref(post);
-              const external = isExternal(href);
-              const review = articleReview(post.data.title, edition.reviews);
-              const image = post.data.poster ?? poster(review?.slug, "w154");
-              return (
-                <li>
-                  <span class="edition-poster">
-                    {image && (
-                      <img
-                        src={image}
-                        alt=""
-                        width="154"
-                        height="231"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    )}
-                  </span>
-                  <div class="edition-film">
-                    <a href={href} rel={external ? "noreferrer" : undefined}>
-                      {post.data.title}
-                      {loved(review?.rating ?? null) && (
-                        <>
-                          <span class="edition-heart" aria-hidden="true">
-                            ♥
-                          </span>
-                          <span class="visually-hidden">, coup de cœur</span>
-                        </>
-                      )}
-                    </a>
-                    {post.data.director && (
-                      <span class="edition-director">{post.data.director}</span>
-                    )}
-                  </div>
-                  <span class="edition-source">
-                    {post.data.publisher
-                      ? `${post.data.publisher} ↗`
-                      : "Lire le bilan →"}
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
+          <ArticleRows posts={edition.posts} lang="fr" />
         )}
 
-        <ol class="edition-reviews">
-          {edition.reviews.map(({ source, review }) => (
-            <li>
-              <span class="edition-poster">
-                {poster(source.slug) && (
-                  <img
-                    src={poster(source.slug)}
-                    alt=""
-                    width="92"
-                    height="138"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                )}
-              </span>
-              <div class="edition-film">
-                <a href={reviewHref(review)}>
-                  {source.title}
-                  {loved(source.rating) && (
-                    <>
-                      <span class="edition-heart" aria-hidden="true">
-                        ♥
-                      </span>
-                      <span class="visually-hidden">, coup de cœur</span>
-                    </>
-                  )}
-                </a>
-                {directedBy(source.slug) && (
-                  <span class="edition-director">
-                    {directedBy(source.slug)}
-                  </span>
-                )}
-              </div>
-              <span class="edition-read" aria-hidden="true">
-                Lire<span class="edition-read-long"> la critique</span> →
-              </span>
-            </li>
-          ))}
-        </ol>
+        <ReviewRows items={edition.reviews} lang="fr" />
       </section>
     ))}
   </main>

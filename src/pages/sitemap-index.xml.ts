@@ -24,6 +24,7 @@ export async function GET({ site }: { site: URL }) {
     "/",
     ...topics.map(topicHref),
     "/cannes/",
+    "/reviews/",
     ...posts.map((post) => `/writing/${post.id}/`),
     ...(backlog as ReviewSource[]).map((review) => `/reviews/${review.slug}/`),
   ];

@@ -10,6 +10,8 @@
 // To fix a wrong match, replace its entry with the right TMDB id, for example
 // { "tmdbId": 1027273, "match": "manual" }, adding "tmdbType": "tv" for a
 // series, and run the script again. Manual entries are never searched again.
+// The same works for a film with no review, such as one a post links to with
+// its `film` frontmatter: add the entry under any key and run the script.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 
 const token = process.env.TMDB_TOKEN;
@@ -116,20 +118,21 @@ const findMovie = async (title, year) => {
 };
 
 const report = [];
+for (const [key, film] of Object.entries(films)) {
+  if (film.match !== "manual" || !film.tmdbId) continue;
+  if (!refreshAll && film.backdrop !== undefined) continue;
+  const { tmdbId, tmdbType } = film;
+  films[key] = {
+    tmdbId,
+    ...(tmdbType ? { tmdbType } : {}),
+    ...(await details(tmdbId, tmdbType ?? "movie")),
+    match: "manual",
+  };
+}
+
 for (const review of reviews) {
   const current = films[review.slug];
-  if (current?.match === "manual") {
-    if (current.tmdbId && (refreshAll || current.backdrop === undefined)) {
-      const { tmdbId, tmdbType } = current;
-      films[review.slug] = {
-        tmdbId,
-        ...(tmdbType ? { tmdbType } : {}),
-        ...(await details(tmdbId, tmdbType ?? "movie")),
-        match: "manual",
-      };
-    }
-    continue;
-  }
+  if (current?.match === "manual") continue;
   if (current && !refreshAll) continue;
   const { movie, match } = await findMovie(review.title, review.year);
   films[review.slug] = movie

@@ -197,11 +197,11 @@ button {
 .review-label,
 .review-year,
 .review-source,
-.cannes-stats dt,
+.stats-row dt,
 .edition-number,
-.edition-meta,
-.edition-source,
-.edition-read,
+.year-meta,
+.row-source,
+.row-read,
 .review-meta,
 .review-more,
 .article-meta,
@@ -825,6 +825,9 @@ button {
 }
 
 .film-strip {
+  /* Contains the visually hidden labels, which would otherwise be placed
+     outside the horizontal scroller and widen the page on phones. */
+  position: relative;
   display: grid;
   grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 1.5rem 1rem;
@@ -1012,34 +1015,39 @@ button {
   color: var(--accent);
 }
 
-.cannes-stats {
+.stats-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 0;
   border-block: 1px solid var(--line-strong);
 }
 
-.cannes-stats div {
+.stats-row div {
   padding: 1.25rem 0;
 }
 
-.cannes-stats div + div {
+.stats-row div + div {
   padding-left: 1.5rem;
   border-left: 1px solid var(--line);
 }
 
-.cannes-stats dt {
+.stats-row dt {
   color: var(--muted);
 }
 
-.cannes-stats dd {
+.stats-row dd a {
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+}
+
+.stats-row dd {
   margin: 0.4rem 0 0;
   font-family: var(--display);
   font-size: clamp(2.5rem, 5vw, 3.75rem);
   line-height: 1;
 }
 
-.edition {
+.year-section {
   margin-top: clamp(4rem, 9vw, 6rem);
   scroll-margin-top: 2rem;
 }
@@ -1056,21 +1064,21 @@ button {
   text-transform: none;
 }
 
-.edition-meta {
+.year-meta {
   margin: 0;
   color: var(--muted);
   text-align: right;
 }
 
-.edition-posts,
-.edition-reviews {
+.article-rows,
+.review-rows {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.edition-posts li,
-.edition-reviews li {
+.article-rows li,
+.review-rows li {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -1079,46 +1087,66 @@ button {
   border-bottom: 1px solid var(--line);
 }
 
-.edition-posts li {
+.article-rows li {
   align-items: center;
   padding: 1rem 0;
 }
 
-.edition-posts .edition-poster {
+.article-rows .row-poster {
   width: 3.25rem;
 }
 
-.edition-posts a {
+.article-rows a {
   font-family: var(--display);
   font-size: clamp(1.4rem, 2.4vw, 1.9rem);
   line-height: 1.1;
 }
 
-.edition-source {
+.row-source {
+  display: grid;
   flex-shrink: 0;
+  justify-items: end;
+  gap: 0.35rem;
   color: var(--muted);
+  text-align: right;
 }
 
-.edition-reviews {
+.row-date {
+  color: var(--faint);
+}
+
+.row-tag {
+  display: inline-block;
+  margin-left: 0.6rem;
+  white-space: nowrap;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.review-rows {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 3rem;
   margin-top: 0.5rem;
 }
 
-.edition-reviews li {
+.review-rows li {
   align-items: center;
   padding: 0.7rem 0;
 }
 
-.edition-film {
+.row-film {
   display: grid;
   flex: 1;
   gap: 0.2rem;
   min-width: 0;
 }
 
-.edition-director {
+.row-director {
   color: var(--muted);
   font-family: var(--serif);
   font-size: 0.95rem;
@@ -1126,11 +1154,11 @@ button {
   line-height: 1.3;
 }
 
-.edition-posts .edition-director {
+.article-rows .row-director {
   font-size: 1.05rem;
 }
 
-.edition-poster {
+.row-poster {
   flex-shrink: 0;
   width: 2.5rem;
   aspect-ratio: 2 / 3;
@@ -1139,7 +1167,7 @@ button {
   background: var(--stock-raised);
 }
 
-.edition-poster img {
+.row-poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1147,49 +1175,49 @@ button {
   transition: filter 500ms var(--ease);
 }
 
-.edition-posts li:hover .edition-poster img,
-.edition-reviews li:hover .edition-poster img {
+.article-rows li:hover .row-poster img,
+.review-rows li:hover .row-poster img {
   filter: grayscale(0.2) contrast(1.02) brightness(1);
 }
 
-.edition-reviews a {
+.review-rows a {
   font-family: var(--display);
   font-size: 1.25rem;
   line-height: 1.15;
 }
 
-.edition-posts a,
-.edition-reviews a {
+.article-rows a,
+.review-rows a {
   text-decoration: none;
   transition: color 160ms ease;
 }
 
-.edition-posts a::after,
-.edition-reviews a::after {
+.article-rows a::after,
+.review-rows a::after {
   position: absolute;
   inset: 0;
   content: "";
 }
 
-.edition-posts li:hover a,
-.edition-reviews li:hover a {
+.article-rows li:hover a,
+.review-rows li:hover a {
   color: var(--accent);
 }
 
-.edition-heart {
+.row-heart {
   margin-left: 0.4em;
   color: var(--accent);
   font-size: 0.75em;
   vertical-align: 0.1em;
 }
 
-.edition-read {
+.row-read {
   flex-shrink: 0;
   color: var(--muted);
   transition: color 160ms ease;
 }
 
-.edition-reviews li:hover .edition-read {
+.review-rows li:hover .row-read {
   color: var(--ink);
 }
 
@@ -1657,20 +1685,20 @@ button {
     grid-template-columns: 1fr;
   }
 
-  .cannes-stats {
+  .stats-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .cannes-stats div:nth-child(odd) {
+  .stats-row div:nth-child(odd) {
     padding-left: 0;
     border-left: 0;
   }
 
-  .cannes-stats div:nth-child(n + 3) {
+  .stats-row div:nth-child(n + 3) {
     border-top: 1px solid var(--line);
   }
 
-  .edition-reviews {
+  .review-rows {
     grid-template-columns: 1fr;
   }
 
@@ -1695,26 +1723,34 @@ button {
 }
 
 @media (max-width: 560px) {
-  .edition-posts li {
+  .article-rows li {
     flex-wrap: wrap;
     row-gap: 0.5rem;
   }
 
-  .edition-source {
+  .row-source {
+    display: flex;
     flex-basis: 100%;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
     padding-left: 4.25rem;
+    text-align: left;
   }
 
-  .edition-read-long {
+  .row-source > * {
+    white-space: nowrap;
+  }
+
+  .row-read-long {
     display: none;
   }
 
-  .section-head:has(.edition-meta) {
+  .section-head:has(.year-meta) {
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .edition-meta {
+  .year-meta {
     text-align: left;
   }
 

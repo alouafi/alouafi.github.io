@@ -6,6 +6,7 @@ language: fr
 topic: cinema
 cannes: 2026
 director: Marine Atlan
+film: la-gradiva-2026
 publisher: Le Blog du Cinéma
 link: https://www.leblogducinema.com/critique-film/la-gradiva-65539467/
 draft: false

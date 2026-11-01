@@ -45,6 +45,25 @@ const reviews = latestReviews([
   data-reviews={JSON.stringify(reviews)}
 >
   <section
+    class="reviews"
+    aria-labelledby="reviews-title"
+    hidden={reviews.length === 0}
+    data-reviews-section
+  >
+    <header class="section-head">
+      <h2 id="reviews-title">Latest reviews</h2>
+      <a class="text-link" href="/reviews/">
+        All {backlog.length} reviews →
+      </a>
+    </header>
+    <ol
+      class="review-list"
+      data-review-list
+      set:html={renderReviews(reviews)}
+    />
+  </section>
+
+  <section
     class="watched"
     aria-labelledby="watched-title"
     hidden={films.length === 0}
@@ -57,29 +76,6 @@ const reviews = latestReviews([
       </a>
     </header>
     <ol class="film-strip" data-film-strip set:html={renderFilms(films)} />
-  </section>
-
-  <section
-    class="reviews"
-    aria-labelledby="reviews-title"
-    hidden={reviews.length === 0}
-    data-reviews-section
-  >
-    <header class="section-head">
-      <h2 id="reviews-title">Latest reviews</h2>
-      <a
-        class="text-link"
-        href={`${profile.links.letterboxd}reviews/`}
-        rel="noreferrer"
-      >
-        All reviews ↗
-      </a>
-    </header>
-    <ol
-      class="review-list"
-      data-review-list
-      set:html={renderReviews(reviews)}
-    />
   </section>
 </div>
 
