@@ -6,6 +6,9 @@ import {
   getPublishedPosts,
   isExternal,
   postHref,
+  topicHref,
+  topicPages,
+  topics,
 } from "../lib/posts";
 
 const latest = (await getPublishedPosts()).slice(0, 4);
@@ -35,7 +38,9 @@ const topicLabels = { tech: "Work", cinema: "Review", notes: "Other" } as const;
           </p>
         </div>
         <nav class="intro-links" aria-label="Profile links">
-          <a href="/writing/">Writing →</a>
+          {topics.map((topic) => (
+            <a href={topicHref(topic)}>{topicPages[topic].label} →</a>
+          ))}
           <a href={profile.links.linkedin} rel="me noreferrer">
             LinkedIn ↗
           </a>
@@ -72,9 +77,6 @@ const topicLabels = { tech: "Work", cinema: "Review", notes: "Other" } as const;
     <section class="now-showing" aria-labelledby="now-showing-title">
       <header class="section-head">
         <h2 id="now-showing-title">Now showing</h2>
-        <a class="text-link" href="/writing/">
-          All writing →
-        </a>
       </header>
       <ol class="reel-list">
         {latest.map((post) => {

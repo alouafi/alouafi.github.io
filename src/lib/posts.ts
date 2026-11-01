@@ -20,3 +20,16 @@ export const formatDate = (post: Post, month: "short" | "long" = "short") =>
 
 export const readingMinutes = (body = "") =>
   Math.max(1, Math.round(body.split(/\s+/).filter(Boolean).length / 230));
+
+export type Topic = Post["data"]["topic"];
+
+// Each topic has its own listing page, in this order in the navigation.
+export const topicPages = {
+  cinema: { slug: "cinema", label: "Cinema" },
+  tech: { slug: "tech", label: "Tech" },
+  notes: { slug: "other", label: "Other" },
+} as const satisfies Record<Topic, { slug: string; label: string }>;
+
+export const topics = Object.keys(topicPages) as Topic[];
+
+export const topicHref = (topic: Topic) => `/${topicPages[topic].slug}/`;

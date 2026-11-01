@@ -193,7 +193,6 @@ button {
 .post-count,
 .post-byline,
 .reel-meta,
-.filter-button,
 .article-meta,
 .portrait figcaption,
 .article-figure figcaption,
@@ -410,7 +409,7 @@ button {
     border-color 160ms ease;
 }
 
-.intro-links a:first-child {
+.intro-links a:not([rel~="me"]) {
   color: var(--film);
   background: var(--ink);
   border-color: var(--ink);
@@ -693,54 +692,6 @@ button {
   line-height: 1.45;
 }
 
-.filter-bar {
-  display: flex;
-  gap: 0;
-  border: 1px solid var(--line-strong);
-}
-
-.filter-button {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.15rem;
-  border: 0;
-  color: var(--muted);
-  background: transparent;
-  cursor: pointer;
-  transition:
-    color 160ms ease,
-    background 160ms ease;
-}
-
-.filter-button + .filter-button {
-  border-left: 1px solid var(--line-strong);
-}
-
-.filter-count {
-  color: var(--faint);
-  font-variant-numeric: tabular-nums;
-}
-
-.filter-button:hover {
-  color: var(--ink);
-  background: var(--stock-raised);
-}
-
-.filter-button[aria-selected="true"] {
-  color: var(--film);
-  background: var(--ink);
-}
-
-.filter-button[aria-selected="true"] .filter-count {
-  color: var(--accent);
-}
-
-.writing-panel:focus-visible {
-  outline-offset: 0.35rem;
-}
-
 .post-list {
   display: grid;
   margin: 1.5rem 0 0;
@@ -765,10 +716,6 @@ button {
   font-family: var(--mono);
   font-size: 0.68rem;
   content: counter(post, decimal-leading-zero);
-}
-
-.post-row[hidden] {
-  display: none;
 }
 
 .post-date,
@@ -835,10 +782,6 @@ button {
   font-size: clamp(1.4rem, 3vw, 2rem);
   font-style: italic;
   text-align: center;
-}
-
-.empty-state[hidden] {
-  display: none;
 }
 
 /* Article */
@@ -1300,12 +1243,6 @@ button {
 }
 
 @media (max-width: 560px) {
-  .filter-button {
-    flex-direction: column;
-    gap: 0.35rem;
-    padding: 0.85rem 0.5rem;
-  }
-
   .article-meta {
     gap: 0.5rem 1.5rem;
   }

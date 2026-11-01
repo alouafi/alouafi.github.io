@@ -1,4 +1,5 @@
 import { getCollection } from "astro:content";
+import { topicHref, topics } from "../lib/posts";
 
 const escapeXml = (value: string) =>
   value.replace(/[<>&'\"]/g, (character) => {
@@ -19,7 +20,7 @@ export async function GET({ site }: { site: URL }) {
   );
   const paths = [
     "/",
-    "/writing/",
+    ...topics.map(topicHref),
     ...posts.map((post) => `/writing/${post.id}/`),
   ];
   const urls = paths

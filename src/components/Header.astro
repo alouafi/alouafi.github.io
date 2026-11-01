@@ -1,8 +1,9 @@
 ---
 import { profile } from "../data/profile";
+import { topicHref, topicPages, topics, type Topic } from "../lib/posts";
 
 interface Props {
-  current?: "home" | "writing" | undefined;
+  current?: "home" | Topic | undefined;
 }
 
 const { current } = Astro.props;
@@ -29,12 +30,14 @@ const { current } = Astro.props;
     <span class="menu-glyph" aria-hidden="true"></span>
   </button>
   <nav class="site-nav" id="site-nav" aria-label="Primary" data-menu>
-    <a
-      href="/writing/"
-      aria-current={current === "writing" ? "page" : undefined}
-    >
-      Writing
-    </a>
+    {topics.map((topic) => (
+      <a
+        href={topicHref(topic)}
+        aria-current={current === topic ? "page" : undefined}
+      >
+        {topicPages[topic].label}
+      </a>
+    ))}
     <a href={profile.links.linkedin} rel="me noreferrer">
       LinkedIn ↗
     </a>

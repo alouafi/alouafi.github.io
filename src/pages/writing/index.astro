@@ -1,212 +1,33 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import {
-  formatDate,
-  getPublishedPosts,
-  isExternal,
-  postHref,
-} from "../../lib/posts";
+// /writing/ used to list every post behind Work, Cinema, and Other tabs.
+// Keep old links working by sending each tab's hash to its topic page.
+import { topicHref } from "../../lib/posts";
 
-const posts = await getPublishedPosts();
-const languageLabels = { en: "English", fr: "Français" } as const;
-const topicLabels = {
-  tech: "Work",
-  cinema: "Review",
-  notes: "Other",
-} as const;
-const initialTopic = "tech";
-const countFor = (topic: string) =>
-  posts.filter((post) => post.data.topic === topic).length;
-const initialCount = countFor(initialTopic);
+const targets = {
+  work: topicHref("tech"),
+  cinema: topicHref("cinema"),
+  other: topicHref("notes"),
+};
+const fallback = targets.work;
 ---
 
-<BaseLayout
-  title="Writing — Aïmen Louafi"
-  description="Posts by Aïmen Louafi about AI engineering, films, and other things, in English or French."
-  current="writing"
->
-  <main class="writing-main" id="main">
-    <header class="writing-hero reveal">
-      <p class="eyebrow">Roll 02 / Writing</p>
-      <h1>
-        Writing<span class="accent-mark">.</span>
-      </h1>
-      <p class="writing-hero-copy">
-        I write about AI engineering, films, and whatever else I find
-        interesting. Posts may be in English or French, and some link to other
-        sites.
-      </p>
-    </header>
-
-    <div class="filter-bar" role="tablist" aria-label="Writing categories">
-      <button
-        class="filter-button"
-        type="button"
-        id="tab-work"
-        role="tab"
-        data-filter="tech"
-        aria-selected="true"
-        aria-controls="writing-panel"
-      >
-        <span>Work</span>
-        <span class="filter-count">{countFor("tech")}</span>
-      </button>
-      <button
-        class="filter-button"
-        type="button"
-        id="tab-cinema"
-        role="tab"
-        data-filter="cinema"
-        aria-selected="false"
-        aria-controls="writing-panel"
-        tabindex="-1"
-      >
-        <span>Cinema</span>
-        <span class="filter-count">{countFor("cinema")}</span>
-      </button>
-      <button
-        class="filter-button"
-        type="button"
-        id="tab-other"
-        role="tab"
-        data-filter="notes"
-        aria-selected="false"
-        aria-controls="writing-panel"
-        tabindex="-1"
-      >
-        <span>Other</span>
-        <span class="filter-count">{countFor("notes")}</span>
-      </button>
-    </div>
-
-    <section
-      class="writing-panel"
-      id="writing-panel"
-      role="tabpanel"
-      aria-labelledby="tab-work"
-      tabindex="0"
-      data-writing-panel
-    >
-      <ol class="post-list" data-post-list>
-        {posts.map((post) => {
-          const href = postHref(post);
-          const external = isExternal(href);
-          const isPdf = post.data.format === "paper" && href.endsWith(".pdf");
-          return (
-            <li
-              class="post-row reveal"
-              data-post
-              data-language={post.data.language}
-              data-topic={post.data.topic}
-              hidden={post.data.topic !== initialTopic}
-            >
-              <time
-                class="post-date"
-                datetime={post.data.publishedAt.toISOString()}
-              >
-                {formatDate(post)}
-              </time>
-              <div class="post-heading">
-                <h2>
-                  <a href={href} rel={external ? "noreferrer" : undefined}>
-                    {post.data.title}
-                    {isPdf ? (
-                      <span class="visually-hidden"> (PDF)</span>
-                    ) : (
-                      external && (
-                        <span class="visually-hidden"> (external)</span>
-                      )
-                    )}
-                  </a>
-                </h2>
-                {post.data.director && (
-                  <p class="post-byline">Directed by {post.data.director}</p>
-                )}
-                {post.data.authors && (
-                  <p class="post-byline">
-                    With {post.data.authors.slice(1).join(", ")}
-                  </p>
-                )}
-              </div>
-              <span class="post-tags">
-                {languageLabels[post.data.language]} ·{" "}
-                {topicLabels[post.data.topic]}
-              </span>
-              <span class="post-kind">
-                {post.data.publisher
-                  ? `${post.data.publisher}${isPdf ? " · PDF →" : external ? " ↗" : ""}`
-                  : external
-                    ? "External ↗"
-                    : "Internal →"}
-              </span>
-            </li>
-          );
-        })}
-      </ol>
-      <p class="empty-state" data-empty-state hidden>
-        Nothing published here yet.
-      </p>
-      <p class="post-count" aria-live="polite" data-post-count>
-        {initialCount} {initialCount === 1 ? "entry" : "entries"}
-      </p>
-    </section>
-  </main>
-
-  <script>
-    const buttons =
-      document.querySelectorAll<HTMLButtonElement>("[data-filter]");
-    const entries = document.querySelectorAll<HTMLElement>("[data-post]");
-    const count = document.querySelector<HTMLElement>("[data-post-count]");
-    const emptyState =
-      document.querySelector<HTMLElement>("[data-empty-state]");
-    const panel = document.querySelector<HTMLElement>("[data-writing-panel]");
-
-    const activateTab = (button: HTMLButtonElement, updateHash = true) => {
-      const filter = button.dataset.filter ?? "tech";
-      let visible = 0;
-
-      buttons.forEach((candidate) => {
-        const selected = candidate === button;
-        candidate.setAttribute("aria-selected", String(selected));
-        candidate.tabIndex = selected ? 0 : -1;
-      });
-      entries.forEach((entry) => {
-        const matches = entry.dataset.topic === filter;
-        entry.hidden = !matches;
-        if (matches) visible += 1;
-      });
-
-      if (panel) panel.setAttribute("aria-labelledby", button.id);
-      if (emptyState) emptyState.hidden = visible !== 0;
-      if (count)
-        count.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
-      if (updateHash) history.replaceState(null, "", `#${button.id.slice(4)}`);
-    };
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => activateTab(button));
-      button.addEventListener("keydown", (event) => {
-        const currentIndex = Array.from(buttons).indexOf(button);
-        let nextIndex: number | undefined;
-        if (event.key === "ArrowRight")
-          nextIndex = (currentIndex + 1) % buttons.length;
-        if (event.key === "ArrowLeft")
-          nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
-        if (event.key === "Home") nextIndex = 0;
-        if (event.key === "End") nextIndex = buttons.length - 1;
-        if (nextIndex === undefined) return;
-        event.preventDefault();
-        const nextButton = buttons[nextIndex];
-        if (nextButton) {
-          nextButton.focus();
-          activateTab(nextButton);
-        }
-      });
-    });
-
-    const requestedTab = Array.from(buttons).find(
-      (button) => button.id === `tab-${location.hash.slice(1)}`,
-    );
-    if (requestedTab) activateTab(requestedTab, false);
-  </script>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting… — Aïmen Louafi</title>
+    <script is:inline define:vars={{ targets, fallback }}>
+      location.replace(targets[location.hash.slice(1)] ?? fallback);
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content={`0; url=${fallback}`} />
+    </noscript>
+  </head>
+  <body>
+    <p>
+      Writing now lives under <a href={targets.cinema}>Cinema</a>,{" "}
+      <a href={targets.work}>Tech</a>, and <a href={targets.other}>Other</a>.
+    </p>
+  </body>
+</html>

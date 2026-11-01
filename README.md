@@ -48,7 +48,7 @@ Your post starts here.
 
 ### External post
 
-Add `externalUrl`; the writing index and RSS feed will link directly to it, and Astro will not create a local article page.
+Add `externalUrl`; its topic page and the RSS feed will link directly to it, and Astro will not create a local article page.
 
 ```md
 ---
@@ -64,7 +64,7 @@ draft: false
 ---
 ```
 
-Allowed languages are `en` and `fr`. Allowed topics are `tech`, `cinema`, and `notes`. Set `draft: true` to keep an entry out of the site and RSS feed.
+Allowed languages are `en` and `fr`. Allowed topics are `cinema`, `tech`, and `notes`; they are listed at `/cinema/`, `/tech/`, and `/other/`. Set `draft: true` to keep an entry out of the site and RSS feed.
 
 ## Deployment
 

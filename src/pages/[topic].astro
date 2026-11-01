@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  formatDate,
+  getPublishedPosts,
+  isExternal,
+  postHref,
+  topicPages,
+  topics,
+  type Topic,
+} from "../lib/posts";
+
+interface Props {
+  topic: Topic;
+  roll: string;
+  intro: string;
+  description: string;
+}
+
+export function getStaticPaths() {
+  const pages = {
+    cinema: {
+      intro:
+        "Film reviews and festival write-ups, in French. Most reviews link to Le Blog du Cinéma.",
+      description:
+        "Film reviews and festival write-ups by Aïmen Louafi, in French.",
+    },
+    tech: {
+      intro: "Articles and papers on AI engineering. Most link to other sites.",
+      description: "Articles and papers by Aïmen Louafi on AI engineering.",
+    },
+    notes: {
+      intro: "Essays and notes on everything else.",
+      description: "Essays and notes by Aïmen Louafi on everything else.",
+    },
+  } satisfies Record<Topic, { intro: string; description: string }>;
+
+  return topics.map((topic, index) => ({
+    params: { topic: topicPages[topic].slug },
+    props: {
+      topic,
+      roll: String(index + 2).padStart(2, "0"),
+      ...pages[topic],
+    },
+  }));
+}
+
+const { topic, roll, intro, description } = Astro.props;
+const { label } = topicPages[topic];
+const posts = (await getPublishedPosts()).filter(
+  (post) => post.data.topic === topic,
+);
+const languageLabels = { en: "English", fr: "Français" } as const;
+---
+
+<BaseLayout title={`${label} — Aïmen Louafi`} {description} current={topic}>
+  <main class="writing-main" id="main">
+    <header class="writing-hero reveal">
+      <p class="eyebrow">
+        Roll {roll} / {label}
+      </p>
+      <h1>
+        {label}
+        <span class="accent-mark">.</span>
+      </h1>
+      <p class="writing-hero-copy">{intro}</p>
+    </header>
+
+    <section class="writing-panel" aria-label={`${label} posts`}>
+      {posts.length > 0 ? (
+        <ol class="post-list">
+          {posts.map((post) => {
+            const href = postHref(post);
+            const external = isExternal(href);
+            const isPdf = post.data.format === "paper" && href.endsWith(".pdf");
+            return (
+              <li class="post-row reveal">
+                <time
+                  class="post-date"
+                  datetime={post.data.publishedAt.toISOString()}
+                >
+                  {formatDate(post)}
+                </time>
+                <div class="post-heading">
+                  <h2>
+                    <a href={href} rel={external ? "noreferrer" : undefined}>
+                      {post.data.title}
+                      {isPdf ? (
+                        <span class="visually-hidden"> (PDF)</span>
+                      ) : (
+                        external && (
+                          <span class="visually-hidden"> (external)</span>
+                        )
+                      )}
+                    </a>
+                  </h2>
+                  {post.data.director && (
+                    <p class="post-byline">Directed by {post.data.director}</p>
+                  )}
+                  {post.data.authors && (
+                    <p class="post-byline">
+                      With {post.data.authors.slice(1).join(", ")}
+                    </p>
+                  )}
+                </div>
+                <span class="post-tags">
+                  {languageLabels[post.data.language]}
+                </span>
+                <span class="post-kind">
+                  {post.data.publisher
+                    ? `${post.data.publisher}${isPdf ? " · PDF →" : external ? " ↗" : ""}`
+                    : external
+                      ? "External ↗"
+                      : "Internal →"}
+                </span>
+              </li>
+            );
+          })}
+        </ol>
+      ) : (
+        <p class="empty-state">Nothing published here yet.</p>
+      )}
+      <p class="post-count">
+        {posts.length} {posts.length === 1 ? "entry" : "entries"}
+      </p>
+    </section>
+  </main>
+</BaseLayout>

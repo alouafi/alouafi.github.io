@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { topicHref, topicPages, type Topic } from "../lib/posts";
 
 interface Props {
   title: string;
   description: string;
   publishedAt: Date;
   language: "en" | "fr";
-  topic: "tech" | "cinema" | "notes";
+  topic: Topic;
   format: "post" | "paper";
   minutes?: number;
 }
@@ -20,17 +21,12 @@ const topicLabels = {
   cinema: "Cinema",
   notes: "Notes",
 } as const;
-const topicHashes = {
-  tech: "work",
-  cinema: "cinema",
-  notes: "other",
-} as const;
 ---
 
 <BaseLayout
   title={`${title} — Aïmen Louafi`}
   {description}
-  current="writing"
+  current={topic}
   article
   lang={language}
 >
@@ -71,8 +67,8 @@ const topicHashes = {
       <slot />
     </article>
     <footer class="article-footer">
-      <a class="text-link" href={`/writing/#${topicHashes[topic]}`}>
-        <span aria-hidden="true">←</span> All writing
+      <a class="text-link" href={topicHref(topic)}>
+        <span aria-hidden="true">←</span> {topicPages[topic].label}
       </a>
       <p class="fin" aria-hidden="true">
         Fin
