@@ -200,7 +200,7 @@ button {
 .cannes-stats dt,
 .edition-number,
 .edition-meta,
-.edition-posts span,
+.edition-posts li > span,
 .edition-read,
 .review-meta,
 .review-more,
@@ -1089,7 +1089,7 @@ button {
   line-height: 1.1;
 }
 
-.edition-posts span {
+.edition-posts li > span {
   flex-shrink: 0;
   color: var(--muted);
 }

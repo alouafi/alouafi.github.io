@@ -39,6 +39,17 @@ const photoAlt =
   "Aïmen Louafi en costume sombre et lunettes de soleil sur les marches rouges du Palais des Festivals, sous l’affiche de Cannes 2026";
 // A heart marks the films rated 3.5 out of 5 or more.
 const loved = (rating: number | null) => rating !== null && rating >= 3.5;
+const fold = (title: string) =>
+  title
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+// Published articles carry no rating; they take the one from the Letterboxd
+// review of the same film in the same edition.
+const articleRating = (title: string, reviews: { source: ReviewSource }[]) =>
+  reviews.find(({ source }) => fold(source.title) === fold(title))?.source
+    .rating ?? null;
 const lovedCount = (count: number) =>
   count > 0 && `${count} coup${count > 1 ? "s" : ""} de cœur`;
 const plural = (count: number, word: string) =>
@@ -147,6 +158,14 @@ const plural = (count: number, word: string) =>
                 <li>
                   <a href={href} rel={external ? "noreferrer" : undefined}>
                     {post.data.title}
+                    {loved(articleRating(post.data.title, edition.reviews)) && (
+                      <>
+                        <span class="edition-heart" aria-hidden="true">
+                          ♥
+                        </span>
+                        <span class="visually-hidden">, coup de cœur</span>
+                      </>
+                    )}
                   </a>
                   <span>
                     {post.data.publisher
