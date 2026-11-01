@@ -16,6 +16,12 @@ const writing = defineCollection({
     publisher: z.string().optional(),
     // Year of the Festival de Cannes this post covers; lists it on /cannes/.
     cannes: z.number().int().optional(),
+    // Portrait thumbnail for lists such as /cannes/. Articles about a single
+    // film can leave it out: they show that film's TMDB poster.
+    poster: z
+      .string()
+      .regex(/^\/(?!\/)/, "Use a root-relative path")
+      .optional(),
     // Image shown in link previews when the post is shared.
     cover: z
       .object({

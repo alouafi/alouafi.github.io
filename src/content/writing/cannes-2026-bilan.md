@@ -5,6 +5,7 @@ publishedAt: 2026-10-25
 language: fr
 topic: cinema
 cannes: 2026
+poster: /assets/img/writing/cannes-2026/poster.webp
 cover:
   src: /assets/img/writing/cannes-2026/cover.jpg
   alt: Aïmen Louafi en costume sombre sur les marches rouges du Palais des festivals, à Cannes

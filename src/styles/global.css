@@ -200,7 +200,7 @@ button {
 .cannes-stats dt,
 .edition-number,
 .edition-meta,
-.edition-posts li > span,
+.edition-source,
 .edition-read,
 .review-meta,
 .review-more,
@@ -1080,7 +1080,12 @@ button {
 }
 
 .edition-posts li {
-  padding: 1.25rem 0;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.edition-posts .edition-poster {
+  width: 3.25rem;
 }
 
 .edition-posts a {
@@ -1089,7 +1094,7 @@ button {
   line-height: 1.1;
 }
 
-.edition-posts li > span {
+.edition-source {
   flex-shrink: 0;
   color: var(--muted);
 }
@@ -1142,6 +1147,7 @@ button {
   transition: filter 500ms var(--ease);
 }
 
+.edition-posts li:hover .edition-poster img,
 .edition-reviews li:hover .edition-poster img {
   filter: grayscale(0.2) contrast(1.02) brightness(1);
 }
@@ -1689,6 +1695,16 @@ button {
 }
 
 @media (max-width: 560px) {
+  .edition-posts li {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  .edition-source {
+    flex-basis: 100%;
+    padding-left: 4.25rem;
+  }
+
   .edition-read-long {
     display: none;
   }

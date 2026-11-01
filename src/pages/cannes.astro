@@ -48,9 +48,9 @@ const film = (slug: string | undefined) =>
       { poster?: string | null; directors?: string[] } | undefined
     >
   )[slug ?? ""];
-const poster = (slug: string | undefined) => {
+const poster = (slug: string | undefined, size = "w92") => {
   const path = film(slug)?.poster;
-  return path ? `https://image.tmdb.org/t/p/w92${path}` : null;
+  return path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
 };
 const directorList = new Intl.ListFormat("fr", { type: "conjunction" });
 const directedBy = (slug: string | undefined) => {
@@ -63,11 +63,10 @@ const fold = (title: string) =>
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .trim();
-// Published articles carry no rating; they take the one from the Letterboxd
-// review of the same film in the same edition.
-const articleRating = (title: string, reviews: { source: ReviewSource }[]) =>
-  reviews.find(({ source }) => fold(source.title) === fold(title))?.source
-    .rating ?? null;
+// Published articles carry no rating or poster; they take them from the
+// Letterboxd review of the same film in the same edition.
+const articleReview = (title: string, reviews: { source: ReviewSource }[]) =>
+  reviews.find(({ source }) => fold(source.title) === fold(title))?.source;
 const lovedCount = (count: number) =>
   count > 0 && `${count} coup${count > 1 ? "s" : ""} de cœur`;
 const plural = (count: number, word: string) =>
@@ -172,14 +171,26 @@ const plural = (count: number, word: string) =>
             {edition.posts.map((post) => {
               const href = postHref(post);
               const external = isExternal(href);
+              const review = articleReview(post.data.title, edition.reviews);
+              const image = post.data.poster ?? poster(review?.slug, "w154");
               return (
                 <li>
+                  <span class="edition-poster">
+                    {image && (
+                      <img
+                        src={image}
+                        alt=""
+                        width="154"
+                        height="231"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                  </span>
                   <div class="edition-film">
                     <a href={href} rel={external ? "noreferrer" : undefined}>
                       {post.data.title}
-                      {loved(
-                        articleRating(post.data.title, edition.reviews),
-                      ) && (
+                      {loved(review?.rating ?? null) && (
                         <>
                           <span class="edition-heart" aria-hidden="true">
                             ♥
@@ -192,7 +203,7 @@ const plural = (count: number, word: string) =>
                       <span class="edition-director">{post.data.director}</span>
                     )}
                   </div>
-                  <span>
+                  <span class="edition-source">
                     {post.data.publisher
                       ? `${post.data.publisher} ↗`
                       : "Lire le bilan →"}
