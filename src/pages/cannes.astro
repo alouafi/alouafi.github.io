@@ -35,6 +35,8 @@ const sections = editions.map((edition) => ({
 const reviewCount = sections.reduce((n, s) => n + s.reviews.length, 0);
 const postCount = sections.reduce((n, s) => n + s.posts.length, 0);
 const latestFilms = sections.find((section) => section.films)?.films;
+const photoAlt =
+  "Aïmen Louafi en costume sombre et lunettes de soleil sur les marches rouges du Palais des Festivals, sous l’affiche de Cannes 2026";
 const plural = (count: number, word: string) =>
   `${count} ${word}${count > 1 ? "s" : ""}`;
 ---
@@ -44,10 +46,32 @@ const plural = (count: number, word: string) =>
   description="Trois éditions du Festival de Cannes, de 2024 à 2026 : critiques, bilan et articles d’Aïmen Louafi."
   current="cinema"
   lang="fr"
-  image="/assets/img/writing/cannes-2026/cover.jpg"
-  imageAlt="Aïmen Louafi en costume sombre sur les marches rouges du Palais des festivals, à Cannes"
+  image="/assets/img/cannes/palais-2026-share.jpg"
+  imageAlt={photoAlt}
 >
   <main class="writing-main" id="main">
+    <figure class="cannes-still reveal">
+      <div class="cannes-still-frame">
+        <img
+          src="/assets/img/cannes/palais-2026-1280.webp"
+          srcset="/assets/img/cannes/palais-2026-800.webp 800w, /assets/img/cannes/palais-2026-1280.webp 1280w, /assets/img/cannes/palais-2026-2048.webp 2048w"
+          sizes="(min-width: 1200px) 1024px, 92vw"
+          alt={photoAlt}
+          width="2048"
+          height="1536"
+          fetchpriority="high"
+        />
+        <span class="corner corner-tl" aria-hidden="true"></span>
+        <span class="corner corner-tr" aria-hidden="true"></span>
+        <span class="corner corner-bl" aria-hidden="true"></span>
+        <span class="corner corner-br" aria-hidden="true"></span>
+      </div>
+      <figcaption>
+        <span>Marches du Palais des Festivals</span>
+        <span>18 mai 2026</span>
+      </figcaption>
+    </figure>
+
     <header class="writing-hero reveal">
       <p class="eyebrow">Festival de Cannes · 2024 – 2026</p>
       <h1>

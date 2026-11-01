@@ -206,6 +206,7 @@ button {
 .review-more,
 .article-meta,
 .portrait figcaption,
+.cannes-still figcaption,
 .article-figure figcaption,
 .credits dt,
 .footer-bar {
@@ -948,6 +949,37 @@ button {
 }
 
 /* Cannes page */
+.cannes-still {
+  margin: 0 0 clamp(3rem, 7vw, 5rem);
+}
+
+.cannes-still-frame {
+  position: relative;
+  padding: 0.9rem;
+}
+
+.cannes-still img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  filter: brightness(0.92) contrast(1.04);
+}
+
+.cannes-still figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.4rem;
+  padding-inline: 0.9rem;
+  color: var(--faint);
+  font-size: 0.6rem;
+}
+
+.cannes-still figcaption span:last-child {
+  white-space: nowrap;
+}
+
 .writing-hero-copy a {
   color: var(--ink);
   text-decoration-color: var(--accent);
