@@ -33,3 +33,5 @@ export const topicPages = {
 export const topics = Object.keys(topicPages) as Topic[];
 
 export const topicHref = (topic: Topic) => `/${topicPages[topic].slug}/`;
+
+export const topicFeedHref = (topic: Topic) => `${topicHref(topic)}rss.xml`;

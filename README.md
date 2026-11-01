@@ -46,9 +46,17 @@ draft: false
 Your post starts here.
 ```
 
+To choose the image shown when a post is shared, add a `cover`. Use a 1200 × 630 px JPEG or PNG in `public/assets/img/writing/`; posts without one use the default social card.
+
+```md
+cover:
+src: /assets/img/writing/my-post/cover.jpg
+alt: What the image shows.
+```
+
 ### External post
 
-Add `externalUrl`; its topic page and the RSS feed will link directly to it, and Astro will not create a local article page.
+Add `link`; its topic page and the RSS feed will link directly to it, and Astro will not create a local article page.
 
 ```md
 ---
@@ -59,12 +67,12 @@ language: fr
 topic: cinema
 director: Film Director
 publisher: Publication Name
-externalUrl: https://example.com/the-article
+link: https://example.com/the-article
 draft: false
 ---
 ```
 
-Allowed languages are `en` and `fr`. Allowed topics are `cinema`, `tech`, and `notes`; they are listed at `/cinema/`, `/tech/`, and `/other/`. Set `draft: true` to keep an entry out of the site and RSS feed.
+Allowed languages are `en` and `fr`. Allowed topics are `cinema`, `tech`, and `notes`; they are listed at `/cinema/`, `/tech/`, and `/other/`, each with its own feed (`/cinema/rss.xml`, and so on) next to the full `/rss.xml`. Set `draft: true` to keep an entry out of the site and RSS feed.
 
 ## Deployment
 

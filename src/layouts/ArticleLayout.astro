@@ -10,23 +10,29 @@ interface Props {
   topic: Topic;
   format: "post" | "paper";
   minutes?: number;
+  cover?: { src: string; alt: string } | undefined;
 }
 
-const { title, description, publishedAt, language, topic, format, minutes } =
-  Astro.props;
+const {
+  title,
+  description,
+  publishedAt,
+  language,
+  topic,
+  format,
+  minutes,
+  cover,
+} = Astro.props;
 const locale = language === "fr" ? "fr-FR" : "en-GB";
 const languageLabel = language === "fr" ? "Français" : "English";
-const topicLabels = {
-  tech: "Technology",
-  cinema: "Cinema",
-  notes: "Notes",
-} as const;
 ---
 
 <BaseLayout
   title={`${title} — Aïmen Louafi`}
   {description}
   current={topic}
+  image={cover?.src}
+  imageAlt={cover?.alt}
   article
   lang={language}
 >
@@ -34,7 +40,7 @@ const topicLabels = {
   <main class="article-shell" id="main">
     <header class="article-header reveal">
       <p class="eyebrow">
-        {topicLabels[topic]} · {format === "paper" ? "Paper" : "Essay"}
+        {topicPages[topic].label} · {format === "paper" ? "Paper" : "Essay"}
       </p>
       <h1>{title}</h1>
       <p class="article-deck">{description}</p>

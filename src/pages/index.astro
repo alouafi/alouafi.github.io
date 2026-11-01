@@ -12,7 +12,6 @@ import {
 } from "../lib/posts";
 
 const latest = (await getPublishedPosts()).slice(0, 4);
-const topicLabels = { tech: "Work", cinema: "Review", notes: "Other" } as const;
 ---
 
 <BaseLayout current="home">
@@ -85,12 +84,17 @@ const topicLabels = { tech: "Work", cinema: "Review", notes: "Other" } as const;
           return (
             <li class="reel-item">
               <a href={href} rel={external ? "noreferrer" : undefined}>
-                <span class="reel-title">{post.data.title}</span>
+                <span class="reel-title" lang={post.data.language}>
+                  {post.data.title}
+                </span>
                 <span class="reel-meta">
-                  <time datetime={post.data.publishedAt.toISOString()}>
+                  <time
+                    datetime={post.data.publishedAt.toISOString()}
+                    lang={post.data.language}
+                  >
                     {formatDate(post)}
                   </time>
-                  <span>{topicLabels[post.data.topic]}</span>
+                  <span>{topicPages[post.data.topic].label}</span>
                   <span aria-hidden="true">{external ? "↗" : "→"}</span>
                 </span>
                 {external && <span class="visually-hidden"> (external)</span>}

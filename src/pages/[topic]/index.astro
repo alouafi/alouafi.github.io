@@ -1,14 +1,16 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   formatDate,
   getPublishedPosts,
   isExternal,
   postHref,
+  readingMinutes,
+  topicFeedHref,
   topicPages,
   topics,
   type Topic,
-} from "../lib/posts";
+} from "../../lib/posts";
 
 interface Props {
   topic: Topic;
@@ -51,9 +53,15 @@ const posts = (await getPublishedPosts()).filter(
   (post) => post.data.topic === topic,
 );
 const languageLabels = { en: "English", fr: "Français" } as const;
+const feed = { title: `Aïmen Louafi — ${label}`, href: topicFeedHref(topic) };
 ---
 
-<BaseLayout title={`${label} — Aïmen Louafi`} {description} current={topic}>
+<BaseLayout
+  title={`${label} — Aïmen Louafi`}
+  {description}
+  current={topic}
+  {feed}
+>
   <main class="writing-main" id="main">
     <header class="writing-hero reveal">
       <p class="eyebrow">
@@ -78,13 +86,14 @@ const languageLabels = { en: "English", fr: "Français" } as const;
                 <time
                   class="post-date"
                   datetime={post.data.publishedAt.toISOString()}
+                  lang={post.data.language}
                 >
                   {formatDate(post)}
                 </time>
                 <div class="post-heading">
                   <h2>
                     <a href={href} rel={external ? "noreferrer" : undefined}>
-                      {post.data.title}
+                      <span lang={post.data.language}>{post.data.title}</span>
                       {isPdf ? (
                         <span class="visually-hidden"> (PDF)</span>
                       ) : (
@@ -111,7 +120,7 @@ const languageLabels = { en: "English", fr: "Français" } as const;
                     ? `${post.data.publisher}${isPdf ? " · PDF →" : external ? " ↗" : ""}`
                     : external
                       ? "External ↗"
-                      : "Internal →"}
+                      : `${readingMinutes(post.body)} min →`}
                 </span>
               </li>
             );
@@ -121,7 +130,8 @@ const languageLabels = { en: "English", fr: "Français" } as const;
         <p class="empty-state">Nothing published here yet.</p>
       )}
       <p class="post-count">
-        {posts.length} {posts.length === 1 ? "entry" : "entries"}
+        {posts.length} {posts.length === 1 ? "entry" : "entries"} ·{" "}
+        <a href={feed.href}>RSS</a>
       </p>
     </section>
   </main>

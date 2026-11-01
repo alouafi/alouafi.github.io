@@ -773,6 +773,10 @@ button {
   text-align: right;
 }
 
+.post-count a:hover {
+  color: var(--ink);
+}
+
 .empty-state {
   margin: 1rem 0 0;
   padding: clamp(3rem, 8vw, 6rem) 1.5rem;
@@ -868,7 +872,6 @@ button {
   color: var(--body-ink);
   font-family: var(--serif);
   font-size: clamp(1.1rem, 1.45vw, 1.3rem);
-  font-optical-sizing: auto;
   line-height: 1.65;
   counter-reset: scene;
   hanging-punctuation: first;

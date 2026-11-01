@@ -4,6 +4,9 @@ description: Trente-cinq films en huit jours, mon palmarès contre celui du jury
 publishedAt: 2026-10-25
 language: fr
 topic: cinema
+cover:
+  src: /assets/img/writing/cannes-2026/cover.jpg
+  alt: Aïmen Louafi en costume sombre sur les marches rouges du Palais des festivals, à Cannes
 draft: false
 ---
 

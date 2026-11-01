@@ -14,6 +14,13 @@ const writing = defineCollection({
     authors: z.array(z.string()).optional(),
     director: z.string().optional(),
     publisher: z.string().optional(),
+    // Image shown in link previews when the post is shared.
+    cover: z
+      .object({
+        src: z.string().regex(/^\/(?!\/)/, "Use a root-relative path"),
+        alt: z.string(),
+      })
+      .optional(),
     link: z
       .string()
       .regex(/^(?:https?:\/\/|\/(?!\/))/, "Use an HTTP(S) or root-relative URL")
