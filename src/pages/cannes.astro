@@ -37,6 +37,10 @@ const postCount = sections.reduce((n, s) => n + s.posts.length, 0);
 const latestFilms = sections.find((section) => section.films)?.films;
 const photoAlt =
   "Aïmen Louafi en costume sombre et lunettes de soleil sur les marches rouges du Palais des Festivals, sous l’affiche de Cannes 2026";
+// A heart marks the films rated 3.5 out of 5 or more.
+const loved = (rating: number | null) => rating !== null && rating >= 3.5;
+const lovedCount = (count: number) =>
+  count > 0 && `${count} coup${count > 1 ? "s" : ""} de cœur`;
 const plural = (count: number, word: string) =>
   `${count} ${word}${count > 1 ? "s" : ""}`;
 ---
@@ -83,8 +87,8 @@ const plural = (count: number, word: string) =>
       )}
     </dl>
 
-    <figure class="cannes-still reveal">
-      <div class="cannes-still-frame">
+    <figure class="still reveal">
+      <div class="still-frame">
         <img
           src="/assets/img/cannes/palais-2026-1280.webp"
           srcset="/assets/img/cannes/palais-2026-800.webp 800w, /assets/img/cannes/palais-2026-1280.webp 1280w, /assets/img/cannes/palais-2026-2048.webp 2048w"
@@ -124,6 +128,10 @@ const plural = (count: number, word: string) =>
               edition.dates,
               edition.films && plural(edition.films, "film"),
               plural(edition.reviews.length, "critique"),
+              lovedCount(
+                edition.reviews.filter(({ source }) => loved(source.rating))
+                  .length,
+              ),
             ]
               .filter(Boolean)
               .join(" · ")}
@@ -154,7 +162,17 @@ const plural = (count: number, word: string) =>
         <ol class="edition-reviews">
           {edition.reviews.map(({ source, review }) => (
             <li>
-              <a href={reviewHref(review)}>{source.title}</a>
+              <a href={reviewHref(review)}>
+                {source.title}
+                {loved(source.rating) && (
+                  <>
+                    <span class="edition-heart" aria-hidden="true">
+                      ♥
+                    </span>
+                    <span class="visually-hidden">, coup de cœur</span>
+                  </>
+                )}
+              </a>
               <span class="edition-read" aria-hidden="true">
                 Lire la critique →
               </span>

@@ -206,7 +206,8 @@ button {
 .review-more,
 .article-meta,
 .portrait figcaption,
-.cannes-still figcaption,
+.still figcaption,
+.credits-note,
 .article-figure figcaption,
 .credits dt,
 .footer-bar {
@@ -641,6 +642,23 @@ button {
   line-height: 1.2;
 }
 
+.credits-logo {
+  display: block;
+  width: auto;
+  height: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+.credits-note {
+  display: block;
+  max-width: 22rem;
+  margin-top: 0.6rem;
+  color: var(--faint);
+  font-size: 0.6rem;
+  line-height: 1.6;
+  text-transform: none;
+}
+
 .credits dd a {
   text-decoration: none;
   transition: color 160ms ease;
@@ -949,24 +967,29 @@ button {
 }
 
 /* Cannes page */
-.cannes-still {
+/* A photo or film still in a viewfinder frame, captioned like a slate. */
+.still {
   margin: clamp(3rem, 7vw, 5rem) 0 0;
 }
 
-.cannes-still-frame {
+.still.still-poster {
+  max-width: 22rem;
+  margin-inline: auto;
+}
+
+.still-frame {
   position: relative;
   padding: 0.9rem;
 }
 
-.cannes-still img {
+.still img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  background: var(--stock-raised);
   filter: brightness(0.92) contrast(1.04);
 }
 
-.cannes-still figcaption {
+.still figcaption {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -976,7 +999,7 @@ button {
   font-size: 0.6rem;
 }
 
-.cannes-still figcaption span:last-child {
+.still figcaption span:last-child {
   white-space: nowrap;
 }
 
@@ -1106,6 +1129,13 @@ button {
   color: var(--accent);
 }
 
+.edition-heart {
+  margin-left: 0.4em;
+  color: var(--accent);
+  font-size: 0.75em;
+  vertical-align: 0.1em;
+}
+
 .edition-read {
   flex-shrink: 0;
   color: var(--muted);
@@ -1114,6 +1144,11 @@ button {
 
 .edition-reviews li:hover .edition-read {
   color: var(--ink);
+}
+
+.article-lead {
+  max-width: 60rem;
+  margin-inline: auto;
 }
 
 .article-body .review-source {

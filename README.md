@@ -82,6 +82,8 @@ The RSS feed only carries the last 50 diary entries, so older reviews come from 
 
 Imported reviews also get their own page at `/reviews/<slug>/`, and those labelled "Cannes YYYY" in their first line are grouped by edition on `/cannes/`. To list a post on that page too, add `cannes: 2027` (the edition's year) to its frontmatter. The number of films seen per edition is set by hand in `src/pages/cannes.astro`.
 
+Review pages show a still (or poster) of the film from [TMDB](https://www.themoviedb.org), credited in the footer as TMDB's terms require. `npm run fetch:film-images` matches each reviewed film by title and year and records the image paths in `src/data/film-images.json`; run it after importing new reviews. It needs a TMDB API key or read access token as `TMDB_TOKEN` in a local `.env` file (ignored by git, never needed on GitHub). To fix a wrong match, replace the film's entry with `{ "tmdbId": <id>, "match": "manual" }` (add `"tmdbType": "tv"` for a series) and run the script again.
+
 The relay runs on Cloudflare, not GitHub Pages, so pushing to `main` does not update it. After changing `workers/letterboxd/` or `src/lib/letterboxd.ts`, run `npx wrangler@4 login` once, then `npm run deploy:relay`. Its URL is `letterboxdRelay` in `src/data/profile.ts`.
 
 ## Deployment

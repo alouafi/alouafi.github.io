@@ -1,0 +1,651 @@
+{
+  "a-conversation-with-the-sun-2022": {
+    "tmdbId": 1237540,
+    "tmdbTitle": "A Conversation with the Sun",
+    "releaseDate": "2022-05-28",
+    "backdrop": "/gfBpXPFuvcn5NGTY0Wk6DF8hzvP.jpg",
+    "poster": "/8WMmWvr9jWkuKbcFdrckydidTQh.jpg",
+    "match": "exact"
+  },
+  "a-womans-life-2026": {
+    "tmdbId": 1258181,
+    "tmdbTitle": "A Woman's Life",
+    "releaseDate": "2026-09-09",
+    "backdrop": "/rFST4zAaG20VSIxSvYO57nhkkV4.jpg",
+    "poster": "/9xAYLvWZGASDKJZjt5XgvD7ugsn.jpg",
+    "match": "exact"
+  },
+  "across-the-sea-2024": {
+    "tmdbId": 1119534,
+    "tmdbTitle": "Across the Sea",
+    "releaseDate": "2025-02-05",
+    "backdrop": "/jmzLmcRuEqKZEup1n4qK24PiDtK.jpg",
+    "poster": "/nU9LCxgBQiDhd2ZQ8JNssW1UBkL.jpg",
+    "match": "manual"
+  },
+  "all-of-a-sudden-2026": {
+    "tmdbId": 1476614,
+    "tmdbTitle": "All of a Sudden",
+    "releaseDate": "2026-06-19",
+    "backdrop": "/yF4vFj0BSle87KSuRLhtT1PPfvs.jpg",
+    "poster": "/fgxhBo4elwt89J5k9wzhHSXGQmY.jpg",
+    "match": "exact"
+  },
+  "all-we-imagine-as-light-2024": {
+    "tmdbId": 927547,
+    "tmdbTitle": "All We Imagine as Light",
+    "releaseDate": "2024-09-21",
+    "backdrop": "/xrIicBg0Ac4oQ6cwUPKJxwtqhOQ.jpg",
+    "poster": "/ruImrzB4POsrgwCMozmOBV67zs5.jpg",
+    "match": "exact"
+  },
+  "alpha-2025": {
+    "tmdbId": 1284460,
+    "tmdbTitle": "Alpha",
+    "releaseDate": "2025-08-20",
+    "backdrop": "/rakS8RAhKOMIplBi4RbluQg4Xqn.jpg",
+    "poster": "/oUZlrGPTAtinic87FF7jIT6EHmN.jpg",
+    "match": "ambiguous"
+  },
+  "another-day-2026": {
+    "tmdbId": 1507877,
+    "tmdbTitle": "Another Day",
+    "releaseDate": "2026-09-23",
+    "backdrop": "/yLZCngaex5380FB6sEy6o10L9wN.jpg",
+    "poster": "/xU8iyvhGQQIU9geuFxPbyNquhdX.jpg",
+    "match": "ambiguous"
+  },
+  "beating-hearts-2024": {
+    "tmdbId": 959604,
+    "tmdbTitle": "Beating Hearts",
+    "releaseDate": "2024-10-16",
+    "backdrop": "/lBcXozUeABairkTavz3X3ZAtOL0.jpg",
+    "poster": "/yu9dRyKcUHTfKcqsomUtpord4t3.jpg",
+    "match": "exact"
+  },
+  "bitter-christmas-2026": {
+    "tmdbId": 1088548,
+    "tmdbTitle": "Bitter Christmas",
+    "releaseDate": "2026-03-20",
+    "backdrop": "/ppLv2F7dhvI3wxaEoOP1E0OyBPP.jpg",
+    "poster": "/kiPGcHX0YT49nrab76G0bqw3gHW.jpg",
+    "match": "exact"
+  },
+  "case-137-2025": {
+    "tmdbId": 1294698,
+    "tmdbTitle": "Case 137",
+    "releaseDate": "2025-11-19",
+    "backdrop": "/kjKxmpuPIvXjDP4reWCkMaeK2Es.jpg",
+    "poster": "/4QL4LcsYX8mdNktst0CnyHQDRLg.jpg",
+    "match": "exact"
+  },
+  "caught-by-the-tides-2024": {
+    "tmdbId": 1136837,
+    "tmdbTitle": "Caught by the Tides",
+    "releaseDate": "2024-11-22",
+    "backdrop": "/66yL48TchPZHIRqj5XTtHDfwIUD.jpg",
+    "poster": "/vRUsEXHm9iJgXuf8k4BiTLCnUb0.jpg",
+    "match": "exact"
+  },
+  "drive-my-car-2021": {
+    "tmdbId": 758866,
+    "tmdbTitle": "Drive My Car",
+    "releaseDate": "2021-08-18",
+    "backdrop": "/r6aqhlmJmu8Dv5E7QYEruaEXKYm.jpg",
+    "poster": "/znXps7wPyYq8UDCfeyO2vfEIeRS.jpg",
+    "match": "exact"
+  },
+  "eddington-2025": {
+    "tmdbId": 648878,
+    "tmdbTitle": "Eddington",
+    "releaseDate": "2025-07-16",
+    "backdrop": "/znr3SYHph3FtTLpcFTeuMAAJ5mP.jpg",
+    "poster": "/4GIqZUgPZ146BhibsPHMHef2nXX.jpg",
+    "match": "exact"
+  },
+  "eephus-2024": {
+    "tmdbId": 1226777,
+    "tmdbTitle": "Eephus",
+    "releaseDate": "2025-01-01",
+    "backdrop": "/gDkePcszTeHCiYzaWdv59zkCk4H.jpg",
+    "poster": "/zDdzvIVGkAUfUMi7mJykgEu5ynu.jpg",
+    "match": "uncertain"
+  },
+  "egoist-2022": {
+    "tmdbId": 1027273,
+    "tmdbTitle": "Egoist",
+    "releaseDate": "2023-02-10",
+    "backdrop": "/o10cLFQHLssYSdDGzEatkh0kG2m.jpg",
+    "poster": "/gNpzt36z9GsYnsgnGpZWqLL07oT.jpg",
+    "match": "manual"
+  },
+  "evil-does-not-exist-2023": {
+    "tmdbId": 1156125,
+    "tmdbTitle": "Evil Does Not Exist",
+    "releaseDate": "2023-12-06",
+    "backdrop": "/dojVTVK4H2Q0tx2A9NJSnI79OPm.jpg",
+    "poster": "/lvJflmoOKkb8NLJz7VwFEzmd4d7.jpg",
+    "match": "exact"
+  },
+  "fatherland-2026": {
+    "tmdbId": 1437696,
+    "tmdbTitle": "Fatherland",
+    "releaseDate": "2026-06-19",
+    "backdrop": "/zKoBjLggS4v22a9ZiCvmLaZrht7.jpg",
+    "poster": "/oNejN1l69nBF8LdQwy5FkAQZT44.jpg",
+    "match": "ambiguous"
+  },
+  "fjord-2026": {
+    "tmdbId": 1401459,
+    "tmdbTitle": "Fjord",
+    "releaseDate": "2026-06-13",
+    "backdrop": "/rCYzSP07jCA1HuFvrwgaEAPHitT.jpg",
+    "poster": "/rhKlzjAJCEKUjxEk1qwr4bgbXlG.jpg",
+    "match": "exact"
+  },
+  "fly-on-2023": {
+    "tmdbId": 1175932,
+    "tmdbTitle": "Fly On",
+    "releaseDate": "2023-09-08",
+    "backdrop": "/rTTxCG3btsxfSMhgAUbwuSxy9OW.jpg",
+    "poster": "/8aGvuqpwTnkN0rlRFtgPhHQ5RFg.jpg",
+    "match": "exact"
+  },
+  "four-nights-of-a-dreamer-1971": {
+    "tmdbId": 55847,
+    "tmdbTitle": "Four Nights of a Dreamer",
+    "releaseDate": "1972-02-02",
+    "backdrop": "/5kh4VMRflkmlOcvnB0WW2LgbZg9.jpg",
+    "poster": "/cVzvJsn2TUEXxRszs2IVFF36hSA.jpg",
+    "match": "uncertain"
+  },
+  "full-phil-2026": {
+    "tmdbId": 1554364,
+    "tmdbTitle": "Full Phil",
+    "releaseDate": "2026-05-16",
+    "backdrop": "/r4opW3N4pF4KCLSoDMSAf5PI4pr.jpg",
+    "poster": "/yHiCY08iWt15PiEaQX1lBSwm1Ze.jpg",
+    "match": "exact"
+  },
+  "gentle-monster-2026": {
+    "tmdbId": 1473148,
+    "tmdbTitle": "Gentle Monster",
+    "releaseDate": "2026-09-17",
+    "backdrop": "/ozpCKXUhZjhH3mM6GzC5dnvXcSF.jpg",
+    "poster": "/v7sbP2qv8ezCfo9FOI6DVUXDSaw.jpg",
+    "match": "exact"
+  },
+  "good-men-good-women-1995": {
+    "tmdbId": 99600,
+    "tmdbTitle": "Good Men, Good Women",
+    "releaseDate": "1995-05-13",
+    "backdrop": "/rvbNUvGvINOHiVJhVdn24GwXio8.jpg",
+    "poster": "/yMmjIymprpdHrSoentdTaUNqgMG.jpg",
+    "match": "exact"
+  },
+  "goodbye-dragon-inn-2003": {
+    "tmdbId": 56616,
+    "tmdbTitle": "Goodbye, Dragon Inn",
+    "releaseDate": "2003-12-12",
+    "backdrop": "/lch9NDBb4oM0xKNEz0ZN7Mc27MS.jpg",
+    "poster": "/js1uTY2FuKspVRQWLudFkEteFI5.jpg",
+    "match": "exact"
+  },
+  "her-private-hell-2026": {
+    "tmdbId": 1469342,
+    "tmdbTitle": "Her Private Hell",
+    "releaseDate": "2026-07-23",
+    "backdrop": "/hS4FcOM5y71FurkBQgDLTBxmWZh.jpg",
+    "poster": "/pyIDpB5iZMRB5PdV9an146QEXAl.jpg",
+    "match": "exact"
+  },
+  "here-2023": {
+    "tmdbId": 1058032,
+    "tmdbTitle": "Here",
+    "releaseDate": "2024-01-17",
+    "backdrop": "/fEw9lVTbDH92W9JFNx1l6XOw6Go.jpg",
+    "poster": "/pIDQ7miG72FEVIiRgGPdxCGv3tW.jpg",
+    "match": "manual"
+  },
+  "honour-of-the-knights-2006": {
+    "tmdbId": 85461,
+    "tmdbTitle": "Honour of the Knights",
+    "releaseDate": "2006-05-12",
+    "backdrop": "/nRTd6d8hgYugyqOZ721oxH3tkNa.jpg",
+    "poster": "/yfZQrNmU7eKVuuhPJx4Sn0TIMEj.jpg",
+    "match": "exact"
+  },
+  "hope-2026": {
+    "tmdbId": 1058424,
+    "tmdbTitle": "Hope",
+    "releaseDate": "2026-07-15",
+    "backdrop": "/j96rurZqmBjyY37Fncl3IB0qJNe.jpg",
+    "poster": "/6VY1ZKgpsc8CfGsQcCGiYEgHdH0.jpg",
+    "match": "ambiguous"
+  },
+  "it-was-just-an-accident-2025": {
+    "tmdbId": 1456349,
+    "tmdbTitle": "It Was Just an Accident",
+    "releaseDate": "2025-10-01",
+    "backdrop": "/zhoMwQofjgVec5Sin05hWECJtVQ.jpg",
+    "poster": "/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg",
+    "match": "exact"
+  },
+  "la-gradiva-2026": {
+    "tmdbId": 1154730,
+    "tmdbTitle": "La Gradiva",
+    "releaseDate": "2026-10-21",
+    "backdrop": "/aFO0i3bl4d6o0odPix8xgiVsIYT.jpg",
+    "poster": "/y6AkOgTEPM9nTJUOeyvHqlf6Bgp.jpg",
+    "match": "exact"
+  },
+  "la-venus-electrique-2026": {
+    "tmdbId": 1442669,
+    "tmdbTitle": "La Vénus électrique",
+    "releaseDate": "2026-05-12",
+    "backdrop": "/hKV9IrDUAY8jGkvxDgcHyUxjSSW.jpg",
+    "poster": "/6mGCyYnuGpxGT3Wx4xuRMV20EEi.jpg",
+    "match": "exact"
+  },
+  "low-expectations-2026": {
+    "tmdbId": 1425487,
+    "tmdbTitle": "Low Expectations",
+    "releaseDate": "2026-09-11",
+    "backdrop": "/ddhLCe1gje0mUXTQjrxZkHPlBv1.jpg",
+    "poster": "/z27P2PwT72fJvt5q6NdFxOXDjpn.jpg",
+    "match": "exact"
+  },
+  "megalopolis-2024": {
+    "tmdbId": 592831,
+    "tmdbTitle": "Megalopolis",
+    "releaseDate": "2024-09-25",
+    "backdrop": "/1DHbZ1XRvdeXbD2P7W1OJbxqN9b.jpg",
+    "poster": "/doVWgLdNyK36nEyyZgVsEWFCO1e.jpg",
+    "match": "exact"
+  },
+  "millennium-mambo-2001": {
+    "tmdbId": 11553,
+    "tmdbTitle": "Millennium Mambo",
+    "releaseDate": "2001-10-31",
+    "backdrop": "/k603HQRxzlSnYAtyz9wNZndaAzg.jpg",
+    "poster": "/wSc6tOp1yoAFbZqxG5XVGHcFvRN.jpg",
+    "match": "exact"
+  },
+  "minotaur-2026": {
+    "tmdbId": 848700,
+    "tmdbTitle": "Minotaur",
+    "releaseDate": "2026-10-14",
+    "backdrop": "/i5HacpkXOKQ85lfbnMO3jXvAnPy.jpg",
+    "poster": "/bM37B5CuMWrPyGPpNsKzTGict4Q.jpg",
+    "match": "exact"
+  },
+  "morrison-2023": {
+    "tmdbId": 944689,
+    "tmdbTitle": "Morrison",
+    "releaseDate": "2024-03-27",
+    "backdrop": "/xjcsY2tTHQQf9GRtlB9NxH9lWR1.jpg",
+    "poster": "/bbALxa9kLqSVFNrJdNlPjoPKEFb.jpg",
+    "match": "uncertain"
+  },
+  "motel-destino-2024": {
+    "tmdbId": 1161879,
+    "tmdbTitle": "Motel Destino",
+    "releaseDate": "2024-08-22",
+    "backdrop": "/lddBFYvk1eMU6fXXs9OvAi8G41s.jpg",
+    "poster": "/AbVDQYUzJL9i6ip8fJk5cbwRFrl.jpg",
+    "match": "exact"
+  },
+  "nagareru-2003": {
+    "tmdbId": 875850,
+    "tmdbTitle": "Nagareru",
+    "releaseDate": "2003-07-12",
+    "backdrop": null,
+    "poster": "/tpTqRNE8a0Dkdb2xZuzHV3F7rRz.jpg",
+    "match": "exact"
+  },
+  "nosferatu-2024": {
+    "tmdbId": 426063,
+    "tmdbTitle": "Nosferatu",
+    "releaseDate": "2024-12-25",
+    "backdrop": "/gprjiZWY43vxSKngMha1wfb5TGG.jpg",
+    "poster": "/d0B8xDdqBZlzlPEzES8lu5LlNQn.jpg",
+    "match": "exact"
+  },
+  "nouvelle-vague-2025": {
+    "tmdbId": 1254808,
+    "tmdbTitle": "Nouvelle Vague",
+    "releaseDate": "2025-10-08",
+    "backdrop": "/c15Fg4jvclF5VjxCi1mtjUg4a6H.jpg",
+    "poster": "/AfE7DZ0DPgme6I58dlYp1Bo9xeN.jpg",
+    "match": "exact"
+  },
+  "paper-tiger-2026": {
+    "tmdbId": 1381273,
+    "tmdbTitle": "Paper Tiger",
+    "releaseDate": "2026-11-13",
+    "backdrop": "/1VhgzeA0tBbd7GtAw1d2nL3UUBk.jpg",
+    "poster": "/p6oLmq5KmuWY6uRXBQBL2q30jia.jpg",
+    "match": "exact"
+  },
+  "parallel-tales-2026": {
+    "tmdbId": 1157869,
+    "tmdbTitle": "Parallel Tales",
+    "releaseDate": "2026-05-14",
+    "backdrop": "/hKWoyatPgWzRMwVU7iBBExHw9n7.jpg",
+    "poster": "/eK7CmUQm6cIP8kOekSW0n4a37Am.jpg",
+    "match": "exact"
+  },
+  "parthenope-2024": {
+    "tmdbId": 1109255,
+    "tmdbTitle": "Parthenope",
+    "releaseDate": "2024-10-24",
+    "backdrop": "/fBUaeRfD2mu6T9vNZ1IR3yhccdP.jpg",
+    "poster": "/k3BL39ca5pliALDTzUdC9ZIB9gk.jpg",
+    "match": "exact"
+  },
+  "pas-de-deux-1968": {
+    "tmdbId": 129303,
+    "tmdbTitle": "Pas de Deux",
+    "releaseDate": "1968-10-01",
+    "backdrop": "/2xJ19ASoAuOZNxfDiIZyP390Pjj.jpg",
+    "poster": "/nPNSahF0q6xiovqr5dSxDSfd4bj.jpg",
+    "match": "exact"
+  },
+  "promised-spaces-2026": {
+    "tmdbId": 1510539,
+    "tmdbTitle": "Promised Spaces",
+    "releaseDate": "2026-05-16",
+    "backdrop": "/dlOnnKeUBDw3ablRiA5rIW7wvv5.jpg",
+    "poster": "/54QKQayOThjIqobAdwoxKVynlIf.jpg",
+    "match": "exact"
+  },
+  "renoir-2025": {
+    "tmdbId": 1392527,
+    "tmdbTitle": "Renoir",
+    "releaseDate": "2025-06-20",
+    "backdrop": "/djUkDpqSsdIRa1oi65y0JenKUaC.jpg",
+    "poster": "/92pUHLbUXJd61xUSzfEiNtrVVZy.jpg",
+    "match": "exact"
+  },
+  "resurrection-2025": {
+    "tmdbId": 878608,
+    "tmdbTitle": "Resurrection",
+    "releaseDate": "2025-11-22",
+    "backdrop": "/gry8VX2ssomFFv0ogcmlv3ZGUWd.jpg",
+    "poster": "/4asJAxshXzQriox6tnIoEnWN1nu.jpg",
+    "match": "ambiguous"
+  },
+  "rewind-barcelona-2026": {
+    "tmdbId": 1670376,
+    "tmdbTitle": "Rewind Barcelona",
+    "releaseDate": "2026-12-09",
+    "backdrop": "/dRtgP0SUHcIQNZuzU4PzUlYmzOd.jpg",
+    "poster": "/azYGOnT0gP0GDjoZIIM3nK6PHmf.jpg",
+    "match": "exact"
+  },
+  "robot-carnival-1987": {
+    "tmdbId": 33441,
+    "tmdbTitle": "Robot Carnival",
+    "releaseDate": "1987-07-21",
+    "backdrop": "/iV6G3qnnEsZ1CsHXjxoXNBeKMw6.jpg",
+    "poster": "/2DTREQNErBYtZd1isRqdqNbbXA8.jpg",
+    "match": "exact"
+  },
+  "romeria-2025": {
+    "tmdbId": 1182861,
+    "tmdbTitle": "Romería",
+    "releaseDate": "2025-09-05",
+    "backdrop": "/iwma2WVMn1IWS9cT0CpvOYTBTHe.jpg",
+    "poster": "/rkCHBDGgc6UW9ETyTWZ0RiEiten.jpg",
+    "match": "exact"
+  },
+  "run-lola-run-1998": {
+    "tmdbId": 104,
+    "tmdbTitle": "Run Lola Run",
+    "releaseDate": "1998-08-20",
+    "backdrop": "/wRcm3iwi4BeMN59U4fjO7u3dOVI.jpg",
+    "poster": "/v0giIi4bTILVhNhJajet3WWY3FA.jpg",
+    "match": "exact"
+  },
+  "sentimental-value-2025": {
+    "tmdbId": 1124566,
+    "tmdbTitle": "Sentimental Value",
+    "releaseDate": "2025-08-20",
+    "backdrop": "/mDIMSMXFkOXUyQ2lnmeBu6kDUCH.jpg",
+    "poster": "/AcbS8VMysrTpG9r4dgK1oyLsKYn.jpg",
+    "match": "exact"
+  },
+  "sheep-in-the-box-2026": {
+    "tmdbId": 1553969,
+    "tmdbTitle": "Sheep in the Box",
+    "releaseDate": "2026-05-29",
+    "backdrop": "/cwoCKD5DVfb4vs4bDCyWkvE3frc.jpg",
+    "poster": "/sxAwnj01pLfDBTA4WobJtJw7y9q.jpg",
+    "match": "exact"
+  },
+  "sirat-2025": {
+    "tmdbId": 1151272,
+    "tmdbTitle": "Sirāt",
+    "releaseDate": "2025-06-06",
+    "backdrop": "/kOUV5WbisWMg56d8eB45ZHEVxYq.jpg",
+    "poster": "/bzBtsLi17rK4G6kDvOXfUZfAhca.jpg",
+    "match": "exact"
+  },
+  "sophia-antipolis-2018": {
+    "tmdbId": 537868,
+    "tmdbTitle": "Sophia Antipolis",
+    "releaseDate": "2018-10-31",
+    "backdrop": "/v6gyr16oFPfIIdEEpP9nQ631xdO.jpg",
+    "poster": "/uSiwLUV0vWHUDdON0k1SppgTgbM.jpg",
+    "match": "exact"
+  },
+  "sound-of-falling-2025": {
+    "tmdbId": 1221061,
+    "tmdbTitle": "Sound of Falling",
+    "releaseDate": "2025-08-28",
+    "backdrop": "/cXr5YOMJKZBkokgNogHjEyFZLc6.jpg",
+    "poster": "/5hLiXAqZ3xTHExOIsxYANIswBjZ.jpg",
+    "match": "exact"
+  },
+  "stranger-eyes-2024": {
+    "tmdbId": 948184,
+    "tmdbTitle": "Stranger Eyes",
+    "releaseDate": "2024-11-14",
+    "backdrop": "/1beVQxKqtRkEwl3gY9TVXwnCrdp.jpg",
+    "poster": "/jK51OD6pW41aHL1nyIqbj2jqTVZ.jpg",
+    "match": "exact"
+  },
+  "summer-palace-2006": {
+    "tmdbId": 17422,
+    "tmdbTitle": "Summer Palace",
+    "releaseDate": "2007-02-10",
+    "backdrop": "/e6nfLRMMkYyROF9YIhLYDJVlib4.jpg",
+    "poster": "/kr0UdRRdjZigVfdYoik9kPy97hk.jpg",
+    "match": "manual"
+  },
+  "taboo-1999": {
+    "tmdbId": 20617,
+    "tmdbTitle": "Taboo",
+    "releaseDate": "1999-12-18",
+    "backdrop": "/48z4fEXAVwYXUnp8SVuQ94ohsRl.jpg",
+    "poster": "/jJxYFrbWhgK2FCjUDWZAkqlXX8.jpg",
+    "match": "exact"
+  },
+  "the-beloved-2026": {
+    "tmdbId": 1074074,
+    "tmdbTitle": "The Beloved",
+    "releaseDate": "2026-05-16",
+    "backdrop": "/pXtbTukWUFdkQmYydHihDceDFcU.jpg",
+    "poster": "/whk02IOeEHz8KCYZGm3fF92zg0v.jpg",
+    "match": "exact"
+  },
+  "the-birthday-party-2026": {
+    "tmdbId": 1191818,
+    "tmdbTitle": "The Birthday Party",
+    "releaseDate": "2026-09-16",
+    "backdrop": "/3vt3M9IrUvuH4E93ZlZpWvtxX3V.jpg",
+    "poster": "/7prAuNDsQPUlHKyXiYNkuofyi0G.jpg",
+    "match": "manual"
+  },
+  "the-breaking-ice-2023": {
+    "tmdbId": 923150,
+    "tmdbTitle": "The Breaking Ice",
+    "releaseDate": "2023-08-22",
+    "backdrop": "/ptzhZVIQ9wKV2kdAJB9ts7CIlLs.jpg",
+    "poster": "/nBGYXCiXhHBNmgvFY7aKrmbXCdv.jpg",
+    "match": "exact"
+  },
+  "the-dreamed-adventure-2026": {
+    "tmdbId": 1013822,
+    "tmdbTitle": "The Dreamed Adventure",
+    "releaseDate": "2026-07-15",
+    "backdrop": "/pyyLuwfGtpO3Ki0KOBx44nK538n.jpg",
+    "poster": "/aC2YiLDDs89mmb2n6Na0NbPKi0j.jpg",
+    "match": "exact"
+  },
+  "the-history-of-sound-2025": {
+    "tmdbId": 891584,
+    "tmdbTitle": "The History of Sound",
+    "releaseDate": "2025-09-12",
+    "backdrop": "/e13Io18jl6p5UiS5Cxhug9ptTPU.jpg",
+    "poster": "/55of0Vy7m32hSRZKsCyyDjZn4AC.jpg",
+    "match": "exact"
+  },
+  "the-little-sister-2025": {
+    "tmdbId": 961077,
+    "tmdbTitle": "The Little Sister",
+    "releaseDate": "2025-10-22",
+    "backdrop": "/vzIKxaav4Q5KBDDfYpphMzRQEOG.jpg",
+    "poster": "/gzTNITDGOjgrd3QPJfuqSYCjDls.jpg",
+    "match": "exact"
+  },
+  "the-man-i-love-2026": {
+    "tmdbId": 1783208,
+    "tmdbTitle": "The Man I Love",
+    "releaseDate": "2026-10-15",
+    "backdrop": "/oJyoVsTQKeYXZOdT1BuIa9ulJby.jpg",
+    "poster": "/eXLsY7DjFeTnIJUdfvevARnaWL5.jpg",
+    "match": "exact"
+  },
+  "the-mastermind-2025": {
+    "tmdbId": 1352624,
+    "tmdbTitle": "The Mastermind",
+    "releaseDate": "2025-10-16",
+    "backdrop": "/cfnrMVUAGOIMoxH5aXg1nBXR8xk.jpg",
+    "poster": "/oPaEQ3m4zHOzIAstgXCZZtzcHTL.jpg",
+    "match": "exact"
+  },
+  "the-secret-agent-2025": {
+    "tmdbId": 1220564,
+    "tmdbTitle": "The Secret Agent",
+    "releaseDate": "2025-07-23",
+    "backdrop": "/eeGRpU64sIrRApjWXvTpK5Lep2K.jpg",
+    "poster": "/rZqolYhxMEe6TZZTjSmFw9crDTD.jpg",
+    "match": "exact"
+  },
+  "the-seed-of-the-sacred-fig-2024": {
+    "tmdbId": 1278263,
+    "tmdbTitle": "The Seed of the Sacred Fig",
+    "releaseDate": "2024-09-18",
+    "backdrop": "/zqZzYVE4DWv92xrYSCEELPcLnUP.jpg",
+    "poster": "/ifOazNzv2cNJ5CQjMV7cPXG2Lmy.jpg",
+    "match": "exact"
+  },
+  "the-substance-2024": {
+    "tmdbId": 933260,
+    "tmdbTitle": "The Substance",
+    "releaseDate": "2024-09-18",
+    "backdrop": "/bVSOgrxasVJF6V71T7v2KfBRSzu.jpg",
+    "poster": "/lqoMzCcZYEFK729d6qzt349fB4o.jpg",
+    "match": "exact"
+  },
+  "the-things-of-life-1970": {
+    "tmdbId": 3423,
+    "tmdbTitle": "The Things of Life",
+    "releaseDate": "1970-03-13",
+    "backdrop": "/tlrIYO67FDjnHEJNXpmhVVJGO45.jpg",
+    "poster": "/nC3b7VV5YcSkAF6WteQL8EF4lme.jpg",
+    "match": "exact"
+  },
+  "the-time-to-live-and-the-time-to-die-1985": {
+    "tmdbId": 45999,
+    "tmdbTitle": "The Time to Live and the Time to Die",
+    "releaseDate": "1985-08-03",
+    "backdrop": "/6SO3WcfmoByOt0SBB7tOCmPtkVF.jpg",
+    "poster": "/7yFSUy939rX5CncqieINpajnM3q.jpg",
+    "match": "exact"
+  },
+  "the-unknown-2026": {
+    "tmdbId": 1182935,
+    "tmdbTitle": "The Unknown",
+    "releaseDate": "2026-08-26",
+    "backdrop": "/7OVnWBnwmDd2YmTOTzj0T8dg1la.jpg",
+    "poster": "/888ksoUkfKSBJHxKp6M9sYpJhv2.jpg",
+    "match": "ambiguous"
+  },
+  "titanic-ocean-2026": {
+    "tmdbId": 1000843,
+    "tmdbTitle": "Titanic Ocean",
+    "releaseDate": "2026-05-20",
+    "backdrop": "/nafaHRX4H386m7GXQYmt9wtDrFR.jpg",
+    "poster": "/1tv0zJ5fPtvll6VX1dZLtLTP7dJ.jpg",
+    "match": "exact"
+  },
+  "two-prosecutors-2025": {
+    "tmdbId": 1257406,
+    "tmdbTitle": "Two Prosecutors",
+    "releaseDate": "2025-10-03",
+    "backdrop": "/3bFyBL1gFghrWH3FG0wNwZc1BGp.jpg",
+    "poster": "/wV8A0YX9bVJ7CGnUAqDJtyYv6C2.jpg",
+    "match": "exact"
+  },
+  "uzumaki-2024": {
+    "tmdbId": 93241,
+    "tmdbType": "tv",
+    "tmdbTitle": "Uzumaki",
+    "releaseDate": "2024-09-29",
+    "backdrop": "/9VF97vk4WPOAZ9s8nqK3PJYJgnN.jpg",
+    "poster": "/wtQIgqEQEIQnNqLVGTShUf7qLap.jpg",
+    "match": "manual"
+  },
+  "vertiginous-2026": {
+    "tmdbId": 1668499,
+    "tmdbTitle": "Vertiginous",
+    "releaseDate": "2026-06-10",
+    "backdrop": "/hMKAPLiacrrqRXlHGMyyIosfjzr.jpg",
+    "poster": "/qO8nc3cSjzGduaC0deh8gBRKK9Z.jpg",
+    "match": "exact"
+  },
+  "victorian-psycho-2026": {
+    "tmdbId": 1379486,
+    "tmdbTitle": "Victorian Psycho",
+    "releaseDate": "2026-11-11",
+    "backdrop": "/92FSzMpBSkMH59ZCDz9tUjIWKAS.jpg",
+    "poster": "/9LHVZevgdsdbjJdkFr6bk9EwX7q.jpg",
+    "match": "exact"
+  },
+  "when-the-night-falls-2026": {
+    "tmdbId": 1506476,
+    "tmdbTitle": "When the Night Falls",
+    "releaseDate": "2027-01-20",
+    "backdrop": "/pn59n6kKGF0BQ05St0qk5ha8bSi.jpg",
+    "poster": "/qUAfZLeygsrCpVooaTlPaeYEIRp.jpg",
+    "match": "uncertain"
+  },
+  "woman-and-child-2025": {
+    "tmdbId": 1430386,
+    "tmdbTitle": "Woman and Child",
+    "releaseDate": "2025-07-23",
+    "backdrop": "/pSvZcHQtgwCmyUrR265AHbmi5x9.jpg",
+    "poster": "/ucDOgWEfQK014P1CoHdfdL6jO4t.jpg",
+    "match": "exact"
+  },
+  "women-on-trial-2026": {
+    "tmdbId": 1003494,
+    "tmdbTitle": "Women on Trial",
+    "releaseDate": "2026-11-04",
+    "backdrop": "/rIxB1b3nBfjxP0nHrWyjJArcVwa.jpg",
+    "poster": "/fArOu0NgRfth0zH5YqRu1os478v.jpg",
+    "match": "exact"
+  }
+}

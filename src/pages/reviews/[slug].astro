@@ -1,4 +1,5 @@
 ---
+import filmImages from "../../data/film-images.json";
 import backlog from "../../data/letterboxd-reviews.json";
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import {
@@ -23,6 +24,42 @@ export function getStaticPaths() {
 const { source } = Astro.props;
 const review = toReview(source);
 const edition = review.label?.match(/^Cannes (\d{4})$/)?.[1];
+
+// Film stills and posters come from TMDB; see npm run fetch:film-images.
+const images = (
+  filmImages as Record<
+    string,
+    { backdrop?: string | null; poster?: string | null } | undefined
+  >
+)[source.slug ?? ""];
+const tmdb = (size: string, path: string) =>
+  `https://image.tmdb.org/t/p/${size}${path}`;
+const french = review.lang === "fr";
+const still = images?.backdrop
+  ? {
+      kind: "backdrop",
+      src: tmdb("w1280", images.backdrop),
+      srcset: `${tmdb("w780", images.backdrop)} 780w, ${tmdb("w1280", images.backdrop)} 1280w`,
+      sizes: "(min-width: 1100px) 60rem, 92vw",
+      width: 1280,
+      height: 720,
+      alt: french
+        ? `Image du film ${source.title}`
+        : `Still from ${source.title}`,
+    }
+  : images?.poster
+    ? {
+        kind: "poster",
+        src: tmdb("w500", images.poster),
+        srcset: `${tmdb("w342", images.poster)} 342w, ${tmdb("w500", images.poster)} 500w`,
+        sizes: "22rem",
+        width: 500,
+        height: 750,
+        alt: french
+          ? `Affiche du film ${source.title}`
+          : `Poster for ${source.title}`,
+      }
+    : null;
 ---
 
 <ArticleLayout
@@ -51,12 +88,44 @@ const edition = review.label?.match(/^Cannes (\d{4})$/)?.[1];
           },
         ]),
   ]}
+  cover={still ? { src: still.src, alt: still.alt } : undefined}
   back={
     edition
       ? { href: `/cannes/#cannes-${edition}`, label: `Cannes ${edition}` }
       : undefined
   }
 >
+  {still && (
+    <figure
+      slot="lead"
+      class:list={[
+        "still article-lead reveal",
+        { "still-poster": still.kind === "poster" },
+      ]}
+    >
+      <div class="still-frame">
+        <img
+          src={still.src}
+          srcset={still.srcset}
+          sizes={still.sizes}
+          alt={still.alt}
+          width={still.width}
+          height={still.height}
+          fetchpriority="high"
+        />
+        <span class="corner corner-tl" aria-hidden="true" />
+        <span class="corner corner-tr" aria-hidden="true" />
+        <span class="corner corner-bl" aria-hidden="true" />
+        <span class="corner corner-br" aria-hidden="true" />
+      </div>
+      <figcaption>
+        <span>
+          {source.title} · {source.year}
+        </span>
+        <span>{still.kind === "backdrop" ? "Still" : "Poster"} · TMDB</span>
+      </figcaption>
+    </figure>
+  )}
   <Fragment set:html={reviewHtml(source.text)} />
   <p class="review-source">
     <a href={source.url} rel="noreferrer">
