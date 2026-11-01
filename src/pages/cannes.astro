@@ -1,12 +1,7 @@
 ---
 import backlog from "../data/letterboxd-reviews.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import {
-  reviewHref,
-  stars,
-  toReview,
-  type ReviewSource,
-} from "../lib/letterboxd";
+import { reviewHref, toReview, type ReviewSource } from "../lib/letterboxd";
 import { getPublishedPosts, isExternal, postHref } from "../lib/posts";
 
 // Films seen per edition are counted by hand: the Letterboxd diary also holds
@@ -136,14 +131,9 @@ const plural = (count: number, word: string) =>
           {edition.reviews.map(({ source, review }) => (
             <li>
               <a href={reviewHref(review)}>{source.title}</a>
-              {source.rating !== null && (
-                <span class="edition-rating">
-                  <span aria-hidden="true">{stars(source.rating)}</span>
-                  <span class="visually-hidden">
-                    , {String(source.rating).replace(".", ",")} sur 5
-                  </span>
-                </span>
-              )}
+              <span class="edition-read" aria-hidden="true">
+                Lire la critique →
+              </span>
             </li>
           ))}
         </ol>

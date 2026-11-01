@@ -201,7 +201,7 @@ button {
 .edition-number,
 .edition-meta,
 .edition-posts span,
-.edition-rating,
+.edition-read,
 .review-meta,
 .review-more,
 .article-meta,
@@ -1041,8 +1041,8 @@ button {
 
 .edition-reviews {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 3rem;
   margin-top: 0.5rem;
 }
 
@@ -1074,10 +1074,14 @@ button {
   color: var(--accent);
 }
 
-.edition-rating {
+.edition-read {
   flex-shrink: 0;
-  color: var(--accent);
-  letter-spacing: 0;
+  color: var(--muted);
+  transition: color 160ms ease;
+}
+
+.edition-reviews li:hover .edition-read {
+  color: var(--ink);
 }
 
 .article-body .review-source {
@@ -1553,7 +1557,7 @@ button {
   }
 
   .edition-reviews {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .reel-item a {
@@ -1577,10 +1581,6 @@ button {
 }
 
 @media (max-width: 560px) {
-  .edition-reviews {
-    grid-template-columns: 1fr;
-  }
-
   .section-head:has(.edition-meta) {
     flex-direction: column;
     gap: 0.5rem;
