@@ -50,28 +50,6 @@ const plural = (count: number, word: string) =>
   imageAlt={photoAlt}
 >
   <main class="writing-main" id="main">
-    <figure class="cannes-still reveal">
-      <div class="cannes-still-frame">
-        <img
-          src="/assets/img/cannes/palais-2026-1280.webp"
-          srcset="/assets/img/cannes/palais-2026-800.webp 800w, /assets/img/cannes/palais-2026-1280.webp 1280w, /assets/img/cannes/palais-2026-2048.webp 2048w"
-          sizes="(min-width: 1200px) 1024px, 92vw"
-          alt={photoAlt}
-          width="2048"
-          height="1536"
-          fetchpriority="high"
-        />
-        <span class="corner corner-tl" aria-hidden="true"></span>
-        <span class="corner corner-tr" aria-hidden="true"></span>
-        <span class="corner corner-bl" aria-hidden="true"></span>
-        <span class="corner corner-br" aria-hidden="true"></span>
-      </div>
-      <figcaption>
-        <span>Marches du Palais des Festivals</span>
-        <span>18 mai 2026</span>
-      </figcaption>
-    </figure>
-
     <header class="writing-hero reveal">
       <p class="eyebrow">Festival de Cannes · 2024 – 2026</p>
       <h1>
@@ -104,6 +82,28 @@ const plural = (count: number, word: string) =>
         </div>
       )}
     </dl>
+
+    <figure class="cannes-still reveal">
+      <div class="cannes-still-frame">
+        <img
+          src="/assets/img/cannes/palais-2026-1280.webp"
+          srcset="/assets/img/cannes/palais-2026-800.webp 800w, /assets/img/cannes/palais-2026-1280.webp 1280w, /assets/img/cannes/palais-2026-2048.webp 2048w"
+          sizes="(min-width: 1200px) 1024px, 92vw"
+          alt={photoAlt}
+          width="2048"
+          height="1536"
+          fetchpriority="high"
+        />
+        <span class="corner corner-tl" aria-hidden="true"></span>
+        <span class="corner corner-tr" aria-hidden="true"></span>
+        <span class="corner corner-bl" aria-hidden="true"></span>
+        <span class="corner corner-br" aria-hidden="true"></span>
+      </div>
+      <figcaption>
+        <span>Marches du Palais des Festivals</span>
+        <span>18 mai 2026</span>
+      </figcaption>
+    </figure>
 
     {sections.map((edition) => (
       <section

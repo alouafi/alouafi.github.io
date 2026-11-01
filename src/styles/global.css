@@ -950,7 +950,7 @@ button {
 
 /* Cannes page */
 .cannes-still {
-  margin: 0 0 clamp(3rem, 7vw, 5rem);
+  margin: clamp(3rem, 7vw, 5rem) 0 0;
 }
 
 .cannes-still-frame {
