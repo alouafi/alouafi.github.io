@@ -11,7 +11,7 @@
     "format:check": "prettier --check .",
     "preview": "astro preview",
     "import:reviews": "node scripts/import-letterboxd-reviews.mjs",
-    "fetch:film-images": "node --env-file-if-exists=.env scripts/fetch-film-images.mjs",
+    "fetch:films": "node --env-file-if-exists=.env scripts/fetch-films.mjs",
     "deploy:relay": "npx -y wrangler@4 deploy -c workers/letterboxd/wrangler.jsonc",
     "verify": "npm run format:check && npm run build && node scripts/check-links.mjs"
   },

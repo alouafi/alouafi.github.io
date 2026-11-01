@@ -1,5 +1,5 @@
 ---
-import filmImages from "../data/film-images.json";
+import films from "../data/films.json";
 import backlog from "../data/letterboxd-reviews.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { reviewHref, toReview, type ReviewSource } from "../lib/letterboxd";
@@ -40,12 +40,22 @@ const photoAlt =
   "Aïmen Louafi en costume sombre et lunettes de soleil sur les marches rouges du Palais des Festivals, sous l’affiche de Cannes 2026";
 // A heart marks the films rated 3.5 out of 5 or more.
 const loved = (rating: number | null) => rating !== null && rating >= 3.5;
-// Small TMDB posters; see npm run fetch:film-images.
+// Small TMDB posters; see npm run fetch:films.
+const film = (slug: string | undefined) =>
+  (
+    films as Record<
+      string,
+      { poster?: string | null; directors?: string[] } | undefined
+    >
+  )[slug ?? ""];
 const poster = (slug: string | undefined) => {
-  const path = (
-    filmImages as Record<string, { poster?: string | null } | undefined>
-  )[slug ?? ""]?.poster;
+  const path = film(slug)?.poster;
   return path ? `https://image.tmdb.org/t/p/w92${path}` : null;
+};
+const directorList = new Intl.ListFormat("fr", { type: "conjunction" });
+const directedBy = (slug: string | undefined) => {
+  const names = film(slug)?.directors ?? [];
+  return names.length > 0 ? directorList.format(names) : null;
 };
 const fold = (title: string) =>
   title
@@ -164,17 +174,24 @@ const plural = (count: number, word: string) =>
               const external = isExternal(href);
               return (
                 <li>
-                  <a href={href} rel={external ? "noreferrer" : undefined}>
-                    {post.data.title}
-                    {loved(articleRating(post.data.title, edition.reviews)) && (
-                      <>
-                        <span class="edition-heart" aria-hidden="true">
-                          ♥
-                        </span>
-                        <span class="visually-hidden">, coup de cœur</span>
-                      </>
+                  <div class="edition-film">
+                    <a href={href} rel={external ? "noreferrer" : undefined}>
+                      {post.data.title}
+                      {loved(
+                        articleRating(post.data.title, edition.reviews),
+                      ) && (
+                        <>
+                          <span class="edition-heart" aria-hidden="true">
+                            ♥
+                          </span>
+                          <span class="visually-hidden">, coup de cœur</span>
+                        </>
+                      )}
+                    </a>
+                    {post.data.director && (
+                      <span class="edition-director">{post.data.director}</span>
                     )}
-                  </a>
+                  </div>
                   <span>
                     {post.data.publisher
                       ? `${post.data.publisher} ↗`
@@ -201,19 +218,26 @@ const plural = (count: number, word: string) =>
                   />
                 )}
               </span>
-              <a href={reviewHref(review)}>
-                {source.title}
-                {loved(source.rating) && (
-                  <>
-                    <span class="edition-heart" aria-hidden="true">
-                      ♥
-                    </span>
-                    <span class="visually-hidden">, coup de cœur</span>
-                  </>
+              <div class="edition-film">
+                <a href={reviewHref(review)}>
+                  {source.title}
+                  {loved(source.rating) && (
+                    <>
+                      <span class="edition-heart" aria-hidden="true">
+                        ♥
+                      </span>
+                      <span class="visually-hidden">, coup de cœur</span>
+                    </>
+                  )}
+                </a>
+                {directedBy(source.slug) && (
+                  <span class="edition-director">
+                    {directedBy(source.slug)}
+                  </span>
                 )}
-              </a>
+              </div>
               <span class="edition-read" aria-hidden="true">
-                Lire la critique →
+                Lire<span class="edition-read-long"> la critique</span> →
               </span>
             </li>
           ))}

@@ -1,8 +1,8 @@
-// Finds each reviewed film on TMDB and records its poster and backdrop paths
-// in src/data/film-images.json. Images are served from TMDB's CDN.
+// Finds each reviewed film on TMDB and records its directors and its poster
+// and backdrop paths in src/data/films.json. Images are served from TMDB's CDN.
 //
-//   npm run fetch:film-images            # only films not matched yet
-//   npm run fetch:film-images -- --all   # match every film again
+//   npm run fetch:films            # only films not matched yet
+//   npm run fetch:films -- --all   # match every film again
 //
 // Needs TMDB_TOKEN in .env: either the API key or the API read access token
 // from themoviedb.org → Settings → API.
@@ -24,10 +24,10 @@ const reviewsFile = new URL(
   "../src/data/letterboxd-reviews.json",
   import.meta.url,
 );
-const imagesFile = new URL("../src/data/film-images.json", import.meta.url);
+const filmsFile = new URL("../src/data/films.json", import.meta.url);
 const reviews = JSON.parse(readFileSync(reviewsFile, "utf8"));
-const images = existsSync(imagesFile)
-  ? JSON.parse(readFileSync(imagesFile, "utf8"))
+const films = existsSync(filmsFile)
+  ? JSON.parse(readFileSync(filmsFile, "utf8"))
   : {};
 const refreshAll = process.argv.includes("--all");
 
@@ -66,6 +66,25 @@ const details = async (id, type) => {
   };
 };
 
+const directorsOf = async (id, type) => {
+  if (type === "tv") {
+    const { crew = [] } = await tmdb(`/tv/${id}/aggregate_credits`, {});
+    return [
+      ...new Set(
+        crew
+          .filter((person) =>
+            person.jobs?.some((job) => job.job === "Director"),
+          )
+          .map((person) => person.name),
+      ),
+    ];
+  }
+  const { crew = [] } = await tmdb(`/movie/${id}/credits`, {});
+  return crew
+    .filter((person) => person.job === "Director")
+    .map((person) => person.name);
+};
+
 const findMovie = async (title, year) => {
   // Letterboxd takes its titles and years from TMDB, so an exact title and
   // year is usually unique. Fall back to looser searches when it isn't.
@@ -98,11 +117,11 @@ const findMovie = async (title, year) => {
 
 const report = [];
 for (const review of reviews) {
-  const current = images[review.slug];
+  const current = films[review.slug];
   if (current?.match === "manual") {
     if (current.tmdbId && (refreshAll || current.backdrop === undefined)) {
       const { tmdbId, tmdbType } = current;
-      images[review.slug] = {
+      films[review.slug] = {
         tmdbId,
         ...(tmdbType ? { tmdbType } : {}),
         ...(await details(tmdbId, tmdbType ?? "movie")),
@@ -113,7 +132,7 @@ for (const review of reviews) {
   }
   if (current && !refreshAll) continue;
   const { movie, match } = await findMovie(review.title, review.year);
-  images[review.slug] = movie
+  films[review.slug] = movie
     ? {
         tmdbId: movie.id,
         tmdbTitle: movie.title,
@@ -130,10 +149,36 @@ for (const review of reviews) {
   await new Promise((resolve) => setTimeout(resolve, 60));
 }
 
+for (const film of Object.values(films)) {
+  if (film.tmdbId && film.directors === undefined) {
+    film.directors = await directorsOf(film.tmdbId, film.tmdbType ?? "movie");
+    await new Promise((resolve) => setTimeout(resolve, 60));
+  }
+}
+
+const fields = [
+  "tmdbId",
+  "tmdbType",
+  "tmdbTitle",
+  "releaseDate",
+  "directors",
+  "backdrop",
+  "poster",
+  "match",
+];
 const sorted = Object.fromEntries(
-  Object.entries(images).sort(([a], [b]) => a.localeCompare(b)),
+  Object.entries(films)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([slug, film]) => [
+      slug,
+      Object.fromEntries(
+        fields
+          .filter((field) => field in film)
+          .map((field) => [field, film[field]]),
+      ),
+    ]),
 );
-writeFileSync(imagesFile, `${JSON.stringify(sorted, null, 2)}\n`);
+writeFileSync(filmsFile, `${JSON.stringify(sorted, null, 2)}\n`);
 
 const entries = Object.values(sorted);
 console.log(

@@ -1,5 +1,5 @@
 ---
-import filmImages from "../../data/film-images.json";
+import films from "../../data/films.json";
 import backlog from "../../data/letterboxd-reviews.json";
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import {
@@ -25,9 +25,9 @@ const { source } = Astro.props;
 const review = toReview(source);
 const edition = review.label?.match(/^Cannes (\d{4})$/)?.[1];
 
-// Film stills and posters come from TMDB; see npm run fetch:film-images.
+// Film stills and posters come from TMDB; see npm run fetch:films.
 const images = (
-  filmImages as Record<
+  films as Record<
     string,
     { backdrop?: string | null; poster?: string | null } | undefined
   >
