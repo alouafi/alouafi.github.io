@@ -3,6 +3,8 @@ import ArticleRows from "../../components/ArticleRows.astro";
 import Letterboxd from "../../components/Letterboxd.astro";
 import backlog from "../../data/letterboxd-reviews.json";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { directedBy, film, loved, tmdbImage } from "../../lib/films";
+import type { ReviewSource } from "../../lib/letterboxd";
 import {
   formatDate,
   getPublishedPosts,
@@ -17,7 +19,6 @@ import {
 
 interface Props {
   topic: Topic;
-  roll: string;
   intro: string;
   description: string;
 }
@@ -40,31 +41,35 @@ export function getStaticPaths() {
     },
   } satisfies Record<Topic, { intro: string; description: string }>;
 
-  return topics.map((topic, index) => ({
+  return topics.map((topic) => ({
     params: { topic: topicPages[topic].slug },
-    props: {
-      topic,
-      roll: String(index + 2).padStart(2, "0"),
-      ...pages[topic],
-    },
+    props: { topic, ...pages[topic] },
   }));
 }
 
-const { topic, roll, intro, description } = Astro.props;
+const { topic, intro, description } = Astro.props;
 const { label } = topicPages[topic];
 const posts = (await getPublishedPosts()).filter(
   (post) => post.data.topic === topic,
 );
-const languageLabels = { en: "English", fr: "Français" } as const;
 // The Cinema page separates pieces published by media outlets from essays
 // on this site; other topics keep a single list.
 const press = posts.filter((post) => isExternal(postHref(post)));
 const essays = posts.filter((post) => !isExternal(postHref(post)));
-const outlets = [
-  ...new Set(press.map((post) => post.data.publisher).filter(Boolean)),
-];
-const plural = (count: number, word: string) =>
-  `${count} ${word}${count === 1 ? "" : "s"}`;
+
+// The latest press piece leads the Cinema page, with a still of its film.
+const lead = press[0];
+const leadFilm = film(lead?.data.film);
+const leadStill = leadFilm?.backdrop;
+const leadLoved =
+  lead !== undefined &&
+  (lead.data.favourite ||
+    loved(
+      (backlog as ReviewSource[]).find(
+        (review) => review.slug === lead.data.film,
+      )?.rating,
+    ));
+
 const feed = { title: `Aïmen Louafi — ${label}`, href: topicFeedHref(topic) };
 ---
 
@@ -74,123 +79,114 @@ const feed = { title: `Aïmen Louafi — ${label}`, href: topicFeedHref(topic) }
   current={topic}
   {feed}
 >
-  <main class="writing-main" id="main">
-    <header class="writing-hero reveal">
-      <p class="eyebrow">
-        Roll {roll} / {label}
-      </p>
-      <h1>
-        {label}
-        <span class="accent-mark">.</span>
-      </h1>
-      <p class="writing-hero-copy">
-        {intro}
-        {topic === "cinema" && (
-          <>
-            <br />
-            <a href="/cannes/">
-              Find out more about my adventures at the Cannes Film Festival →
-            </a>
-          </>
-        )}
-      </p>
+  <main class="page" id="main">
+    <header class:list={["page-head", { "has-visual": lead && leadStill }]}>
+      <div class="page-head-text">
+        <h1>{label}</h1>
+        <p class="page-intro">
+          {intro}
+          {topic === "cinema" && (
+            <>
+              {" "}
+              <a href="/cannes/">
+                Find out more about my adventures at the Cannes Film
+                Festival&nbsp;<span class="arrow">→</span>
+              </a>
+            </>
+          )}
+        </p>
+      </div>
+      {lead && leadStill && (
+        <a class="feature" href={postHref(lead)} rel="noreferrer">
+          <span class="feature-image">
+            <img
+              src={tmdbImage("w780", leadStill)}
+              srcset={`${tmdbImage("w780", leadStill)} 780w, ${tmdbImage("w1280", leadStill)} 1280w`}
+              sizes="(min-width: 62em) 34rem, 92vw"
+              alt=""
+              width="1280"
+              height="720"
+              fetchpriority="high"
+            />
+          </span>
+          <span class="feature-label">
+            Latest in {lead.data.publisher} <span class="arrow">↗</span>
+          </span>
+          <span class="feature-title" lang={lead.data.language}>
+            {lead.data.title}
+            {leadLoved && (
+              <span class="row-heart" aria-hidden="true">
+                ♥
+              </span>
+            )}
+          </span>
+          {(lead.data.director ?? directedBy(lead.data.film)) && (
+            <span class="feature-meta">
+              {lead.data.director ?? directedBy(lead.data.film)}
+            </span>
+          )}
+        </a>
+      )}
     </header>
 
     {topic === "cinema" ? (
       <>
-        <section class="year-section" aria-labelledby="press-title">
+        <section class="section" aria-labelledby="press-title">
           <header class="section-head">
             <h2 id="press-title">Published in the press</h2>
-            <p class="year-meta">
-              {[plural(press.length, "piece"), ...outlets].join(" · ")}
-            </p>
           </header>
           <ArticleRows posts={press} lang="en" />
         </section>
 
         {essays.length > 0 && (
-          <section class="year-section" aria-labelledby="essays-title">
+          <section class="section" aria-labelledby="essays-title">
             <header class="section-head">
               <h2 id="essays-title">Essays</h2>
-              <p class="year-meta">{plural(essays.length, "essay")}</p>
             </header>
             <ArticleRows posts={essays} lang="en" />
           </section>
         )}
 
         <Letterboxd />
-
-        <p class="post-count">
-          {plural(press.length, "piece")} in the press ·{" "}
-          {plural(essays.length, "essay")} ·{" "}
-          <a href="/reviews/">{plural(backlog.length, "review")}</a> ·{" "}
-          <a href={feed.href}>RSS</a>
-        </p>
       </>
-    ) : (
-      <section class="writing-panel" aria-label={`${label} posts`}>
-        {posts.length > 0 ? (
-          <ol class="post-list">
-            {posts.map((post) => {
-              const href = postHref(post);
-              const external = isExternal(href);
-              const isPdf =
-                post.data.format === "paper" && href.endsWith(".pdf");
-              return (
-                <li class="post-row reveal">
+    ) : posts.length > 0 ? (
+      <ol class="post-list">
+        {posts.map((post) => {
+          const href = postHref(post);
+          const external = isExternal(href);
+          const isPdf = post.data.format === "paper" && href.endsWith(".pdf");
+          return (
+            <li>
+              <a href={href} rel={external ? "noreferrer" : undefined}>
+                <span class="post-title" lang={post.data.language}>
+                  {post.data.title}
+                </span>
+                {post.data.authors && (
+                  <span class="post-byline">
+                    With {post.data.authors.slice(1).join(", ")}
+                  </span>
+                )}
+                <span class="post-meta">
                   <time
-                    class="post-date"
                     datetime={post.data.publishedAt.toISOString()}
                     lang={post.data.language}
                   >
                     {formatDate(post)}
                   </time>
-                  <div class="post-heading">
-                    <h2>
-                      <a href={href} rel={external ? "noreferrer" : undefined}>
-                        <span lang={post.data.language}>{post.data.title}</span>
-                        {isPdf ? (
-                          <span class="visually-hidden"> (PDF)</span>
-                        ) : (
-                          external && (
-                            <span class="visually-hidden"> (external)</span>
-                          )
-                        )}
-                      </a>
-                    </h2>
-                    {post.data.director && (
-                      <p class="post-byline">
-                        Directed by {post.data.director}
-                      </p>
-                    )}
-                    {post.data.authors && (
-                      <p class="post-byline">
-                        With {post.data.authors.slice(1).join(", ")}
-                      </p>
-                    )}
-                  </div>
-                  <span class="post-tags">
-                    {languageLabels[post.data.language]}
-                  </span>
-                  <span class="post-kind">
-                    {post.data.publisher
-                      ? `${post.data.publisher}${isPdf ? " · PDF →" : external ? " ↗" : ""}`
-                      : external
-                        ? "External ↗"
-                        : `${readingMinutes(post.body)} min →`}
-                  </span>
-                </li>
-              );
-            })}
-          </ol>
-        ) : (
-          <p class="empty-state">Nothing published here yet.</p>
-        )}
-        <p class="post-count">
-          {posts.length} {posts.length === 1 ? "entry" : "entries"} ·{" "}
-          <a href={feed.href}>RSS</a>
-        </p>
-      </section>
+                  {" · "}
+                  {post.data.publisher
+                    ? `${post.data.publisher}${isPdf ? " (PDF)" : ""}${external ? " ↗" : ""}`
+                    : external
+                      ? "External ↗"
+                      : `${readingMinutes(post.body)} min read`}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    ) : (
+      <p class="empty-state">Nothing published here yet.</p>
     )}
   </main>
 </BaseLayout>

@@ -6,11 +6,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="Page not found — Aïmen Louafi"
   description="The requested page could not be found."
 >
-  <main class="not-found" id="main">
-    <h1>404</h1>
-    <p>End of reel. This page doesn’t exist.</p>
-    <a class="text-link" href="/">
-      Return home <span aria-hidden="true">→</span>
-    </a>
+  <main class="page" id="main">
+    <header class="page-head">
+      <h1>Page not found</h1>
+      <p class="page-intro">
+        This page doesn’t exist, or no longer does. <a href="/">Go home</a>
+      </p>
+    </header>
   </main>
 </BaseLayout>

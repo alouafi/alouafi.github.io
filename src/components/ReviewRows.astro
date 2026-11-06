@@ -5,7 +5,7 @@ import { reviewHref, type Review, type ReviewSource } from "../lib/letterboxd";
 interface Props {
   items: { source: ReviewSource; review: Review }[];
   lang: "en" | "fr";
-  // Show context labels such as "Cannes 2026" next to the director.
+  // Show context labels such as "Cannes 2026" beside the link.
   showLabels?: boolean;
 }
 
@@ -45,21 +45,19 @@ const french = lang === "fr";
               </>
             )}
           </a>
-          {(director || (showLabels && review.label)) && (
-            <span class="row-director">
-              {director}
-              {showLabels && review.label && (
-                <span class="row-tag">{review.label}</span>
-              )}
-            </span>
-          )}
+          {director && <span class="row-director">{director}</span>}
         </div>
-        <span class="row-read" aria-hidden="true">
-          {french ? "Lire" : "Read"}
-          <span class="row-read-long">
-            {french ? " la critique" : " the review"}
-          </span>{" "}
-          →
+        <span class="row-side">
+          {showLabels && review.label && (
+            <span class="row-tag">{review.label}</span>
+          )}
+          <span class="row-read" aria-hidden="true">
+            {french ? "Lire" : "Read"}
+            <span class="row-read-long">
+              {french ? " la critique" : " the review"}
+            </span>{" "}
+            <span class="arrow">→</span>
+          </span>
         </span>
       </li>
     );

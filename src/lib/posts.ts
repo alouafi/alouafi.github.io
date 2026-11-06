@@ -23,6 +23,9 @@ export const readingMinutes = (body = "") =>
 
 export type Topic = Post["data"]["topic"];
 
+// Where a page sits in the site menu.
+export type Section = "home" | Topic | "reviews" | "cannes";
+
 // Each topic has its own listing page, in this order in the navigation.
 export const topicPages = {
   cinema: { slug: "cinema", label: "Cinema" },

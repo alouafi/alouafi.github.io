@@ -3,7 +3,6 @@ import ArticleRows from "../components/ArticleRows.astro";
 import ReviewRows from "../components/ReviewRows.astro";
 import backlog from "../data/letterboxd-reviews.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { loved } from "../lib/films";
 import { toReview, type ReviewSource } from "../lib/letterboxd";
 import { getPublishedPosts, isExternal, postHref } from "../lib/posts";
 
@@ -41,82 +40,50 @@ const pressCount = sections.reduce(
   (n, s) => n + s.posts.filter((post) => isExternal(postHref(post))).length,
   0,
 );
-const latestFilms = sections.find((section) => section.films)?.films;
+const latest = sections.find((section) => section.films);
+const frenchNumber = (count: number) =>
+  ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit"][
+    count
+  ] ?? String(count);
 const photoAlt =
-  "Aïmen Louafi en costume sombre et lunettes de soleil sur les marches rouges du Palais des Festivals, sous l’affiche de Cannes 2026";
-const lovedCount = (count: number) =>
-  count > 0 && `${count} coup${count > 1 ? "s" : ""} de cœur`;
-const plural = (count: number, word: string) =>
-  `${count} ${word}${count > 1 ? "s" : ""}`;
+  "Aïmen Louafi en costume sombre et lunettes de soleil sur les marches rouges du Palais des Festivals, sous l’affiche de Cannes 2026, le 18 mai 2026";
 ---
 
 <BaseLayout
-  title="Cannes, 2024 – 2026 — Aïmen Louafi"
+  title="Festival de Cannes, 2024 – 2026 — Aïmen Louafi"
   description="Trois éditions du Festival de Cannes, de 2024 à 2026 : critiques, bilan et articles d’Aïmen Louafi."
-  current="cinema"
+  current="cannes"
   lang="fr"
   image="/assets/img/cannes/palais-2026-share.jpg"
   imageAlt={photoAlt}
 >
-  <main class="writing-main" id="main">
-    <header class="writing-hero reveal">
-      <p class="eyebrow">Festival de Cannes · 2024 – 2026</p>
-      <h1>
-        Cannes<span class="accent-mark">.</span>
-      </h1>
-      <p class="writing-hero-copy">
-        Trois éditions du Festival, de 2024 à 2026, et ce que j’en ai écrit :
-        des critiques sur place ou au retour, un bilan de l’édition 2026 et des
-        articles pour Le Blog du Cinéma.
-      </p>
+  <main class="page" id="main">
+    <header class="page-head has-visual">
+      <div class="page-head-text">
+        <h1>Festival de Cannes</h1>
+        <p class="page-intro">
+          Trois éditions du Festival, de 2024 à 2026, et ce que j’en ai
+          écrit&nbsp;: {reviewCount} critiques sur place ou au retour, un bilan
+          de l’édition 2026 et {frenchNumber(pressCount)} articles pour Le Blog
+          du Cinéma.
+          {latest && ` En ${latest.year}, j’y ai vu ${latest.films} films.`}
+        </p>
+      </div>
+      <img
+        class="page-photo"
+        src="/assets/img/cannes/palais-2026-1280.webp"
+        srcset="/assets/img/cannes/palais-2026-800.webp 800w, /assets/img/cannes/palais-2026-1280.webp 1280w, /assets/img/cannes/palais-2026-2048.webp 2048w"
+        sizes="(min-width: 62em) 34rem, 92vw"
+        alt={photoAlt}
+        width="2048"
+        height="1536"
+        fetchpriority="high"
+      />
     </header>
-
-    <dl class="stats-row">
-      <div>
-        <dt>Éditions</dt>
-        <dd>{sections.length}</dd>
-      </div>
-      <div>
-        <dt>Critiques</dt>
-        <dd>{reviewCount}</dd>
-      </div>
-      <div>
-        <dt>Publications presse</dt>
-        <dd>{pressCount}</dd>
-      </div>
-      {latestFilms && (
-        <div>
-          <dt>Films vus en {sections[0]?.year}</dt>
-          <dd>{latestFilms}</dd>
-        </div>
-      )}
-    </dl>
-
-    <figure class="still reveal">
-      <div class="still-frame">
-        <img
-          src="/assets/img/cannes/palais-2026-1280.webp"
-          srcset="/assets/img/cannes/palais-2026-800.webp 800w, /assets/img/cannes/palais-2026-1280.webp 1280w, /assets/img/cannes/palais-2026-2048.webp 2048w"
-          sizes="(min-width: 1200px) 1024px, 92vw"
-          alt={photoAlt}
-          width="2048"
-          height="1536"
-          fetchpriority="high"
-        />
-        <span class="corner corner-tl" aria-hidden="true"></span>
-        <span class="corner corner-tr" aria-hidden="true"></span>
-        <span class="corner corner-bl" aria-hidden="true"></span>
-        <span class="corner corner-br" aria-hidden="true"></span>
-      </div>
-      <figcaption>
-        <span>Marches du Palais des Festivals</span>
-        <span>18 mai 2026</span>
-      </figcaption>
-    </figure>
 
     {sections.map((edition) => (
       <section
-        class="year-section"
+        class="section"
         id={`cannes-${edition.year}`}
         aria-labelledby={`cannes-${edition.year}-title`}
       >
@@ -128,19 +95,7 @@ const plural = (count: number, word: string) =>
               <sup>e</sup> édition
             </span>
           </h2>
-          <p class="year-meta">
-            {[
-              edition.dates,
-              edition.films && plural(edition.films, "film"),
-              plural(edition.reviews.length, "critique"),
-              lovedCount(
-                edition.reviews.filter(({ source }) => loved(source.rating))
-                  .length,
-              ),
-            ]
-              .filter(Boolean)
-              .join(" · ")}
-          </p>
+          <p class="section-meta">{edition.dates}</p>
         </header>
 
         {edition.posts.length > 0 && (

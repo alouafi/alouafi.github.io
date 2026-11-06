@@ -1,5 +1,4 @@
 ---
-import films from "../../data/films.json";
 import backlog from "../../data/letterboxd-reviews.json";
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import {
@@ -8,6 +7,7 @@ import {
   toReview,
   type ReviewSource,
 } from "../../lib/letterboxd";
+import { directedBy, film, tmdbImage } from "../../lib/films";
 import { readingMinutes } from "../../lib/posts";
 
 interface Props {
@@ -26,32 +26,25 @@ const review = toReview(source);
 const edition = review.label?.match(/^Cannes (\d{4})$/)?.[1];
 
 // Film stills and posters come from TMDB; see npm run fetch:films.
-const images = (
-  films as Record<
-    string,
-    { backdrop?: string | null; poster?: string | null } | undefined
-  >
-)[source.slug ?? ""];
-const tmdb = (size: string, path: string) =>
-  `https://image.tmdb.org/t/p/${size}${path}`;
+const info = film(source.slug);
 const french = review.lang === "fr";
-const still = images?.backdrop
+const still = info?.backdrop
   ? {
       kind: "backdrop",
-      src: tmdb("w1280", images.backdrop),
-      srcset: `${tmdb("w780", images.backdrop)} 780w, ${tmdb("w1280", images.backdrop)} 1280w`,
-      sizes: "(min-width: 1100px) 60rem, 92vw",
+      src: tmdbImage("w1280", info.backdrop),
+      srcset: `${tmdbImage("w780", info.backdrop)} 780w, ${tmdbImage("w1280", info.backdrop)} 1280w`,
+      sizes: "(min-width: 1100px) 1040px, 92vw",
       width: 1280,
       height: 720,
       alt: french
         ? `Image du film ${source.title}`
         : `Still from ${source.title}`,
     }
-  : images?.poster
+  : info?.poster
     ? {
         kind: "poster",
-        src: tmdb("w500", images.poster),
-        srcset: `${tmdb("w342", images.poster)} 342w, ${tmdb("w500", images.poster)} 500w`,
+        src: tmdbImage("w500", info.poster),
+        srcset: `${tmdbImage("w342", info.poster)} 342w, ${tmdbImage("w500", info.poster)} 500w`,
         sizes: "22rem",
         width: 500,
         height: 750,
@@ -60,6 +53,8 @@ const still = images?.backdrop
           : `Poster for ${source.title}`,
       }
     : null;
+// "Director · year" under the title.
+const deck = [directedBy(source.slug), source.year].filter(Boolean).join(" · ");
 ---
 
 <ArticleLayout
@@ -71,65 +66,50 @@ const still = images?.backdrop
   publishedAt={new Date(source.date)}
   language={review.lang}
   topic="cinema"
-  format="post"
+  section="reviews"
   minutes={readingMinutes(source.text)}
-  eyebrow={`${review.label ?? "Cinema"} · Review`}
-  deck={null}
-  dateLabel="Reviewed"
-  details={[
-    { label: "Film", value: source.year },
-    ...(source.rating === null
+  deck={deck}
+  details={
+    source.rating === null
       ? []
       : [
           {
-            label: "Rating",
             value: stars(source.rating),
-            spoken: `${source.rating} out of 5`,
+            spoken: french
+              ? `Noté ${String(source.rating).replace(".", ",")} sur 5`
+              : `Rated ${source.rating} out of 5`,
           },
-        ]),
-  ]}
+        ]
+  }
   cover={still ? { src: still.src, alt: still.alt } : undefined}
   back={
     edition
       ? { href: `/cannes/#cannes-${edition}`, label: `Cannes ${edition}` }
-      : undefined
+      : { href: "/reviews/", label: "Reviews" }
   }
 >
   {still && (
     <figure
       slot="lead"
-      class:list={[
-        "still article-lead reveal",
-        { "still-poster": still.kind === "poster" },
-      ]}
+      class:list={["still", { "still-poster": still.kind === "poster" }]}
     >
-      <div class="still-frame">
-        <img
-          src={still.src}
-          srcset={still.srcset}
-          sizes={still.sizes}
-          alt={still.alt}
-          width={still.width}
-          height={still.height}
-          fetchpriority="high"
-        />
-        <span class="corner corner-tl" aria-hidden="true" />
-        <span class="corner corner-tr" aria-hidden="true" />
-        <span class="corner corner-bl" aria-hidden="true" />
-        <span class="corner corner-br" aria-hidden="true" />
-      </div>
-      <figcaption>
-        <span>
-          {source.title} · {source.year}
-        </span>
-        <span>{still.kind === "backdrop" ? "Still" : "Poster"} · TMDB</span>
-      </figcaption>
+      <img
+        src={still.src}
+        srcset={still.srcset}
+        sizes={still.sizes}
+        alt={still.alt}
+        width={still.width}
+        height={still.height}
+        fetchpriority="high"
+      />
     </figure>
   )}
   <Fragment set:html={reviewHtml(source.text)} />
   <p class="review-source">
     <a href={source.url} rel="noreferrer">
-      First published on Letterboxd ↗
+      {french
+        ? "Publiée d’abord sur Letterboxd ↗"
+        : "First published on Letterboxd ↗"}
     </a>
   </p>
 </ArticleLayout>

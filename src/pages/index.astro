@@ -1,108 +1,66 @@
 ---
+import ArticleRows from "../components/ArticleRows.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { profile } from "../data/profile";
-import {
-  formatDate,
-  getPublishedPosts,
-  isExternal,
-  postHref,
-  topicHref,
-  topicPages,
-  topics,
-} from "../lib/posts";
+import { getPublishedPosts, topicHref } from "../lib/posts";
 
-const latest = (await getPublishedPosts()).slice(0, 4);
+const latest = (await getPublishedPosts()).slice(0, 5);
 ---
 
 <BaseLayout current="home">
-  <main class="home" id="main">
+  <main class="page" id="main">
     <section class="intro" aria-labelledby="intro-title">
-      <div class="intro-copy reveal">
-        <h1 id="intro-title">
-          Aïmen{" "}
-          <em>
-            Louafi<span class="accent-mark">.</span>
-          </em>
-        </h1>
-        <div class="intro-body">
-          <p>
-            I’m an AI engineer at Mistral AI. I studied computer science and
-            applied mathematics at Mines Paris, and spent a year at the
-            University of Tokyo.
-          </p>
-          <p>
-            Outside work, I’m into cinema, language learning, literature, and
-            philosophy. I speak French, English, and Japanese (JLPT N1), as well
-            as a little Spanish.
-          </p>
-        </div>
-        <nav class="intro-links" aria-label="Profile links">
-          {topics.map((topic) => (
-            <a href={topicHref(topic)}>{topicPages[topic].label} →</a>
-          ))}
+      <h1 id="intro-title">Aïmen Louafi</h1>
+      <div class="intro-text">
+        <p class="intro-lead">
+          I’m an AI engineer at Mistral AI, and I write about{" "}
+          <a href={topicHref("cinema")}>cinema</a>.
+        </p>
+        <p>
+          I studied computer science and applied mathematics at Mines Paris, and
+          spent a year at the University of Tokyo. Besides films, I’m into
+          language learning, literature, and philosophy. I speak French,
+          English, and Japanese (JLPT N1), as well as a little Spanish.
+        </p>
+        <p class="actions">
+          <a class="btn btn-primary" href={topicHref("cinema")}>
+            Read my film criticism
+          </a>
+          <a class="btn btn-secondary" href="/cannes/">
+            See my Cannes Film Festival coverage
+          </a>
+        </p>
+        <p class="intro-links">
           <a href={profile.links.linkedin} rel="me noreferrer">
-            LinkedIn ↗
+            LinkedIn
           </a>
           <a href={profile.links.github} rel="me noreferrer">
-            GitHub ↗
+            GitHub
           </a>
           <a href={profile.links.letterboxd} rel="me noreferrer">
-            Letterboxd ↗
+            Letterboxd
           </a>
-        </nav>
+        </p>
       </div>
-
-      <figure class="portrait reveal">
-        <div class="viewfinder">
-          <img
-            src={profile.portrait}
-            alt="Portrait of Aïmen Louafi"
-            width="512"
-            height="512"
-          />
-          <span class="corner corner-tl" aria-hidden="true"></span>
-          <span class="corner corner-tr" aria-hidden="true"></span>
-          <span class="corner corner-bl" aria-hidden="true"></span>
-          <span class="corner corner-br" aria-hidden="true"></span>
-          <span class="registration-mark" aria-hidden="true"></span>
-        </div>
-        <figcaption aria-hidden="true">
-          <span>A001 · C001</span>
-          <span>1:1 · B&amp;W</span>
-        </figcaption>
-      </figure>
+      <img
+        class="portrait"
+        src={profile.portrait}
+        alt="Portrait of Aïmen Louafi"
+        width="512"
+        height="512"
+      />
     </section>
 
-    <section class="now-showing" aria-labelledby="now-showing-title">
+    <section class="section" aria-labelledby="recent-title">
       <header class="section-head">
-        <h2 id="now-showing-title">Now showing</h2>
+        <h2 id="recent-title">Recent writing</h2>
       </header>
-      <ol class="reel-list">
-        {latest.map((post) => {
-          const href = postHref(post);
-          const external = isExternal(href);
-          return (
-            <li class="reel-item">
-              <a href={href} rel={external ? "noreferrer" : undefined}>
-                <span class="reel-title" lang={post.data.language}>
-                  {post.data.title}
-                </span>
-                <span class="reel-meta">
-                  <time
-                    datetime={post.data.publishedAt.toISOString()}
-                    lang={post.data.language}
-                  >
-                    {formatDate(post)}
-                  </time>
-                  <span>{topicPages[post.data.topic].label}</span>
-                  <span aria-hidden="true">{external ? "↗" : "→"}</span>
-                </span>
-                {external && <span class="visually-hidden"> (external)</span>}
-              </a>
-            </li>
-          );
-        })}
-      </ol>
+      <ArticleRows posts={latest} lang="en" />
+      <p class="actions">
+        <a class="btn btn-primary" href={topicHref("cinema")}>
+          Read my film criticism
+        </a>
+      </p>
     </section>
   </main>
 </BaseLayout>

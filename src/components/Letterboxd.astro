@@ -1,6 +1,7 @@
 ---
 import { profile } from "../data/profile";
 import backlog from "../data/letterboxd-reviews.json";
+import { posterUrl } from "../lib/films";
 import {
   latestReviews,
   renderFilms,
@@ -33,7 +34,9 @@ const live = await loadLive();
 const films = live.films;
 // Older reviews come from the Letterboxd export; see npm run import:reviews.
 const reviews = latestReviews([
-  (backlog as ReviewSource[]).map(toReview),
+  (backlog as ReviewSource[]).map((source) =>
+    toReview({ ...source, poster: posterUrl(source.slug, "w154") }),
+  ),
   live.reviews,
 ]);
 ---
@@ -45,7 +48,7 @@ const reviews = latestReviews([
   data-reviews={JSON.stringify(reviews)}
 >
   <section
-    class="reviews"
+    class="section"
     aria-labelledby="reviews-title"
     hidden={reviews.length === 0}
     data-reviews-section
@@ -53,7 +56,7 @@ const reviews = latestReviews([
     <header class="section-head">
       <h2 id="reviews-title">Latest reviews</h2>
       <a class="text-link" href="/reviews/">
-        All {backlog.length} reviews →
+        All {backlog.length} reviews <span class="arrow">→</span>
       </a>
     </header>
     <ol
@@ -64,7 +67,7 @@ const reviews = latestReviews([
   </section>
 
   <section
-    class="watched"
+    class="section"
     aria-labelledby="watched-title"
     hidden={films.length === 0}
     data-watched
@@ -72,7 +75,7 @@ const reviews = latestReviews([
     <header class="section-head">
       <h2 id="watched-title">Recently watched</h2>
       <a class="text-link" href={profile.links.letterboxd} rel="me noreferrer">
-        Letterboxd ↗
+        Letterboxd <span class="arrow">↗</span>
       </a>
     </header>
     <ol class="film-strip" data-film-strip set:html={renderFilms(films)} />

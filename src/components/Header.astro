@@ -1,55 +1,59 @@
 ---
-import { profile } from "../data/profile";
-import { topicHref, topicPages, topics, type Topic } from "../lib/posts";
+import {
+  getPublishedPosts,
+  topicHref,
+  topicPages,
+  type Section,
+} from "../lib/posts";
 
 interface Props {
-  current?: "home" | Topic | undefined;
+  current?: Section | undefined;
 }
 
 const { current } = Astro.props;
+// Topics without published posts stay out of the menu.
+const posts = await getPublishedPosts();
+const hasPosts = (topic: keyof typeof topicPages) =>
+  posts.some((post) => post.data.topic === topic);
+const items = [
+  { key: "cinema", href: topicHref("cinema"), label: topicPages.cinema.label },
+  { key: "reviews", href: "/reviews/", label: "Reviews" },
+  // Phones show the short label so the menu fits on one row.
+  { key: "cannes", href: "/cannes/", label: "Cannes", long: "Film Festival" },
+  { key: "tech", href: topicHref("tech"), label: topicPages.tech.label },
+  ...(hasPosts("notes")
+    ? [
+        {
+          key: "notes",
+          href: topicHref("notes"),
+          label: topicPages.notes.label,
+        },
+      ]
+    : []),
+];
 ---
 
-<header class="site-header" data-header>
+<header class="site-header">
   <a
-    class="wordmark"
+    class="site-name"
     href="/"
-    aria-label="Aïmen Louafi, home"
     aria-current={current === "home" ? "page" : undefined}
   >
-    <span>AL</span>
-    <span class="wordmark-dot" aria-hidden="true"></span>
+    <img
+      class="seal"
+      src="/assets/img/seal.svg"
+      alt=""
+      width="36"
+      height="36"
+    />
+    <span>Aïmen Louafi</span>
   </a>
-  <button
-    class="menu-button"
-    type="button"
-    aria-expanded="false"
-    aria-controls="site-nav"
-    data-menu-button
-  >
-    <span>Menu</span>
-    <span class="menu-glyph" aria-hidden="true"></span>
-  </button>
-  <nav class="site-nav" id="site-nav" aria-label="Primary" data-menu>
-    {topics.map((topic) => (
-      <a
-        href={topicHref(topic)}
-        aria-current={current === topic ? "page" : undefined}
-      >
-        {topicPages[topic].label}
+  <nav class="site-nav" aria-label="Primary">
+    {items.map(({ key, href, label, long }) => (
+      <a href={href} aria-current={current === key ? "page" : undefined}>
+        {label}
+        {long && <span class="nav-long">&nbsp;{long}</span>}
       </a>
     ))}
-    <a href={profile.links.linkedin} rel="me noreferrer">
-      LinkedIn ↗
-    </a>
-    <a href={profile.links.github} rel="me noreferrer">
-      GitHub ↗
-    </a>
   </nav>
-  <p class="header-status" aria-hidden="true">
-    <span class="tally-light"></span>
-    <span>TC</span>
-    <span class="timecode" data-timecode>
-      00:00:00:00
-    </span>
-  </p>
 </header>

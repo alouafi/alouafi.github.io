@@ -72,10 +72,11 @@ const ratings = new Map(
         <span class="row-source">
           <span>
             {external
-              ? `${post.data.publisher ?? (french ? "Lien externe" : "External")} ↗`
+              ? (post.data.publisher ?? (french ? "Lien externe" : "External"))
               : french
-                ? `Lire · ${minutes} min →`
-                : `${minutes} min →`}
+                ? `Lire · ${minutes} min`
+                : `${minutes} min`}{" "}
+            <span class="arrow">{external ? "↗" : "→"}</span>
           </span>
           <time
             class="row-date"

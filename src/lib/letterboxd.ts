@@ -24,6 +24,7 @@ export interface ReviewSource {
   url: string;
   text: string;
   spoilers: boolean;
+  poster?: string | null;
 }
 
 // What the Cinema page shows for a review.
@@ -38,6 +39,7 @@ export interface Review {
   excerpt: string;
   lang: "en" | "fr";
   spoilers: boolean;
+  poster: string | null;
 }
 
 const entities: Record<string, string> = {
@@ -130,16 +132,22 @@ export const toReview = (source: ReviewSource): Review => {
     excerpt: source.spoilers ? "" : excerpt,
     lang: guessLanguage(body),
     spoilers: source.spoilers,
+    poster: source.poster ?? null,
   };
 };
 
-// Merges review lists, keeping the newest review of each film.
+// Merges review lists, keeping the newest review of each film, and the
+// poster of an older copy when the newer one has none.
 export const latestReviews = (lists: Review[][], limit = 4) => {
   const byFilm = new Map<string, Review>();
   for (const review of lists.flat()) {
     const key = `${review.title}|${review.year}`;
     const current = byFilm.get(key);
-    if (!current || review.date >= current.date) byFilm.set(key, review);
+    if (!current || review.date >= current.date)
+      byFilm.set(key, {
+        ...review,
+        poster: review.poster ?? current?.poster ?? null,
+      });
   }
   return [...byFilm.values()]
     .sort((a, b) => b.date.localeCompare(a.date))
@@ -183,6 +191,7 @@ export const parseLetterboxdFeed = (xml: string, limit = 8) => {
         /review may contain spoilers/i.test(paragraph),
       );
       const published = new Date(field(item, "pubDate"));
+      const poster = description.match(/<img src="([^"]+)"/)?.[1];
       return toReview({
         title: field(item, "letterboxd:filmTitle"),
         year: field(item, "letterboxd:filmYear"),
@@ -199,6 +208,7 @@ export const parseLetterboxdFeed = (xml: string, limit = 8) => {
           )
           .join("\n\n"),
         spoilers,
+        poster: poster ? smallPoster(decode(poster)) : null,
       });
     })
     .filter((review) => review.title);
@@ -285,6 +295,12 @@ export const renderReviews = (reviews: Review[]) =>
   reviews
     .map(
       (review) => `<li class="review">
+  <span class="review-poster">${
+    review.poster
+      ? `<img src="${escapeHtml(review.poster)}" alt="" width="154" height="231" loading="lazy" decoding="async">`
+      : ""
+  }</span>
+  <div class="review-body">
   ${review.label ? `<p class="review-label">${escapeHtml(review.label)}</p>` : ""}
   <h3 class="review-title"><a href="${escapeHtml(reviewHref(review))}"${review.slug ? "" : ' rel="noreferrer"'}>${escapeHtml(review.title)}<span class="visually-hidden">${review.slug ? ", full review" : ", review on Letterboxd"}</span></a> <span class="review-year">${escapeHtml(review.year)}</span></h3>
   <p class="review-meta"><span class="film-rating">${ratingHtml(review.rating)}</span><time datetime="${escapeHtml(review.date)}">${formatDate(review.date, true)}</time></p>
@@ -293,7 +309,8 @@ export const renderReviews = (reviews: Review[]) =>
       ? `<p class="review-excerpt review-spoiler">Contains spoilers.</p>`
       : `<p class="review-excerpt" lang="${review.lang}">${escapeHtml(review.excerpt)}</p>`
   }
-  <p class="review-more" aria-hidden="true">${review.slug ? "Read the review →" : "Read on Letterboxd ↗"}</p>
+  <p class="review-more" aria-hidden="true">${review.slug ? `Read the review <span class="arrow">→</span>` : `Read on Letterboxd <span class="arrow">↗</span>`}</p>
+  </div>
 </li>`,
     )
     .join("");

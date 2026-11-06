@@ -2,19 +2,16 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { profile } from "../data/profile";
-import type { Topic } from "../lib/posts";
-import "@fontsource/instrument-serif/400.css";
-import "@fontsource/instrument-serif/400-italic.css";
-import "@fontsource-variable/newsreader/wght.css";
-import "@fontsource-variable/newsreader/wght-italic.css";
-import "@fontsource/ibm-plex-mono/400.css";
-import "@fontsource/ibm-plex-mono/500.css";
+import type { Section } from "../lib/posts";
+// The optical size axis gives large titles the sharper display cut.
+import "@fontsource-variable/newsreader/opsz.css";
+import "@fontsource-variable/newsreader/opsz-italic.css";
 import "../styles/global.css";
 
 interface Props {
   title?: string;
   description?: string;
-  current?: "home" | Topic;
+  current?: Section | undefined;
   image?: string | undefined;
   imageAlt?: string | undefined;
   feed?: { title: string; href: string } | undefined;
@@ -62,7 +59,7 @@ const personSchema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#0b0b0a" />
+    <meta name="theme-color" content="#141412" />
     <meta name="description" content={description} />
     <meta property="og:type" content={article ? "article" : "website"} />
     <meta property="og:title" content={title} />
@@ -72,7 +69,7 @@ const personSchema = {
     {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/img/seal.svg" type="image/svg+xml" />
     {feed && (
       <link
         rel="alternate"
@@ -98,18 +95,8 @@ const personSchema = {
     <a class="skip-link" href="#main">
       Skip to content
     </a>
-    <div class="film-shell">
-      <div class="film-rail film-rail-left" aria-hidden="true"></div>
-      <div class="page-stock">
-        <Header current={current} />
-        <slot />
-        <Footer />
-      </div>
-      <div class="film-rail film-rail-right" aria-hidden="true"></div>
-    </div>
-    <div class="grain" aria-hidden="true"></div>
-    <script>
-      import "../scripts/site";
-    </script>
+    <Header current={current} />
+    <slot />
+    <Footer />
   </body>
 </html>

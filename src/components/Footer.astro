@@ -5,56 +5,32 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <dl class="credits">
-    <div>
-      <dt>Written &amp; directed by</dt>
-      <dd>{profile.name}</dd>
-    </div>
-    <div>
-      <dt>Location</dt>
-      <dd>Paris, France</dd>
-    </div>
-    <div>
-      <dt>Elsewhere</dt>
-      <dd>
-        <a href={profile.links.linkedin} rel="me noreferrer">
-          LinkedIn
-        </a>
-        <span aria-hidden="true">·</span>
-        <a href={profile.links.github} rel="me noreferrer">
-          GitHub
-        </a>
-        <span aria-hidden="true">·</span>
-        <a href={profile.links.letterboxd} rel="me noreferrer">
-          Letterboxd
-        </a>
-        <span aria-hidden="true">·</span>
-        <a href="/rss.xml">RSS</a>
-      </dd>
-    </div>
-    <div>
-      <dt>Film images</dt>
-      <dd>
-        <a href="https://www.themoviedb.org" rel="noreferrer">
-          <img
-            class="credits-logo"
-            src="/assets/img/tmdb.svg"
-            alt="TMDB"
-            width="105"
-            height="14"
-          />
-        </a>
-        <span class="credits-note">
-          This product uses the TMDB API but is not endorsed or certified by
-          TMDB.
-        </span>
-      </dd>
-    </div>
-  </dl>
-  <div class="footer-bar">
-    <p>
-      © {year} {profile.name}
-    </p>
-    <a href="#main">Back to top ↑</a>
-  </div>
+  <p class="footer-links">
+    <a href={profile.links.linkedin} rel="me noreferrer">
+      LinkedIn
+    </a>
+    <a href={profile.links.github} rel="me noreferrer">
+      GitHub
+    </a>
+    <a href={profile.links.letterboxd} rel="me noreferrer">
+      Letterboxd
+    </a>
+    <a href="/rss.xml">RSS</a>
+  </p>
+  <p class="footer-credit">
+    <a href="https://www.themoviedb.org" rel="noreferrer">
+      <img
+        src="/assets/img/tmdb.svg"
+        alt="TMDB"
+        width="84"
+        height="11"
+        loading="lazy"
+      />
+    </a>
+    Film posters and stills come from TMDB. This product uses the TMDB API but
+    is not endorsed or certified by TMDB.
+  </p>
+  <p class="footer-copy">
+    © {year} {profile.name}, Paris
+  </p>
 </footer>

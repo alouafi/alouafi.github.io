@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import { topicHref, topicPages, type Topic } from "../lib/posts";
+import { topicHref, topicPages, type Section, type Topic } from "../lib/posts";
 
 interface Props {
   title: string;
@@ -8,15 +8,13 @@ interface Props {
   publishedAt: Date;
   language: "en" | "fr";
   topic: Topic;
-  format: "post" | "paper";
   minutes?: number;
   cover?: { src: string; alt: string } | undefined;
   // Overrides for pages that are not posts, such as imported reviews.
-  eyebrow?: string | undefined;
   deck?: string | null | undefined;
-  dateLabel?: string | undefined;
-  details?: { label: string; value: string; spoken?: string }[] | undefined;
+  details?: { value: string; spoken?: string }[] | undefined;
   back?: { href: string; label: string } | undefined;
+  section?: Section | undefined;
 }
 
 const {
@@ -25,87 +23,70 @@ const {
   publishedAt,
   language,
   topic,
-  format,
   minutes,
   cover,
-  eyebrow = `${topicPages[topic].label} · ${format === "paper" ? "Paper" : "Essay"}`,
   deck = description,
-  dateLabel = "Released",
   details = [],
   back = { href: topicHref(topic), label: topicPages[topic].label },
+  section = topic,
 } = Astro.props;
-const locale = language === "fr" ? "fr-FR" : "en-GB";
-const languageLabel = language === "fr" ? "Français" : "English";
+const french = language === "fr";
+const date = publishedAt.toLocaleDateString(french ? "fr-FR" : "en-GB", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
 ---
 
 <BaseLayout
   title={`${title} — Aïmen Louafi`}
   {description}
-  current={topic}
+  current={section}
   image={cover?.src}
   imageAlt={cover?.alt}
   article
   lang={language}
 >
-  <div class="reel-progress" aria-hidden="true"></div>
-  <main class="article-shell" id="main">
-    <header class="article-header reveal">
-      <p class="eyebrow">{eyebrow}</p>
+  <main class="page" id="main">
+    <header class="article-header">
+      <p class="article-kicker">
+        <a href={back.href}>{back.label}</a>
+      </p>
       <h1>{title}</h1>
       {deck && <p class="article-deck">{deck}</p>}
-      <dl class="article-meta">
-        <div>
-          <dt>{dateLabel}</dt>
-          <dd>
-            <time datetime={publishedAt.toISOString()}>
-              {publishedAt.toLocaleDateString(locale, {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-              })}
-            </time>
-          </dd>
-        </div>
-        {details.map(({ label, value, spoken }) => (
-          <div>
-            <dt>{label}</dt>
-            <dd>
-              {spoken ? (
-                <>
-                  <span aria-hidden="true">{value}</span>
-                  <span class="visually-hidden">{spoken}</span>
-                </>
-              ) : (
-                value
-              )}
-            </dd>
-          </div>
+      <p class="article-meta">
+        <time datetime={publishedAt.toISOString()}>{date}</time>
+        {details.map(({ value, spoken }) => (
+          <>
+            <span aria-hidden="true"> · </span>
+            {spoken ? (
+              <>
+                <span aria-hidden="true">{value}</span>
+                <span class="visually-hidden">{spoken}</span>
+              </>
+            ) : (
+              <span>{value}</span>
+            )}
+          </>
         ))}
-        <div>
-          <dt>Language</dt>
-          <dd>{languageLabel}</dd>
-        </div>
         {minutes && (
-          <div>
-            <dt>Runtime</dt>
-            <dd>{minutes} min</dd>
-          </div>
+          <>
+            <span aria-hidden="true"> · </span>
+            {minutes} {french ? "min de lecture" : "min read"}
+          </>
         )}
-      </dl>
+      </p>
     </header>
     <slot name="lead" />
     <article class="article-body">
       <slot />
     </article>
     <footer class="article-footer">
-      <a class="text-link" href={back.href}>
-        <span aria-hidden="true">←</span> {back.label}
-      </a>
-      <p class="fin" aria-hidden="true">
-        Fin
-      </p>
-      <a class="text-link" href="#main">
-        Top <span aria-hidden="true">↑</span>
+      <a href={back.href}>
+        <span class="arrow arrow-back" aria-hidden="true">
+          ←
+        </span>
+        {back.label}
       </a>
     </footer>
   </main>
