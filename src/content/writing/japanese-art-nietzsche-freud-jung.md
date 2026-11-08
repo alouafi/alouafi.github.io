@@ -4,6 +4,7 @@ description: Why Nietzsche, Freud, and Jung recur so often in Japanese video gam
 publishedAt: 2026-09-15
 language: en
 topic: notes
+poster: /assets/img/writing/japanese-art/poster.webp
 cover:
   src: /assets/img/writing/japanese-art/cover.jpg
   alt: Two characters stand below a pale cruciform figure in Evangelion

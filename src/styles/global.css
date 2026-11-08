@@ -556,31 +556,40 @@ h1 {
   line-height: 0;
 }
 
-/* Home: the name alone on the first screen, the portrait under it on the
-   left. */
+/* Home: alone on the first screen, centred in it, with the portrait on the
+   left and the name and text beside it. */
 .intro {
   display: grid;
   grid-template-columns: 16rem minmax(0, 1fr);
-  gap: 2.5rem clamp(2rem, 6vw, 5rem);
-  align-content: start;
-  min-height: calc(100svh - var(--header-h) - var(--page-top));
+  gap: 0 clamp(2rem, 6vw, 5rem);
+  align-content: center;
+  min-height: calc(100svh - var(--header-h) - 2 * var(--page-top));
 }
 
 .intro h1 {
-  grid-column: 1 / -1;
-  /* Sized to stay on one line down to 320 px wide screens. */
-  font-size: clamp(2.5rem, 14vw, 8.75rem);
+  grid-row: 1;
+  grid-column: 2;
+  margin-bottom: 1.75rem;
+  font-size: clamp(3rem, 6.5vw, 6.5rem);
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
+}
+
+.intro-text {
+  grid-row: 2;
+  grid-column: 2;
 }
 
 .intro-text p {
-  max-width: 36rem;
+  max-width: 40rem;
+  text-wrap: pretty;
   margin: 0 0 1rem;
   font-size: clamp(1.1rem, 1.6vw, 1.22rem);
 }
 
 .intro-text .intro-lead {
+  max-width: none;
+  text-wrap: pretty;
   margin-bottom: 1.5rem;
   color: var(--ink);
   font-size: clamp(1.45rem, 2.6vw, 2rem);
@@ -602,8 +611,9 @@ h1 {
 
 /* 16rem keeps the 512px portrait sharp on 2x screens. */
 .portrait {
-  grid-row: 2;
+  grid-row: 1 / span 2;
   grid-column: 1;
+  align-self: start;
   width: 100%;
   height: auto;
   aspect-ratio: 4 / 5;
@@ -1194,6 +1204,19 @@ h1 {
 @media (max-width: 800px) {
   .intro {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .intro h1 {
+    grid-row: auto;
+    grid-column: auto;
+    margin-bottom: 0;
+    font-size: clamp(2.5rem, 12vw, 4.5rem);
+  }
+
+  .intro-text {
+    grid-row: auto;
+    grid-column: auto;
   }
 
   /* After the text, so the buttons stay on the first screen. */
