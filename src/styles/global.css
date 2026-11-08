@@ -206,10 +206,11 @@ a:hover {
     filter var(--m-image) var(--m-ease);
 }
 
+/* The poster wall on the Reviews page stays in colour, like the other
+   page heads' pictures. */
 .row-poster img,
 .film-poster img,
-.review-poster img,
-.poster-wall img {
+.review-poster img {
   filter: grayscale(1) contrast(1.05);
 }
 
