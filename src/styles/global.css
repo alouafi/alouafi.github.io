@@ -556,10 +556,11 @@ h1 {
   line-height: 0;
 }
 
-/* Home: the name alone on the first screen, with the portrait. */
+/* Home: the name alone on the first screen, the portrait under it on the
+   left. */
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 16rem;
+  grid-template-columns: 16rem minmax(0, 1fr);
   gap: 2.5rem clamp(2rem, 6vw, 5rem);
   align-content: start;
   min-height: calc(100svh - var(--header-h) - var(--page-top));
@@ -601,6 +602,8 @@ h1 {
 
 /* 16rem keeps the 512px portrait sharp on 2x screens. */
 .portrait {
+  grid-row: 2;
+  grid-column: 1;
   width: 100%;
   height: auto;
   aspect-ratio: 4 / 5;
@@ -1195,6 +1198,8 @@ h1 {
 
   /* After the text, so the buttons stay on the first screen. */
   .portrait {
+    grid-row: auto;
+    grid-column: auto;
     width: min(16rem, 70%);
   }
 

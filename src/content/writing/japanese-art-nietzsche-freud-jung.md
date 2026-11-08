@@ -7,7 +7,7 @@ topic: notes
 cover:
   src: /assets/img/writing/japanese-art/cover.jpg
   alt: Two characters stand below a pale cruciform figure in Evangelion
-draft: true
+draft: false
 ---
 
 I’ve always been a sucker for “edgy” and “pretentious” stories. Give me a tormented protagonist, some obscure religious imagery, and a plot that questions God or reality, and I’m in. That is more or less how I ended up with _Xenogears_ (that, and my obsession with Japan and RPGs, I guess).

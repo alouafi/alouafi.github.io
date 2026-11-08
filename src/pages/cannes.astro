@@ -6,8 +6,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { toReview, type ReviewSource } from "../lib/letterboxd";
 import { getPublishedPosts, isExternal, postHref } from "../lib/posts";
 
-// Films seen per edition are counted by hand: the Letterboxd diary also holds
-// films watched at home during the festival, so it can't give an exact count.
+// Every film seen in 2024 and 2025 has a review, so their count comes from
+// the reviews. 2026 is counted by hand: not every film got a review, and the
+// diary also holds films watched at home during the festival.
 const editions = [
   { year: 2026, number: 79, dates: "12 – 23 mai 2026", films: 35 },
   { year: 2025, number: 78, dates: "13 – 24 mai 2025", films: null },
@@ -20,19 +21,23 @@ const reviews = (backlog as ReviewSource[]).map((source) => ({
   review: toReview(source),
 }));
 
-const sections = editions.map((edition) => ({
-  ...edition,
-  posts: posts.filter((post) => post.data.cannes === edition.year),
+const sections = editions.map((edition) => {
   // In the order the films were seen.
-  reviews: reviews
+  const editionReviews = reviews
     .filter(({ review }) => review.label === `Cannes ${edition.year}`)
     .sort(
       (a, b) =>
         (a.source.watchedDate ?? a.source.date).localeCompare(
           b.source.watchedDate ?? b.source.date,
         ) || a.source.title.localeCompare(b.source.title),
-    ),
-}));
+    );
+  return {
+    ...edition,
+    films: edition.films ?? editionReviews.length,
+    posts: posts.filter((post) => post.data.cannes === edition.year),
+    reviews: editionReviews,
+  };
+});
 
 const reviewCount = sections.reduce((n, s) => n + s.reviews.length, 0);
 // Pieces published by media outlets, as opposed to essays on this site.
@@ -40,7 +45,14 @@ const pressCount = sections.reduce(
   (n, s) => n + s.posts.filter((post) => isExternal(postHref(post))).length,
   0,
 );
-const latest = sections.find((section) => section.films);
+// "8 films en 2024, 15 en 2025 et 35 en 2026", oldest first.
+const filmsSeen = new Intl.ListFormat("fr", { type: "conjunction" }).format(
+  [...sections]
+    .reverse()
+    .map(({ films, year }, index) =>
+      index === 0 ? `${films} films en ${year}` : `${films} en ${year}`,
+    ),
+);
 const frenchNumber = (count: number) =>
   ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit"][
     count
@@ -65,8 +77,7 @@ const photoAlt =
           Trois éditions du Festival, de 2024 à 2026, et ce que j’en ai
           écrit&nbsp;: {reviewCount} critiques sur place ou au retour, un bilan
           de l’édition 2026 et {frenchNumber(pressCount)} articles pour Le Blog
-          du Cinéma.
-          {latest && ` En ${latest.year}, j’y ai vu ${latest.films} films.`}
+          du Cinéma. J’y ai vu {filmsSeen}.
         </p>
       </div>
       <img
